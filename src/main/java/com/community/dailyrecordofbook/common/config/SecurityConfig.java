@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .httpBasic().disable() // REST API만 고려, 기본 설정을 해제
                 .csrf().disable() // csrf 사용 X
-                .authorizeRequests().antMatchers("/user/login", "/user/sign", "/thymeleaf")
+                .authorizeRequests().antMatchers("/user/login", "/user/sign", "/")
                 // 요청에 대한 사용 권한 체크
                 .permitAll().anyRequest().authenticated()
                 // 나머지 요청은 누구나 접근 가능
