@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+.join_content {
+    background-color: rgb(255, 255, 255);
+    width: 460px;
+    margin: 3em auto;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 36px 2px raba(0, 0, 0, 0.7);
+}
+
+.join_email, .join_pw, .join_nm, .join_phone, .join_birth, .join_info {
+    width: 100%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 30px;
+}
+
+.h1 {
+    text-align: center;
+	margin-bottom: 20px;
+	font-size: 30px;
+}
+
+
+.h3 > span {
+    color:chocolate;
+    font-size: 20px;
+}
+
+input {
+    width: 100%;
+    height: 30px;
+    font-size: 15px;
+    padding-left: 8px;
+    border: 1px solid #aaa;
+    border-radius: 0.5em;
+}
+
+.h3 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.h3_ {
+    margin-top: 30px;
+}
+
+p {
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.chkBtn {
+    margin-top: 8px;
+    width:100px;
+    height:30px;
+}    
+
+.join_rv {
+    margin-bottom: 20px;
+}
+
+.join_info > p {
+    margin-top: 3px;
+}
+
+.left_ {
+    margin-bottom: 3px;
+}
+
+.radio_btn {
+    display: flex;
+    flex-direction: row;
+}
+
+.radio_btn > input {
+    margin: auto;
+    width: 22px;
+    height: 22px;
+}
+
+.gender_option {
+    margin-left: 75px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* join_btn 시작 */
+.join_btn {
+    background:#ebcacf;
+    color:#fff;
+    border:none;
+    position:relative;
+    height:60px;
+    font-size:1em;
+    padding: 0.4em 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    display: block;
+    margin: 0 auto;
+}    
+.join_btn:hover{
+    background:#fff;
+    color:#ebcacf;
+}
+.join_btn:before, .join_btn:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #ebcacf;
+    transition:400ms ease all;
+}
+.join_btn:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+.join_btn:hover:before, .join_btn:hover:after{
+    width:100%;
+    transition:800ms ease all;
+}
+/* join_btn 끝 */
+
+
+/* select css 시작 */
+select {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	font-size: 0.8rem;
+ 	font-weight: 400;
+ 	line-height: 1.5;
+
+ 	color: #444;
+ 	background-color: #fff;
+
+ 	padding: 0.6em 1.4em 0.5em 0.8em;
+ 	margin: 0;
+
+ 	border: 1px solid #aaa;
+ 	border-radius: 0.5em;
+ 	box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+}
+
+select:hover {
+ 	border-color: #888;
+}
+
+select:focus {
+ 	border-color: #aaa;
+ 	box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
+ 	box-shadow: 0 0 0 3px -moz-mac-focusring;
+ 	color: #222;
+ 	outline: none;
+}
+
+select:disabled {
+ 	opacity: 0.5;
+}
+/* select css 끝 */
+
+
+

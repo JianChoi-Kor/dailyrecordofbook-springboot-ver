@@ -1,0 +1,400 @@
+@charset "UTF-8";
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* home slide 부분 css start */
+.mini-slide-container {
+	display: none;
+}
+
+.top-slide-container {
+    margin: 0 auto;
+    width: 1040px;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    height: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+}
+
+.slide-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#next-btn, #prev-btn {
+    cursor: pointer;
+    background: transparent;
+    font-size: 30px;
+    border: none;
+    padding: 10px;
+    color: white;
+}
+
+#next-btn:focus, #prev-btn:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 780px) {
+	.top-slide-container {
+    	width: 100%;
+    	height: auto;
+	}
+	
+	#next-btn, #prev-btn {
+    	cursor: pointer;
+    	background: transparent;
+    	font-size: 20px;
+    	border: none;
+    	padding: 10px;
+    	color: white;
+	}
+    
+}
+/* home slide 부분 css end */
+
+
+
+
+/* icon 부분 start */
+.middle {
+    margin: 100px auto 30px;
+    max-width: 1040px;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.icon {
+    margin-bottom: 15px;
+    font-size: 55px;
+}
+
+.h3 {
+    font-size: 38px;
+}
+
+.h3 > span {
+    font-size: 27px;
+}
+
+.h6 {
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.middle-etc {
+    max-width: 1040px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 60px auto;
+}
+
+.middle-etc > h3 {
+    margin: 2px 0;
+}
+
+.middle-etc > h4 {
+    margin-top: 15px;
+}
+
+
+.inquiry_btn {
+	background: inherit; 
+	border:none; 
+	box-shadow:none; 
+	border-radius:0; 
+	padding:0; 
+	overflow:visible; 
+	cursor:pointer
+}
+
+.inquiry_btn {
+	position: fixed;
+	display: flex;
+	width: 115px;
+	height: 115px;
+	background-color: #ebcacf;
+	color: white;
+	font-size: 21px;
+	border-radius: 115px;
+	justify-content: space-around;
+	top: 68%;
+	left: 83%;
+	cursor:pointer;
+    transition:800ms ease all;
+}
+
+
+.inquiry_btn:hover{
+    background:#fff;
+    color:#ebcacf;
+}
+
+.inquiry_btn:focus{ 	
+    border: none;
+    outline:none;
+}
+
+
+
+@media screen and (max-width: 780px) {
+    .icon {
+        margin-bottom: 10px;
+        font-size: 45px;
+    }
+
+    .h3 {
+        font-size: 28px;
+    }
+
+    .h3 > span {
+        font-size: 16px;
+    }
+
+    .h6 {
+        margin-top: 3px;
+        font-size: 13px;
+    }
+
+    .middle-etc {
+        margin: 0 auto;
+    }
+
+    .middle-etc > h3 {
+        font-size: 15px;
+        margin: 2px 0;
+    }
+    
+    .middle-etc > h4 {
+        font-size: 12px;
+        margin-top: 8px;
+    }
+    
+    
+	.inquiry_btn {
+		position: fixed;
+		display: flex;
+		width: 65px;
+		height: 65px;
+		background-color: #ebcacf;
+		color: white;
+		font-size: 16px;
+		border-radius: 65px;
+		justify-content: space-around;
+		top: 54%;
+		left: 83%;
+		cursor:pointer;
+    	transition:800ms ease all;
+}
+    
+    
+}
+/* icon 부분 end */
+
+
+
+
+/* book slide 부분 start */
+/*
+.book-slide-container {
+    width: 280px;
+    height:215px;
+    position: relative;
+}
+
+.book-slides {
+    display: flex;
+    height: 100%;
+}
+
+.book-slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.book-slide img {
+    width: 100%;
+    height: 100%;
+}
+
+.book-slide-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#book-next-btn, #book-prev-btn {
+    display: none;
+}
+
+#book-next-btn:focus, #book-prev-btn:focus {
+    outline: none;
+}
+*/
+/* book slide 부분 end */
+
+.bookSlide {
+	width: 100%;
+}
+
+.book-slide-container {
+	position:relative;
+	height: 225px; 
+	overflow: hidden;
+}
+
+.book-slide-container img {
+	height: 215px; 
+	position: absolute;
+}
+
+
+
+
+/* write btn */
+
+.book-slide-btn {
+	width: 600px;
+	margin: 10px auto;
+}
+
+#add_btn {
+    background: #ebcacf;
+    color: #fff;
+    border: none;
+    position: relative;
+    height: 30px;
+    font-size: 1em;
+    padding: 0.4em 1.2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    text-align: right;
+    border-radius: 0.5em;
+}
+
+#add_btn:hover {
+    background: #fff;
+    color:#ebcacf;
+}
+
+#add_btn:before, #add_btn:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #ebcacf;
+    transition: 400ms ease all;
+}
+
+#add_btn:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+#add_btn:hover:before, #add_btn:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+
+
+
+/* modal css */
+#bookModal {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background-color: #00000088;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+}
+
+#bookModal.hide {
+	display: none;
+}
+
+#modClose {
+	font-size: 40px;
+	color: white;
+	margin-left: 550px;
+	margin-bottom: 50px;
+}
+
+.modText {
+	margin-top: 12px;
+	border: transparent;
+    background: transparent;
+    color: white;
+    font-size: 35px;
+    width: 500px;
+    margin: 15px auto;
+    text-align: center;
+}
+
+
+.modText:focus {
+	outline-width: 0;
+}
+
+
+.modInfo {
+	font-size: 27px;
+	margin-bottom: 100px;
+}
+
+
+.calendar-title {
+	margin: 60px auto;
+	text-align: center;
+}
+
+.calendar-title>p {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+#calendar{
+   width:800px;
+   margin:90px auto;
+}

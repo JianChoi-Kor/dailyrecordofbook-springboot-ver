@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/layout}">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/user/join.css}">
+</head>
+
+<div layout:fragment="content">
+
+<div class="join_content">
+    <p class="sign">
+    <h1 class="h1">회원가입</h1>
+    </p>
+    <form id="join_frm">
+
+        <!-- 아이디 부분 -->
+        <div class="join_email">
+            <h3 class="h3">
+                이메일 <span> * </span>
+            </h3>
+            <input type="text" name="userEmail" placeholder="이메일을 입력해주세요.">
+            <p>- 회원가입 버튼을 누르시면 이메일 인증이 진행됩니다.</p>
+            <p>(실제 사용가능한 이메일을 입력해주세요.)</p>
+        </div>
+
+        <!-- 비밀번호 부분 -->
+        <div class="join_pw">
+            <h3 class="h3">
+                비밀번호 <span> * </span>
+            </h3>
+            <div class="left">
+                <input type="password" name="userPw" placeholder="비밀번호를 입력해주세요.">
+            </div>
+            <p>- 비밀번호는 숫자와 영문자 조합으로 8~20자리를 사용해야 합니다.</p>
+            <h3 class="h3 h3_">
+                비밀번호 확인 <span> * </span>
+            </h3>
+            <div class="left">
+                <input type="password" name="userPwRe"
+                       placeholder="비밀번호를 다시 입력해주세요.">
+            </div>
+        </div>
+
+        <!-- 이름 부분 -->
+        <div class="join_nm">
+            <h3 class="h3">
+                이름 <span> * </span>
+            </h3>
+            <div class="left">
+                <input type="text" name="userNm" placeholder="이름을 입력해주세요.">
+            </div>
+            <p class="left left_">(책방일지는 실명으로 운영되고 있습니다. 꼭 한글 실명을 기입해주세요.)</p>
+        </div>
+
+        <!-- 전화번호 부분 -->
+        <div class="join_phone">
+            <h3 class="h3">
+                전화번호 <span> * </span>
+            </h3>
+            <div class="left">
+                <input type="text" name="userPn" placeholder="전화번호를 입력해주세요.">
+            </div>
+            <p>- 전화번호는 "-" 없이 입력해주세요. ex) 01099998888</p>
+            <p></p>
+        </div>
+
+        <!-- 생년월일, 성별 부분 -->
+        <div class="join_birth">
+            <h3 class="h3">
+                생년월일 <span> * </span>
+            </h3>
+            <div class="left">
+                <input type="text" name="userBirth" placeholder="생년월일을 입력해주세요.">
+            </div>
+            <p>- 생년월일은 예시와 같이 입력해주세요. ex) 920101</p>
+            <br>
+
+            <h3 class="h3">
+                성별 <span> * </span>
+            </h3>
+            <div class="left" >
+                <div class="radio_btn">
+                    <h4 class="gender_option">남</h4><input type="radio" name="userGender" value="MAN">
+                    <h4 class="gender_option">여</h4><input type="radio" name="userGender" value="WOMAN">
+                </div>
+            </div>
+        </div>
+
+        <!-- 추가 정보 -->
+        <div class="join_info">
+            <h3 class="h3">책방일지를 어떤 경로로 알게 되셨나요?</h3>
+            <div class="left">
+                <input type="text" name="searchInfo">
+            </div>
+            <p>예: 인스타그램, 네이버 블로그, 지인 추천 등</p>
+
+            <h3 class="h3 h3_">한 달에 읽으시는 책은 몇 권 정도 되나요?</h3>
+            <select class="join_rv" id="readingVolume">
+                <option value="">-- 선택 --</option>
+                <option value="0">0권</option>
+                <option value="1">1권</option>
+                <option value="2">2권</option>
+                <option value="3">3권</option>
+                <option value="4">4권</option>
+                <option value="5">5권 이상</option>
+            </select>
+
+            <h3 class="h3">가장 기억에 남는 책은 무엇인가요?</h3>
+            <div class="left">
+                <input type="text" name="best">
+            </div>
+            <p></p>
+        </div>
+
+        <!-- <button class="join_btn" id="joinBtn">회원가입</button> -->
+        <input type="button" id="joinBtn" class="join_btn" value="회원가입">
+    </form>
+    </div>
+
+</div>
+
+</html>
+
+
+
+
+
+

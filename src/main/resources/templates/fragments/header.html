@@ -1,6 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <header th:fragment="headerFragment">
-        <div style="border: 1px solid green">header.html 입니다.</div>
+        <nav class="navbar">
+            <div class="navbar_logo_up">
+                <a href="/main">
+                    <img th:src="@{/images/main_logo.png}">
+                </a>
+            </div>
+            <div class="navbar_logo_down">
+            <a href="/main">
+                <img th:src="@{/images/main_logo.png}">
+            </a>
+            </div>
+
+            <ul class="navbar_menu">
+                <li><a href="/main">책방일지는</a></li>
+                <li><a href="/board/community?category=11">책방일지 독서 모임</a></li>
+                <li><a href="/board/list?category=1">책방일지와 함께하며</a></li>
+            </ul>
+
+            <!-- session에 유저 정보가 없을 경우 -->
+            <ul class="navbar_login" th:if="${session.user == null}">
+                <li><a href="/user/login">로그인</a></li>
+                <li><a href="/user/terms">회원가입</a></li>
+            </ul>
+
+            <!-- session에 유저 정보가 있을 경우 -->
+            <ul class="navbar_login" th:unless="${session.user == null}">
+
+                <div class="profileImg" th:if="${session.user.picture} == null">
+                    <img th:src="@{/images/profile.jpg}">
+                </div>
+
+                <div class="profileImg" th:unless="${session.user.picture} == null">
+                    <img th:src="${session.user.picture}">
+                </div>
+
+                <li class="userInfo"><a href="/user/mypage" th:text="${session.user.name} + ' 님 회원정보'"></a></li>
+                <li class="userInfo"><a href="/logout">로그아웃</a></li>
+            </ul>
+
+
+        </nav>
     </header>
 </html>

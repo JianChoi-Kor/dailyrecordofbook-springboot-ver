@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+footer {
+	width: 100%;
+	margin: 0;
+	background-color: rgb(255, 255, 255);
+	float: left;
+	border-top: 1px solid rgb(225, 225, 225);
+}
+
+footer div {
+	font-size: 15px;
+	max-width: 1040px;
+	justify-content: space-between;
+	text-align: center;
+	padding: 8px 12px;
+	margin: 0 auto;
+}
+
+
+@media screen and (max-width: 780px) {
+	
+	footer div {
+	font-size: 12px;
+	}
+}
