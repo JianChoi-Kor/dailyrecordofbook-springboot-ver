@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" th:href="@{/css/user/join.css}">
+    <script src="/js/user/join.js" defer></script>
 </head>
 
 <div layout:fragment="content">
@@ -11,16 +12,19 @@
     <p class="sign">
     <h1 class="h1">회원가입</h1>
     </p>
-    <form id="join_frm">
+    <form id="join_form" method="post">
 
-        <!-- 아이디 부분 -->
+        <!-- 이메일 (아이디) 부분 -->
         <div class="join_email">
             <h3 class="h3">
                 이메일 <span> * </span>
             </h3>
-            <input type="text" name="userEmail" placeholder="이메일을 입력해주세요.">
+            <input type="text" name="email" placeholder="이메일을 입력해주세요." onchange="modefied()">
             <p>- 회원가입 버튼을 누르시면 이메일 인증이 진행됩니다.</p>
             <p>(실제 사용가능한 이메일을 입력해주세요.)</p>
+
+            <input type="button" class="join_btn" value="이메일 중복 체크" onclick="email_chk()" style="height: 35px; margin-top: 10px;">
+            <p id="email_chk" class="h3" style="color: red; margin-left: 8px"></p>
         </div>
 
         <!-- 비밀번호 부분 -->
@@ -29,14 +33,14 @@
                 비밀번호 <span> * </span>
             </h3>
             <div class="left">
-                <input type="password" name="userPw" placeholder="비밀번호를 입력해주세요.">
+                <input type="password" name="password" placeholder="비밀번호를 입력해주세요.">
             </div>
             <p>- 비밀번호는 숫자와 영문자 조합으로 8~20자리를 사용해야 합니다.</p>
             <h3 class="h3 h3_">
                 비밀번호 확인 <span> * </span>
             </h3>
             <div class="left">
-                <input type="password" name="userPwRe"
+                <input type="password" name="passwordRe"
                        placeholder="비밀번호를 다시 입력해주세요.">
             </div>
         </div>
@@ -47,7 +51,7 @@
                 이름 <span> * </span>
             </h3>
             <div class="left">
-                <input type="text" name="userNm" placeholder="이름을 입력해주세요.">
+                <input type="text" name="realName" placeholder="이름을 입력해주세요.">
             </div>
             <p class="left left_">(책방일지는 실명으로 운영되고 있습니다. 꼭 한글 실명을 기입해주세요.)</p>
         </div>
@@ -58,7 +62,7 @@
                 전화번호 <span> * </span>
             </h3>
             <div class="left">
-                <input type="text" name="userPn" placeholder="전화번호를 입력해주세요.">
+                <input type="text" name="phone" placeholder="전화번호를 입력해주세요.">
             </div>
             <p>- 전화번호는 "-" 없이 입력해주세요. ex) 01099998888</p>
             <p></p>
@@ -70,7 +74,7 @@
                 생년월일 <span> * </span>
             </h3>
             <div class="left">
-                <input type="text" name="userBirth" placeholder="생년월일을 입력해주세요.">
+                <input type="text" name="birth" placeholder="생년월일을 입력해주세요.">
             </div>
             <p>- 생년월일은 예시와 같이 입력해주세요. ex) 920101</p>
             <br>
@@ -80,8 +84,8 @@
             </h3>
             <div class="left" >
                 <div class="radio_btn">
-                    <h4 class="gender_option">남</h4><input type="radio" name="userGender" value="MAN">
-                    <h4 class="gender_option">여</h4><input type="radio" name="userGender" value="WOMAN">
+                    <h4 class="gender_option">남</h4><input type="radio" name="gender" value="MAN">
+                    <h4 class="gender_option">여</h4><input type="radio" name="gender" value="WOMAN">
                 </div>
             </div>
         </div>
@@ -113,7 +117,7 @@
         </div>
 
         <!-- <button class="join_btn" id="joinBtn">회원가입</button> -->
-        <input type="button" id="joinBtn" class="join_btn" value="회원가입">
+        <input type="button" class="join_btn" value="회원가입" onclick="join_action()">
     </form>
     </div>
 

@@ -1,12 +1,13 @@
 package com.community.dailyrecordofbook.user.entity;
 
 import com.community.dailyrecordofbook.common.entity.BaseTimeEntity;
+import com.community.dailyrecordofbook.user.dto.Join;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.util.Date;
 
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -20,16 +21,18 @@ public class User extends BaseTimeEntity {
     @Column
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String email;
 
     @Column
     private String picture;
 
+    @Setter
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
 
+    @Setter
     @Column(nullable = false)
     private String type;
 
@@ -43,13 +46,13 @@ public class User extends BaseTimeEntity {
     private String phone;
 
     @Column
-    private String gender;
-
-    @Column
     private String birth;
 
     @Column
-    private String SearchInfo;
+    private String gender;
+
+    @Column
+    private String searchInfo;
 
     @Column
     private String readingVolume;
@@ -61,8 +64,7 @@ public class User extends BaseTimeEntity {
     private String authKey;
 
 
-
-
+    // session 저장용 생성자
     @Builder
     public User(String name, String email, String picture, Role role, String type) {
         this.name = name;
@@ -81,6 +83,23 @@ public class User extends BaseTimeEntity {
 
     public String getRoleKey() {
         return this.role.getKey();
+    }
+
+
+    // join 저장용 생성자
+
+    public User(Join join) {
+        this.email = join.getEmail();
+        this.role = join.getRole();
+        this.type = join.getType();
+        this.password = join.getPassword();
+        this.realName = join.getRealName();
+        this.phone = join.getPhone();
+        this.birth = join.getBirth();
+        this.gender = join.getGender();
+        this.searchInfo = join.getSearchInfo();
+        this.readingVolume = join.getReadingVolume();
+        this.best = join.getBest();
     }
 
 }

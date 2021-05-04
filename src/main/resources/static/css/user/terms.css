@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+#terms_content {
+    width: 460px;
+    margin: 0 auto;
+    text-decoration: none;
+    margin-top: 50px;
+}
+
+.agree_box {
+    position: relative;
+    overflow: auto;
+    height: 120px;
+    margin-top: 10px;
+    padding: 12px;
+    border: 1px solid #dadada;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.h1 {
+    text-align: center;
+	margin-bottom: 50px;
+	font-size: 30px;
+}
+
+#terms_content .h3 {
+    margin-top: 25px;
+}
+
+.article_text > h4 {
+    margin-top: 10px;
+}
+
+.article_text > p {
+    font-size: 14px;
+    margin: 2px;
+    line-height: 18px;
+}
+
+#btnCancel, #btnAgree {
+    text-decoration: none;
+}
+
+.terms_box {
+	margin-top: 40px;
+}
+
+.terms_btn {
+    background:#ebcacf;
+    color:#fff;
+    border:none;
+    position:relative;
+    height:60px;
+    font-size:1em;
+    padding: 0.4em 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    margin: 0 auto;
+}
+
+.terms_btn:hover{
+    background:#fff;
+    color:#ebcacf;
+}
+
+.terms_btn:before, .terms_btn:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #ebcacf;
+    transition:400ms ease all;
+}
+
+.terms_btn:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+
+.terms_btn:hover:before, .terms_btn:hover:after{
+    width:100%;
+    transition:800ms ease all;
+}
+
+.btn_area_double {
+	text-align: center;
+	margin-top: 45px;
+	margin-bottom: 70px;
+}
+
+.top_label {
+	font-size: 16px;
+	text-decoration: underline;
+	line-height: 21px;
+}
+
+/* --- checkbox style start --- */
+label {
+	font-size: 15px;
+}
+
+.checks {
+    position: relative;
+    margin-top: 10px;
+} 
+
+.checks input[type="checkbox"] {
+    /* 실제 체크박스는 화면에서 숨김 */ 
+    position: absolute; 
+    width: 1px; 
+    height: 1px; 
+    padding: 0; 
+    margin: -1px; 
+    overflow: hidden; 
+    clip:rect(0,0,0,0); 
+    border: 0 
+} 
+
+.checks input[type="checkbox"] + label { 
+    display: inline-block; 
+    position: relative; 
+    padding-left: 30px; 
+    /* 글자와 체크박스 사이의 간격을 변경 */ 
+    cursor: pointer; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+} 
+
+.checks input[type="checkbox"] + label:before { 
+    /* 가짜 체크박스 */ 
+    content: ''; 
+    position: absolute; 
+    left: 0; 
+    top: -2px; /* 이 값을 변경해서 글자와의 정렬 */ 
+    width: 19px; /* 체크박스의 너비를 지정 */ 
+    height: 19px; /* 체크박스의 높이를 지정 */ 
+    line-height: 19px; /* 세로정렬을 위해 높이값과 일치 */ 
+    text-align: center; 
+    background: #fafafa; 
+    border: 1px solid #cacece; 
+    border-radius : 3px; 
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05); } 
+
+.checks input[type="checkbox"] + label:active:before, 
+.checks input[type="checkbox"]:checked + label:active:before { 
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1); 
+} 
+
+.checks input[type="checkbox"]:checked + label:before { 
+    /* 체크박스를 체크했을때 */ 
+    content: '\2714'; /* 체크표시 유니코드 사용 */ 
+    color: black;
+    text-shadow: 1px 1px #fff; 
+    background: #e9ecee; 
+    border-color: #adb8c0; 
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1); 
+}
+/* --- checkbox style start --- */
+  
