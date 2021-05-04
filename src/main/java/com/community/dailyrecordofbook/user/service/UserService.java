@@ -1,5 +1,6 @@
 package com.community.dailyrecordofbook.user.service;
 
+import com.community.dailyrecordofbook.common.service.MailSendService;
 import com.community.dailyrecordofbook.user.dto.Join;
 import com.community.dailyrecordofbook.user.entity.Role;
 import com.community.dailyrecordofbook.user.entity.User;
@@ -14,8 +15,9 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final MailSendService mailSendService;
 
-    public User join(Join join) {
+    public void join(Join join) {
 
         if(userRepository.findByEmail(join.getEmail()).orElse(null) != null) {
             System.out.println("이미 가입된 회원입니다.");
@@ -26,7 +28,12 @@ public class UserService {
         join.setRole(Role.MAIL);
         join.setType("drob");
 
-        return userRepository.save(new User(join));
+        try {
+            User user = userRepository.save(new User(join));
+            String authKey = mailSendService.sendAuthMail(join.getEmail());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public int emailChk(String email) {

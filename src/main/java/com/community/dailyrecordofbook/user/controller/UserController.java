@@ -33,7 +33,6 @@ public class UserController {
 
     @PostMapping("/join")
     public String join(Join join) {
-
         userService.join(join);
         return "main";
     }
