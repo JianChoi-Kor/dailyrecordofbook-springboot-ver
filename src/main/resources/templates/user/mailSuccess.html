@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/user/joinResult.css}">
+    <script src="/js/user/joinSuccess.js" defer></script>
+</head>
+
+<div layout:fragment="content">
+    <div class="login_content">
+        <h1 class="h1">이메일 인증에 성공했습니다.</h1>
+        <h3 class="h3">로그인 후 책방일지를 이용해주세요.</h3>
+        <input type="button" id="loginBtn" class="login_btn" value="로그인 페이지로 이동" style="margin-top:50px;" onclick="toLogin()">
+    </div>
+</div>
+
+</html>
+
+
+
+
+
+

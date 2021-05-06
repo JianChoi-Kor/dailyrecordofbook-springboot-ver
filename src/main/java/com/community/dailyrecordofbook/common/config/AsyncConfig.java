@@ -19,7 +19,7 @@ public class AsyncConfig implements AsyncConfigurer {
         executor.setCorePoolSize(2);
         executor.setMaxPoolSize(5);
         executor.setQueueCapacity(10);
-        executor.setBeanName("asyncTestExecutor");
+        executor.setBeanName("emailSendExecutor");
         executor.initialize();
         return executor;
     }

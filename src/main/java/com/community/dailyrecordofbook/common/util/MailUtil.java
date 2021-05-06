@@ -3,6 +3,7 @@ package com.community.dailyrecordofbook.common.util;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 
 import javax.activation.DataSource;
 import javax.mail.MessagingException;
@@ -42,6 +43,7 @@ public class MailUtil {
     public void addInline(String contentId, DataSource dataSource) throws MessagingException {
         messageHelper.addInline(contentId, dataSource);
     }
+
 
     public void send() {
         mailSender.send(message);

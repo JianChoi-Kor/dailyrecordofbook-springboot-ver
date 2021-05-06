@@ -60,6 +60,7 @@ public class User extends BaseTimeEntity {
     @Column
     private String best;
 
+    @Setter
     @Column
     private String authKey;
 

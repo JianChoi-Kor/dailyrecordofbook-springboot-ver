@@ -1,7 +1,6 @@
 package com.community.dailyrecordofbook.common.service;
 
 import com.community.dailyrecordofbook.common.util.MailUtil;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
@@ -48,7 +47,7 @@ public class MailSendService {
             sendMail.setSubject("책방일지 회원가입 이메일 인증");
             sendMail.setText(new StringBuffer().append("<h1>[책방일지 회원가입 이메일 인증]</h1>")
                     .append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
-                    .append("<a href='http://localhost:8080/user/joinConfirm?userEmail=").append(email)
+                    .append("<a href='http://localhost:8080/user/joinConfirm?email=").append(email)
                     .append("&authKey=").append(authKey).append("' target='_blank'>이메일 인증 확인</a>").toString());
             sendMail.setFrom("mnlst2020c@gmail.com", "관리자");
             sendMail.setTo(email);

@@ -3,6 +3,7 @@ package com.community.dailyrecordofbook.user.controller;
 
 
 import com.community.dailyrecordofbook.user.dto.Join;
+import com.community.dailyrecordofbook.user.dto.JoinConfirm;
 import com.community.dailyrecordofbook.user.entity.User;
 import com.community.dailyrecordofbook.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +37,12 @@ public class UserController {
         return userService.join(join);
     }
 
+    @GetMapping("/joinConfirm")
+    public String joinConfirm(JoinConfirm joinConfirm) {
+        return userService.chkAndUpdAuth(joinConfirm);
+    }
+
+
     @GetMapping("/joinSuccess")
     public String joinSuccess() {
         return "user/joinSuccess";
@@ -45,6 +52,12 @@ public class UserController {
     public String joinFailure() {
         return "user/joinFailure";
     }
+
+    @GetMapping("mailSuccess")
+    public String mailSuccess() { return "user/mailSuccess"; }
+
+    @GetMapping("mailFailure")
+    public String mailFailure() { return "user/mailFailure"; }
 
     @GetMapping("/subInfo")
     public String subInfo() {
