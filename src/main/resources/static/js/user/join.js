@@ -47,8 +47,16 @@ function join_action() {
         alert ('휴대폰번호를 입력해주세요.');
         phoneElem.focus();
         return false;
+    } else if (!CheckNumber(phoneElem.value, 11)) {
+        alert ('휴대폰번호는 11자리 숫자로만 입력해주세요.');
+        phoneElem.focus();
+        return false;
     } else if (birthElem.value === '') {
         alert ('생년월일을 입력해주세요.');
+        birthElem.focus();
+        return false;
+    } else if (!CheckNumber(birthElem.value, 6)) {
+        alert ('생년월일은 6자리 숫자로만 입력해주세요.');
         birthElem.focus();
         return false;
     } else if (genderElem.value === '') {
@@ -63,7 +71,6 @@ function join_action() {
         return false;
     }
 
-    console.log(':::::::::::' + emailChkElem.innerHTML + ':::::::::::::')
 
     if (emailChkElem.innerHTML !== '가입할 수 있는 이메일입니다.') {
         emailElem.focus();
@@ -119,16 +126,30 @@ function CheckPassword(uem, upw){
 function CheckName(str) {
     var chk_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
     if (!chk_kor.test(str)) {
-        alert("이름을 정확하게 입력해주세요111.");
+        alert("이름을 정확하게 입력해주세요.");
         return false;
     }
-
     if (str.length < 2 || str.length > 5) {
-        alert("이름을 정확하게 입력해주세요222.");
+        alert("이름을 정확하게 입력해주세요.");
         return false;
     }
     return true;
 }
+
+// 생년월일, 휴대폰번호 유효성 검사
+function CheckNumber(str, length) {
+    var chk_number=/^[0-9]*$/;
+    if(!chk_number.test(str)) {
+        console.log('숫자 유효성');
+        return false;
+    }
+    if(parseInt(str.length) !== parseInt(length)) {
+        console.log('길이 유효성');
+        return false;
+    }
+    return true;
+}
+
 
 
 function email_chk() {

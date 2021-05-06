@@ -33,10 +33,18 @@ public class UserController {
 
     @PostMapping("/join")
     public String join(Join join) {
-        userService.join(join);
-        return "main";
+        return userService.join(join);
     }
 
+    @GetMapping("/joinSuccess")
+    public String joinSuccess() {
+        return "user/joinSuccess";
+    }
+
+    @GetMapping("joinFailure")
+    public String joinFailure() {
+        return "user/joinFailure";
+    }
 
     @GetMapping("/subInfo")
     public String subInfo() {

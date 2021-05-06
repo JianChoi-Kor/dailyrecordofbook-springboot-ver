@@ -17,7 +17,7 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final MailSendService mailSendService;
 
-    public void join(Join join) {
+    public String join(Join join) {
 
         if(userRepository.findByEmail(join.getEmail()).orElse(null) != null) {
             System.out.println("이미 가입된 회원입니다.");
@@ -31,9 +31,13 @@ public class UserService {
         try {
             User user = userRepository.save(new User(join));
             String authKey = mailSendService.sendAuthMail(join.getEmail());
+
+
+            return "user/joinSuccess";
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return "user/joinFailure";
     }
 
     public int emailChk(String email) {
