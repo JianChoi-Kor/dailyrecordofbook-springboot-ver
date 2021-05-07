@@ -54,7 +54,7 @@ public class User extends BaseTimeEntity {
     @Column
     private String searchInfo;
 
-    @Column
+    @Column(name = "reading_volume")
     private String readingVolume;
 
     @Column
@@ -88,7 +88,6 @@ public class User extends BaseTimeEntity {
 
 
     // join 저장용 생성자
-
     public User(Join join) {
         this.email = join.getEmail();
         this.role = join.getRole();

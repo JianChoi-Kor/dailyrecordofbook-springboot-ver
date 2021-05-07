@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -20,6 +21,7 @@ public class UserService {
     private final MailSendService mailSendService;
 
 
+    @Transactional
     public String join(Join join) {
         if(userRepository.findByEmail(join.getEmail()).orElse(null) != null) {
             System.out.println("이미 가입된 회원입니다.");
@@ -40,9 +42,10 @@ public class UserService {
         }
     }
 
-    @Async("emailSendExecutor")
+
     private String sendAndSaveAuthKey(User user) {
-        String authKey = mailSendService.sendAuthMail(user.getEmail());
+        String authKey = mailSendService.getKey(6);
+        mailSendService.sendAuthMail(user.getEmail(), authKey);
         user.setAuthKey(authKey);
         userRepository.save(user);
         return "user/joinSuccess";

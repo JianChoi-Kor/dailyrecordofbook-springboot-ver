@@ -3,6 +3,7 @@ package com.community.dailyrecordofbook.common.service;
 import com.community.dailyrecordofbook.common.util.MailUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
@@ -19,7 +20,7 @@ public class MailSendService {
     private JavaMailSenderImpl mailSender;
 
     // 인증키 생성
-    private String getKey(int size) {
+    public String getKey(int size) {
         this.size = size;
         return getAuthCode();
     }
@@ -37,10 +38,8 @@ public class MailSendService {
         return buffer.toString();
     }
 
-    public String sendAuthMail(String email) {
-        // 6자리 난수 인증번호 생성
-        String authKey = getKey(6);
-
+    @Async("emailSendExecutor")
+    public void sendAuthMail(String email, String authKey) {
         // 인증메일 보내기
         try {
             MailUtil sendMail = new MailUtil(mailSender);
@@ -57,7 +56,6 @@ public class MailSendService {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return authKey;
     }
 
 
@@ -65,7 +63,6 @@ public class MailSendService {
     public String sendTempPwMail(String email) {
         // 8자리 임시 비밀번호 생성
         String tempPw = getRamdomPassword(8);
-
         // 인증메일 보내기
         try {
             MailUtil sendMail = new MailUtil(mailSender);
