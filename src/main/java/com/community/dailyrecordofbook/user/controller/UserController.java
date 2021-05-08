@@ -1,15 +1,13 @@
 package com.community.dailyrecordofbook.user.controller;
 
-
-
 import com.community.dailyrecordofbook.user.dto.Join;
 import com.community.dailyrecordofbook.user.dto.JoinConfirm;
+import com.community.dailyrecordofbook.user.dto.Login;
 import com.community.dailyrecordofbook.user.entity.User;
 import com.community.dailyrecordofbook.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 
 @RequiredArgsConstructor
 @Controller
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
-
 
     @GetMapping("/terms")
     public String terms() { return "user/terms"; }
@@ -42,7 +39,6 @@ public class UserController {
         return userService.chkAndUpdAuth(joinConfirm);
     }
 
-
     @GetMapping("/joinSuccess")
     public String joinSuccess() {
         return "user/joinSuccess";
@@ -64,10 +60,16 @@ public class UserController {
         return "user/subInfo";
     }
 
-
     @ResponseBody
     @PostMapping("/emailChk")
     public int emailChk(@RequestBody User user) {
         return userService.emailChk(user.getEmail());
     }
+
+    @ResponseBody
+    @PostMapping("/login")
+    public int login(@RequestBody Login login) { return userService.login(login); }
+
+
+
 }

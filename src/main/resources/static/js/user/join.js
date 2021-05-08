@@ -1,4 +1,10 @@
 
+window.onload = function() {
+    if(document.getElementById("sessionUser")) {
+        alert('이미 로그인되어 있습니다.');
+        history.back();
+    }
+}
 
 function join_action() {
 

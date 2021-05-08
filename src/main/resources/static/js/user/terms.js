@@ -1,4 +1,10 @@
 
+window.onload = function() {
+    if(document.getElementById("sessionUser")) {
+        alert('이미 로그인되어 있습니다.');
+        history.back();
+    }
+}
 
 // 약관 한번에 동의하는 function
 function chkAll() {

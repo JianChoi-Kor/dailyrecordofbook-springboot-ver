@@ -5,6 +5,7 @@
     <!--    thymeleaf layout dialect가 contents페이지의 head태그를 layout의 head태그에 자동으로 추가해준다. -->
     <!--    필요힌 css, script 추가영역 -->
     <link rel="stylesheet" th:href="@{/css/user/login.css}">
+    <script src="/js/user/login.js" defer></script>
 </head>
 
 
@@ -23,7 +24,7 @@
             <div class="errMsg" id="errMsg"></div>
 
 
-            <input type="button" id="loginBtn" class="login_btn" value="로그인">
+            <input type="button" id="loginBtn" class="login_btn" value="로그인" onclick="login_action()">
         </form>
 
         <div class="login_middle">

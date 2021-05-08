@@ -21,7 +21,12 @@ public class SessionUser implements Serializable {
     private Role role;
 
     public SessionUser(User user) {
-        this.name = user.getName();
+
+        if(user.getRealName() != null) {
+            this.name = user.getRealName();
+        } else {
+            this.name = user.getName();
+        }
         this.email = user.getEmail();
         this.picture = user.getPicture();
         this.role = user.getRole();

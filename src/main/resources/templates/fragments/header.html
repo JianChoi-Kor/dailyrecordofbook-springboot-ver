@@ -26,7 +26,7 @@
             </ul>
 
             <!-- session에 유저 정보가 있을 경우 -->
-            <ul class="navbar_login" th:unless="${session.user == null}">
+            <ul class="navbar_login"  id="sessionUser" th:unless="${session.user == null}">
 
                 <div class="profileImg" th:if="${session.user.picture} == null">
                     <img th:src="@{/images/profile.jpg}">
