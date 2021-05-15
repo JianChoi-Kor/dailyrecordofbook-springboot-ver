@@ -86,6 +86,12 @@ public class User extends BaseTimeEntity {
         return this.role.getKey();
     }
 
+    public User updatePassword(String password) {
+        this.password = password;
+
+        return this;
+    }
+
 
     // join 저장용 생성자
     public User(Join join) {

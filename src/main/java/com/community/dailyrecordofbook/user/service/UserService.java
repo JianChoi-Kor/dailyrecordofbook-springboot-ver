@@ -4,10 +4,7 @@ import com.community.dailyrecordofbook.common.config.auth.dto.SessionUser;
 import com.community.dailyrecordofbook.common.service.MailSendService;
 import com.community.dailyrecordofbook.common.util.FileUtil;
 import com.community.dailyrecordofbook.common.util.SessionUtil;
-import com.community.dailyrecordofbook.user.dto.AddInfo;
-import com.community.dailyrecordofbook.user.dto.Join;
-import com.community.dailyrecordofbook.user.dto.JoinConfirm;
-import com.community.dailyrecordofbook.user.dto.Login;
+import com.community.dailyrecordofbook.user.dto.*;
 import com.community.dailyrecordofbook.user.entity.Role;
 import com.community.dailyrecordofbook.user.entity.User;
 import com.community.dailyrecordofbook.user.repository.UserRepository;
@@ -23,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -90,6 +86,7 @@ public class UserService {
     }
 
     public int login(Login login) throws Exception {
+
         try {
             // 아이디와 패스워드를 Secutiry가 알아볼 수 있는 token 객체로 변환한다.
             UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(login.getEmail(), login.getPassword(), new ArrayList<>());
@@ -169,8 +166,6 @@ public class UserService {
         }
         User user = userRepository.findByEmail(sessionUser.getEmail()).orElse(null);
 
-//        String rootPath = FileSystemView.getFileSystemView().getHomeDirectory().toString();
-
         String rootPath = request.getSession().getServletContext().getRealPath("/");
 
         String basePath = rootPath + "/res/image/user/" + user.getIdx();
@@ -190,6 +185,24 @@ public class UserService {
         user.update(user.getName(), profileImg);
         userRepository.save(user);
         SessionUtil.setAttribute("user", new SessionUser(user));
+        return 0;
+    }
+
+
+    public int changePassword(ChangePassword changePassword) throws Exception {
+        SessionUser sessionUser = (SessionUser) SessionUtil.getAttribute("user");
+        User user = userRepository.findByEmail(sessionUser.getEmail()).orElse(null);
+
+        if(!passwordEncoder.matches(changePassword.getOriginPassword(), user.getPassword())) {
+            return 1; // 비밀번호 불일치
+        } else if(!changePassword.getNewPassword().equals(changePassword.getNewPasswordRe())) {
+            return 2; // 새로운 비밀번호 불일치
+        } else if(changePassword.getOriginPassword().equals(changePassword.getNewPassword())) {
+            return 3; // 기존 비밀번호와 동일한 비밀번호
+        }
+
+        String newPassword = passwordEncoder.encode(changePassword.getNewPassword());
+        userRepository.save(user.updatePassword(newPassword));
         return 0;
     }
 }

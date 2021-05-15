@@ -1,9 +1,6 @@
 package com.community.dailyrecordofbook.user.controller;
 
-import com.community.dailyrecordofbook.user.dto.AddInfo;
-import com.community.dailyrecordofbook.user.dto.Join;
-import com.community.dailyrecordofbook.user.dto.JoinConfirm;
-import com.community.dailyrecordofbook.user.dto.Login;
+import com.community.dailyrecordofbook.user.dto.*;
 import com.community.dailyrecordofbook.user.entity.User;
 import com.community.dailyrecordofbook.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -98,4 +95,9 @@ public class UserController {
     @GetMapping("/changePassword")
     public String changePassword() { return "user/changePassword"; }
 
+    @ResponseBody
+    @PostMapping("/changePassword")
+    public int changePassword(@RequestBody ChangePassword changePassword) throws Exception {
+        return userService.changePassword(changePassword);
+    }
 }
