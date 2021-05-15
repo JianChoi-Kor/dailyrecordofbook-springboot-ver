@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ChangePassword {
+public class Password {
 
     private String originPassword;
     private String newPassword;

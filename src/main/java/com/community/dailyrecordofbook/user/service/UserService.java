@@ -189,20 +189,33 @@ public class UserService {
     }
 
 
-    public int changePassword(ChangePassword changePassword) throws Exception {
+    public int changePassword(Password password) throws Exception {
         SessionUser sessionUser = (SessionUser) SessionUtil.getAttribute("user");
         User user = userRepository.findByEmail(sessionUser.getEmail()).orElse(null);
 
-        if(!passwordEncoder.matches(changePassword.getOriginPassword(), user.getPassword())) {
+        if(!passwordEncoder.matches(password.getOriginPassword(), user.getPassword())) {
             return 1; // 비밀번호 불일치
-        } else if(!changePassword.getNewPassword().equals(changePassword.getNewPasswordRe())) {
+        } else if(!password.getNewPassword().equals(password.getNewPasswordRe())) {
             return 2; // 새로운 비밀번호 불일치
-        } else if(changePassword.getOriginPassword().equals(changePassword.getNewPassword())) {
+        } else if(password.getOriginPassword().equals(password.getNewPassword())) {
             return 3; // 기존 비밀번호와 동일한 비밀번호
         }
 
-        String newPassword = passwordEncoder.encode(changePassword.getNewPassword());
+        String newPassword = passwordEncoder.encode(password.getNewPassword());
         userRepository.save(user.updatePassword(newPassword));
         return 0;
+    }
+
+    public int withDraw(Password password) throws Exception {
+        SessionUser sessionUser = (SessionUser) SessionUtil.getAttribute("user");
+        User user = userRepository.findByEmail(sessionUser.getEmail()).orElse(null);
+
+        if(!passwordEncoder.matches(password.getOriginPassword(), user.getPassword())) {
+            return 1; // 비밀번호 불일치
+        } else {
+            userRepository.delete(user);
+            return 0;
+        }
+
     }
 }

@@ -97,7 +97,17 @@ public class UserController {
 
     @ResponseBody
     @PostMapping("/changePassword")
-    public int changePassword(@RequestBody ChangePassword changePassword) throws Exception {
-        return userService.changePassword(changePassword);
+    public int changePassword(@RequestBody Password password) throws Exception {
+        return userService.changePassword(password);
     }
+
+    @GetMapping("/withDraw")
+    public String withDraw() { return "user/withDraw"; }
+
+    @ResponseBody
+    @PostMapping("/withDraw")
+    public int withDraw(@RequestBody Password password) throws Exception {
+        return userService.withDraw(password);
+    }
+
 }
