@@ -33,13 +33,15 @@
                 </div>
 
                 <div class="profileImg" th:unless="${session.user.picture} == null">
-                    <img th:src="${session.user.picture}">
+                    <img th:if="${session.user.type} == drob" th:src="'/res/image/user/' + ${session.user.idx} + '/' + ${session.user.picture}">
+                    <img th:unless="${session.user.type} == drob" th:src="${session.user.picture}">
                 </div>
 
-                <li class="userInfo"><a href="/user/mypage" th:text="${session.user.name} + ' 님 회원정보'"></a></li>
+                <input type="hidden" id="role" th:value="${session.user.role}">
+
+                <li class="userInfo"><a th:href="@{/user/myPage}" th:text="${session.user.name} + '님 회원정보'"></a></li>
                 <li class="userInfo"><a href="/logout">로그아웃</a></li>
             </ul>
-
 
         </nav>
     </header>

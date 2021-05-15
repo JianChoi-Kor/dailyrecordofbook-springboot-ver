@@ -35,8 +35,6 @@ public class CustomOAuth2UserService implements OAuth2UserService {
                 .getClientRegistration()
                 .getRegistrationId();
 
-        System.out.println("registrationId : " + registrationId);
-
         // oauth2 로그인 진행 시 키가 되는 필드값
         String userNameAttributeName = userRequest.getClientRegistration()
                 .getProviderDetails()
@@ -63,9 +61,6 @@ public class CustomOAuth2UserService implements OAuth2UserService {
         User user = userRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
                 .orElse(attributes.toEntity());
-
-        System.out.println("ROLE : " + user.getRole());
-
         return userRepository.save(user);
     }
 }

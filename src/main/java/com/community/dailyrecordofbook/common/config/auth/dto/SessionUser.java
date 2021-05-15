@@ -15,13 +15,18 @@ import java.io.Serializable;
 @Getter
 public class SessionUser implements Serializable {
 
+    private Long idx;
     private String name;
     private String email;
     private String picture;
     private Role role;
+    private String type;
 
     public SessionUser(User user) {
 
+        if(user.getIdx() != null) {
+            this.idx = user.getIdx();
+        }
         if(user.getRealName() != null) {
             this.name = user.getRealName();
         } else {
@@ -30,5 +35,6 @@ public class SessionUser implements Serializable {
         this.email = user.getEmail();
         this.picture = user.getPicture();
         this.role = user.getRole();
+        this.type = user.getType();
     }
 }

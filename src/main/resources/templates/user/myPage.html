@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/user/myPage.css}">
+    <script src="/js/user/myPage.js" defer></script>
+</head>
+
+<div layout:fragment="content">
+    <div class="profileFrom">
+        <div class="imgFrame" th:if="${session.user.picture} == null">
+            <img th:src="@{/images/profile.jpg}">
+        </div>
+
+        <div class="imgFrame" th:unless="${session.user.picture} == null">
+            <img th:if="${session.user.type} == drob" th:src="'/res/image/user/' + ${session.user.idx} + '/' + ${session.user.picture}">
+            <img th:unless="${session.user.type} == drob" th:src="${session.user.picture}">
+        </div>
+
+        <div th:if="${userInfo.type} == drob">
+            <div class="innerFrm">
+                <h3 class="h3">프로필 이미지 업로드</h3>
+                <div>
+                    <input class="imgBtn" type="file" id="profileImg" accept="image/*">
+                    <input class="imgBtn" type="button" value="이미지 업로드" onclick="profileUpload()">
+                    <p class="p">* 1:1 비율의 사진을 업로드해 주세요.</p>
+                </div>
+            </div>
+        </div>
+        <div th:unless="${userInfo.type} == drob">
+            <div class="innerFrm">
+                <h3 class="h3">프로필 이미지</h3>
+                <div>
+                    <p class="p">* 로그인하신 소셜 sns 프로필이 적용됩니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="innerFrm">
+            <h3 class="h3">회원 정보</h3>
+            <div class="detail"><label>이메일 : </label><div th:text="${userInfo.email}"></div></div>
+            <div class="detail"><label>이름 : </label><div th:text="${userInfo.realName}"></div></div>
+            <div class="detail"><label>휴대폰번호 : </label><div th:text="${userInfo.phone}"></div></div>
+            <div class="detail"><label>생년월일 : </label><div th:text="${userInfo.birth}"></div></div>
+            <div class="detail" th:if="${userInfo.gender} == MAN"><label>성별 : </label>
+                <div>남자</div>
+            </div>
+            <div class="detail" th:if="${userInfo.gender} == WOMAN"><label>성별 : </label>
+                <div>여자</div>
+            </div>
+            <div class="detail"><label>가입일 : </label><div th:text="${userInfo.createdDate}"></div></div>
+        </div>
+
+        <div class="btnFrm" th:if="${userInfo.type} == drob">
+            <input class="Btn changePwBtn" type="button" value="비밀번호 변경" onclick="location.href='/user/changePw'">
+            <input class="Btn withDrawalBtn" type="button" value="&nbsp&nbsp&nbsp회원 탈퇴&nbsp&nbsp&nbsp" onclick="location.href='/user/withDrawal'">
+        </div>
+
+    </div>
+
+</div>
+
+</html>
+
+
+
+
+
+

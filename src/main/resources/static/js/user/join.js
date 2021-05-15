@@ -17,9 +17,6 @@ function join_action() {
     var phoneElem = join_formElem.phone;
     var birthElem = join_formElem.birth;
     var genderElem = join_formElem.gender;
-    var searchInfoElem = join_formElem.searchInfo;
-    var readingVolumeElem = document.querySelector('#readingVolume');
-    var bestElem = join_formElem.best;
     var emailChkElem = document.getElementById('email_chk');
 
     email = emailElem.value;
@@ -49,14 +46,17 @@ function join_action() {
     } else if (!CheckName(realName)) {
         realNameElem.focus();
         return false;
-    } else if (phoneElem.value === '') {
-        alert ('휴대폰번호를 입력해주세요.');
-        phoneElem.focus();
-        return false;
-    } else if (!CheckNumber(phoneElem.value, 11)) {
-        alert ('휴대폰번호는 11자리 숫자로만 입력해주세요.');
-        phoneElem.focus();
-        return false;
+
+//    휴대폰 번호 부분은 필수가 되면 사용
+//    } else if (phoneElem.value === '') {
+//        alert ('휴대폰번호를 입력해주세요.');
+//        phoneElem.focus();
+//        return false;
+//    } else if (!CheckNumber(phoneElem.value, 11)) {
+//        alert ('휴대폰번호는 11자리 숫자로만 입력해주세요.');
+//        phoneElem.focus();
+//        return false;
+
     } else if (birthElem.value === '') {
         alert ('생년월일을 입력해주세요.');
         birthElem.focus();
@@ -71,18 +71,26 @@ function join_action() {
         return false;
     }
 
+    if (phoneElem.value !== '') {
+        if(!CheckNumber(phoneElem.value, 11)) {
+            alert ('휴대폰번호는 11자리 숫자로만 입력해주세요.');
+            phoneElem.focus();
+            return false;
+        }
+    }
+
     if (passwordElem.value !== passwordReElem.value) {
         passwordReElem.focus();
         alert ('비밀번호가 일치하지 않습니다.');
         return false;
     }
 
-
     if (emailChkElem.innerHTML !== '가입할 수 있는 이메일입니다.') {
         emailElem.focus();
         alert ('이메일 중복 체크를 진행해주세요.');
         return false;
     }
+
 
 
     join_formElem.submit();
@@ -146,11 +154,9 @@ function CheckName(str) {
 function CheckNumber(str, length) {
     var chk_number=/^[0-9]*$/;
     if(!chk_number.test(str)) {
-        console.log('숫자 유효성');
         return false;
     }
     if(parseInt(str.length) !== parseInt(length)) {
-        console.log('길이 유효성');
         return false;
     }
     return true;

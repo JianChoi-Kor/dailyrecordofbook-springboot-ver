@@ -1,13 +1,13 @@
 package com.community.dailyrecordofbook.user.entity;
 
 import com.community.dailyrecordofbook.common.entity.BaseTimeEntity;
+import com.community.dailyrecordofbook.user.dto.AddInfo;
 import com.community.dailyrecordofbook.user.dto.Join;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -100,6 +100,18 @@ public class User extends BaseTimeEntity {
         this.searchInfo = join.getSearchInfo();
         this.readingVolume = join.getReadingVolume();
         this.best = join.getBest();
+    }
+
+    public User addInfo(AddInfo addInfo) {
+        this.realName = addInfo.getRealName();
+        this.phone = addInfo.getPhone();
+        this.birth = addInfo.getBirth();
+        this.gender = addInfo.getGender();
+        this.searchInfo = addInfo.getSearchInfo();
+        this.readingVolume = addInfo.getReadingVolume();
+        this.best = addInfo.getBest();
+
+        return this;
     }
 
 }

@@ -3,7 +3,7 @@
 window.onload = function() {
     if(document.getElementById("sessionUser")) {
         alert('이미 로그인되어 있습니다.');
-        history.back();
+        location.href="/main";
     }
 }
 
@@ -43,7 +43,6 @@ function login_action() {
     }).then(function(res) {
         return res.json()
     }).then(function(result) {
-        console.log('result :::::::::' + result);
         proc(result);
     })
 
