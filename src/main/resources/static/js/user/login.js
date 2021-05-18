@@ -41,7 +41,7 @@ function login_action() {
         },
         body: JSON.stringify(param)
     }).then(function(res) {
-        return res.json()
+        return res.json();
     }).then(function(result) {
         proc(result);
     })

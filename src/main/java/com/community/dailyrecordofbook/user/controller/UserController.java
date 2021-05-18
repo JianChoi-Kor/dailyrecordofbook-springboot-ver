@@ -72,7 +72,7 @@ public class UserController {
 
     @ResponseBody
     @PostMapping("/emailChk")
-    public int emaiRlChk(@RequestBody User user) {
+    public int emailChk(@RequestBody User user) {
         return userService.emailChk(user.getEmail());
     }
 
@@ -108,6 +108,15 @@ public class UserController {
     @PostMapping("/withDraw")
     public int withDraw(@RequestBody Password password) throws Exception {
         return userService.withDraw(password);
+    }
+
+    @GetMapping("/findEmail")
+    public String findEmail() { return "user/findEmail"; }
+
+    @ResponseBody
+    @PostMapping("/findEmail")
+    public FindEmailResponse findEmail(@RequestBody FindEmail findEmail) {
+        return userService.findEmail(findEmail);
     }
 
 }

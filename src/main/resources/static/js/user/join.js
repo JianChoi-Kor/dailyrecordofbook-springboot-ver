@@ -46,17 +46,14 @@ function join_action() {
     } else if (!CheckName(realName)) {
         realNameElem.focus();
         return false;
-
-//    휴대폰 번호 부분은 필수가 되면 사용
-//    } else if (phoneElem.value === '') {
-//        alert ('휴대폰번호를 입력해주세요.');
-//        phoneElem.focus();
-//        return false;
-//    } else if (!CheckNumber(phoneElem.value, 11)) {
-//        alert ('휴대폰번호는 11자리 숫자로만 입력해주세요.');
-//        phoneElem.focus();
-//        return false;
-
+    } else if (phoneElem.value === '') {
+        alert ('휴대폰번호를 입력해주세요.');
+        phoneElem.focus();
+        return false;
+    } else if (!CheckNumber(phoneElem.value, 11)) {
+        alert ('휴대폰번호는 11자리 숫자로만 입력해주세요.');
+        phoneElem.focus();
+        return false;
     } else if (birthElem.value === '') {
         alert ('생년월일을 입력해주세요.');
         birthElem.focus();

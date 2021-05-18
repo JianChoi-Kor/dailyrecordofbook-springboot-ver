@@ -7,6 +7,7 @@ import com.community.dailyrecordofbook.common.util.SessionUtil;
 import com.community.dailyrecordofbook.user.dto.*;
 import com.community.dailyrecordofbook.user.entity.Role;
 import com.community.dailyrecordofbook.user.entity.User;
+import com.community.dailyrecordofbook.user.repository.UserCustomRepositorySupport;
 import com.community.dailyrecordofbook.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,6 +34,7 @@ public class UserService {
     private final MailSendService mailSendService;
     private final AuthenticationManager authenticationManager;
     private final FileUtil fileUtil;
+    private final UserCustomRepositorySupport userCustomRepositorySupport;
 
     @Transactional
     public String join(Join join) {
@@ -216,6 +218,17 @@ public class UserService {
             userRepository.delete(user);
             return 0;
         }
+    }
 
+
+    public FindEmailResponse findEmail(FindEmail findEmail) {
+        User user = userCustomRepositorySupport.findEmail(findEmail);
+        FindEmailResponse response = new FindEmailResponse();
+        if(user == null) {
+            response.setResult("notFound");
+        } else {
+            response.setResult(user.getEmail());
+        }
+        return response;
     }
 }

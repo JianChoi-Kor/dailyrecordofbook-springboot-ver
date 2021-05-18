@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/user/findEmail.css}">
+    <script src="/js/user/findEmail.js" defer></script>
+</head>
+
+<div layout:fragment="content">
+    <div class="findEmail_content">
+        <h1 class="h1">이메일 찾기</h1>
+        <form id="findEmail_form">
+            <div class="findEmail">
+                <h3 class="h3">이름</h3>
+                <input type="text" name="realName" placeholder="이름을 입력해주세요." onchange="resetError()">
+            </div>
+            <div class="findEmail">
+                <h3 class="h3">생년월일</h3>
+                <input type="text" name="birth" placeholder="생년월일을 입력해주세요." onchange="resetError()">
+                <p>- 생년월일은 예시와 같이 입력해주세요. ex) 920101</p>
+            </div>
+            <div class="findEmail" id="underFindEmail">
+                <h3 class="h3">휴대폰번호</h3>
+                <input type="text" name="phone" placeholder="휴대폰번호를 입력해주세요." onchange="resetError()">
+                <p>- 휴대폰번호는 "-" 없이 입력해주세요. ex) 01099998888</p>
+            </div>
+            <div class="errMsg" id="errMsg"></div>
+            <input type="button" class="findEmail_btn" value="이메일 찾기" onclick="findEmail()">
+        </form>
+    </div>
+</div>
+
+</html>
+
+
+
+
+
+
