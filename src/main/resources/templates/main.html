@@ -7,8 +7,10 @@
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <script src="/js/main.js" defer></script>
     <script src="https://kit.fontawesome.com/f094e80764.js" crossorigin="anonymous"></script>
-
-
+    <!--    calendar js, css    -->
+    <link rel="stylesheet" th:href="@{/fullcalendar-5.5.1/lib/main.css}"/>
+    <script src="/fullcalendar-5.5.1/lib/main.js" defer></script>
+    <script src="/js/calendar.js" defer></script>
 </head>
 
 
@@ -119,20 +121,16 @@
 
         <!-- 문의 버튼 -->
         <div class="inquiry">
-            <input id="chkUser" type="hidden"
-                   value="${sessionScope.loginUser.userPk}"> <input type="button"
-                                                                    id="inquiryBtn" class="inquiry_btn" value="문의하기">
+            <input id="chkUser" type="hidden" value="${sessionScope.loginUser.userPk}">
+            <input type="button" id="inquiryBtn" class="inquiry_btn" value="문의하기">
         </div>
 
 
         <!-- 구글 캘린더 연동 -->
-        <!--
         <div class="calendar-title">
             <p> < 책방일지는 지금 > </p>
         </div>
         <div id='calendar'></div>
-         -->
-
 
     </div>
 </html>
