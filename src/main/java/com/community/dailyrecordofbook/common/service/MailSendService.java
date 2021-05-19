@@ -58,18 +58,15 @@ public class MailSendService {
         }
     }
 
-
-    // 임시 비밀번호 보내는 메일
-    public String sendTempPwMail(String email) {
-        // 8자리 임시 비밀번호 생성
-        String tempPw = getRamdomPassword(8);
-        // 인증메일 보내기
+    @Async("emailSendExecutor")
+    public void sendTempPassword(String email, String tempPassword) {
+        // 임시 비밀번호 발송
         try {
             MailUtil sendMail = new MailUtil(mailSender);
             sendMail.setSubject("책방일지 회원 임시 비밀번호 발송 메일");
             sendMail.setText(new StringBuffer().append("<h1>[책방일지 회원 임시 비밀번호]</h1>")
                     .append("<p> 회원님의 임시 비밀번호는 ")
-                    .append(tempPw)
+                    .append(tempPassword)
                     .append(" 입니다.</p>").toString());
             sendMail.setFrom("mnlst2020c@gmail.com", "관리자");
             sendMail.setTo(email);
@@ -79,11 +76,10 @@ public class MailSendService {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return tempPw;
     }
 
     // 임시 비밀번호 생성
-    public static String getRamdomPassword(int len) {
+    public String getRandomPassword(int len) {
         char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
         int idx = 0;

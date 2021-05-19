@@ -5,6 +5,7 @@ import com.community.dailyrecordofbook.user.entity.User;
 import com.community.dailyrecordofbook.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -58,7 +59,6 @@ public class UserController {
     @GetMapping("mailFailure")
     public String mailFailure() { return "user/mailFailure"; }
 
-
     @GetMapping("/addInfo")
     public String addInfo() {
         return "user/addInfo";
@@ -79,7 +79,6 @@ public class UserController {
     @ResponseBody
     @PostMapping("/login")
     public int login(@RequestBody Login login) throws Exception { return userService.login(login); }
-
 
     @GetMapping("/myPage")
     public ModelAndView myPage(HttpServletResponse response, ModelAndView modelAndView) throws Exception {
@@ -118,5 +117,17 @@ public class UserController {
     public FindEmailResponse findEmail(@RequestBody FindEmail findEmail) {
         return userService.findEmail(findEmail);
     }
+
+    @GetMapping("/findPassword")
+    public String findPassword() {
+        return "user/findPassword";
+    }
+
+    @ResponseBody
+    @PostMapping("/findPassword")
+    public int findPassword(@RequestBody FindPassword findPassword) {
+        return userService.findPassword(findPassword);
+    }
+
 
 }

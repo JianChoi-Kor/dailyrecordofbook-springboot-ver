@@ -119,7 +119,7 @@ function CheckPassword(uem, upw){
 	var chk_num = upw.search(/[0-9]/g);
 	var chk_eng = upw.search(/[a-z]/ig);
 	if (chk_num < 0 || chk_eng < 0) {
-		alert("비밀번호는 숫자와 영무자를 혼용하여야 합니다.");
+		alert("비밀번호는 숫자와 영문자를 혼용하여야 합니다.");
 		return false;
 	}
 	if (/(\w)\1\1\1/.test(upw)) {

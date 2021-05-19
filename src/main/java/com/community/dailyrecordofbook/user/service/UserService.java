@@ -220,7 +220,6 @@ public class UserService {
         }
     }
 
-
     public FindEmailResponse findEmail(FindEmail findEmail) {
         User user = userCustomRepositorySupport.findEmail(findEmail);
         FindEmailResponse response = new FindEmailResponse();
@@ -230,5 +229,27 @@ public class UserService {
             response.setResult(user.getEmail());
         }
         return response;
+    }
+
+    @Transactional
+    public int findPassword(FindPassword findPassword) {
+        User user = userCustomRepositorySupport.findPassword(findPassword);
+        if(user != null) {
+            return sendTempPassword(user);
+        } else {
+            return 1; // 해당하는 유저가 없는 경우
+        }
+    }
+
+    private int sendTempPassword(User user) {
+        String tempPassword = mailSendService.getRandomPassword(10);
+        try {
+            mailSendService.sendTempPassword(user.getEmail(), tempPassword);
+            tempPassword = passwordEncoder.encode(tempPassword);
+            userRepository.save(user.updatePassword(tempPassword));
+            return 0;
+        } catch (Exception e) {
+            return 2; // 임시 비밀번호 발송 오류
+        }
     }
 }

@@ -6,15 +6,20 @@ window.onload = function() {
     }
 }
 
-function findEmail() {
-    const findEmail_formElem = document.querySelector('#findEmail_form');
+function findPassword() {
+    const findPassword_formElem = document.querySelector('#findPassword_form');
 
-    let realNameElem = findEmail_formElem.realName;
-    let birthElem = findEmail_formElem.birth;
-    let phoneElem = findEmail_formElem.phone;
+    let emailElem = findPassword_formElem.email;
+    let realNameElem = findPassword_formElem.realName;
+    let birthElem = findPassword_formElem.birth;
+    let phoneElem = findPassword_formElem.phone;
     let errMsgElem = document.querySelector('#errMsg');
 
-    if (realNameElem.value === '') {
+    if(emailElem.value === '') {
+        alert('이메일을 입력해주세요.');
+        emailElem.focus();
+        return;
+    } else if (realNameElem.value === '') {
         alert('이름을 입력해주세요.');
         realNameElem.focus();
         return;
@@ -29,12 +34,13 @@ function findEmail() {
     }
 
     let param = {
+        email : emailElem.value,
         realName : realNameElem.value,
         birth : birthElem.value,
         phone : phoneElem.value
     }
 
-    fetch('/user/findEmail', {
+    fetch('/user/findPassword', {
         method: 'post',
         headers: {
             'Content-Type' : 'application/json'
@@ -43,20 +49,20 @@ function findEmail() {
     }).then(function(res) {
         return res.json();
     }).then(function(result) {
-        proc(result.result);
+        proc(result)
     })
+
     function proc(result) {
-        if(result === 'notFound') {
-            errMsgElem.innerHTML = '입력된 정보에 해당하는 회원을 찾을 수 없습니다.';
+        if(result === 0) {
+            alert('입력하신 이메일로 임시 비밀번호가 발송되었습니다.');
+            emailElem.value = '';
+            realNameElem.value = '';
+            birthElem.value = '';
+            phoneElem.value = '';
             return;
         } else {
-            errMsgElem.innerHTML = '조회된 아이디는 " ' + result + ' " 입니다.';
+            errMsgElem.innerHTML = '입력하신 정보가 일치하지 않습니다.';
+            return;
         }
-
     }
-}
-
-function resetError() {
-    let errMsgElem = document.querySelector('#errMsg');
-    errMsgElem.innerHTML = '';
 }
