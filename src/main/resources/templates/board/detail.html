@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/board/detail.css}">
+    <script src="/js/board/detail.js" defer></script>
+</head>
+
+<div layout:fragment="content">
+    <div class="detail_container">
+        <h1 class="h1">책방일지와 함께하며</h1>
+        <input type="hidden" value="${param.category}">
+        <input type="hidden" id="boardIdx" th:value="${boardInfo.idx}">
+
+        <div class="btn" th:if="${session.user} != null">
+            <block th:if="${#strings.equals(session.user.idx, boardInfo.writerIdx)}">
+                <input type="hidden" id="sessionUserIdx" th:value="${session.user.idx}">
+                <input type="button" class="detail_btn" onclick="modify_action()" value="수정">
+                <input type="button" class="detail_btn" onclick="delete_action()" value="삭제">
+            </block>
+
+            <block th:if="${#strings.equals(session.user.role, 'ADMIN')}">
+                <block th:if="${#strings.equals(param.category, '11')}">
+                    <input type="button" class="detail_btn" value="모집 마감">
+                </block>
+            </block>
+        </div>
+
+
+        <div class="detail_top">
+            <div class="detail_title" th:text="${boardInfo.title}"></div>
+            <div class="detail_writerInfo">
+                <input type="hidden" id="writeIdx" th:value="${boardInfo.writerIdx}">
+                <img id="writer_profile_img" th:src="${writerInfo.picture}">
+                <div id="writer_nm" th:text="${writerInfo.realName}"></div>
+            </div>
+            <div th:text="${#temporals.format(boardInfo.createdDate, 'yyyy-MM-dd HH:mm')}"></div>
+        </div>
+
+        <div class="detail_top">
+            <div class="detail_content">
+                <p th:utext="${boardInfo.content}"></p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</html>
+
+
+
+
+
+

@@ -1,0 +1,244 @@
+@charset "UTF-8";
+
+.detail_container {
+	width: 800px;
+	margin: 3em auto;
+}
+
+
+.h1 {
+	text-align: center;
+	margin-bottom: 50px;
+	font-size: 30px;
+}
+
+.detail_title {
+	border-top: 1px solid rgba(0, 0, 0, .2);
+	border-bottom: 1px solid rgba(0, 0, 0, .2);
+	width: 760px;
+	height: 60px;
+	background:url('input_bg.jpg') no-repeat;
+	font-size:27px;
+	color:#000;
+	display: table-cell; 
+	vertical-align: middle;
+}
+
+.detail_writerInfo {
+	width: 760px;
+	font-size: 17px;
+	color: #000;
+	display: flex;
+	margin-top: 20px;
+}
+
+#writer_profile_img {
+	width: 60px;
+	height: 60px;
+	border-radius: 60px;
+}
+
+#writer_nm {
+	padding: 16px;
+}
+
+.detail_top>div {
+	padding: 8px 20px;
+}
+
+.detail_main>div {
+	padding: 8px 20px;
+}
+
+.detail_content {
+	margin-top: 30px;
+	border-top: 1px solid rgba(0, 0, 0, .2);
+	border-bottom: 1px solid rgba(0, 0, 0, .2);
+	width: 760px;
+	background:url('input_bg.jpg') no-repeat;
+	font-size:20px;
+	color:#000;
+}
+
+.cmtWrite {
+	margin-top: 30px;
+	padding: 10px;
+	width: 760px;
+}
+
+.write_content {
+	width: 760px;
+	min-height: 100px;
+	font-size: 16px;
+	padding: 10px;
+	resize: none;
+}
+
+.modWrite_content {
+	width: 670px;
+	min-height: 100px;
+	font-size: 16px;
+	padding: 10px;
+	resize: none;
+}
+
+
+/* ------------------------------------------ */
+
+
+
+.btn {
+	max-width: 760px;
+	margin: 7px auto 13px;
+	text-align: right;
+}
+
+/* write btn */
+
+.detail_btn {
+    background: #ebcacf;
+    color: #fff;
+    border: none;
+    position: relative;
+    height: 30px;
+    font-size: 1em;
+    padding: 0.4em 1.2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    text-align: right;
+    border-radius: 0.5em;
+}
+
+.detail_btn:hover {
+    background: #fff;
+    color:#ebcacf;
+}
+
+.detail_btn:before, .detail_btn:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #ebcacf;
+    transition: 400ms ease all;
+}
+
+.detail_btn:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.detail_btn:hover:before, .detail_btn:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+
+
+
+
+
+/* ------------------------------------------ */
+
+#cmtList {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.cmtImg {
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+}
+
+.oneCmt {
+	display: flex;
+	padding: 15px;
+}
+
+.oneMod {
+	display: flex;
+	padding: 15px;
+}
+
+.cmt_right {
+	padding-left: 17px;
+}
+
+.oneContent {
+	padding-top: 10px;
+	min-height: 56px;
+	height: auto;
+}
+
+
+
+.cmt_btn {
+    background: #ebcacf;
+    color: #fff;
+    border: none;
+    position: relative;
+    height: 26px;
+    font-size: 0.8em;
+    padding: 0.4em 1.2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    text-align: right;
+    border-radius: 0.5em;
+}
+
+
+.cmt_btn:hover {
+    background: #fff;
+    color:#ebcacf;
+}
+
+.cmt_btn:before, .cmt_btn:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #ebcacf;
+    transition: 400ms ease all;
+}
+
+.cmt_btn:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.cmt_btn:hover:before, .cmt_btn:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+
+.cmt_top_line {
+	display: flex;
+}
+
+
+.likeCount {
+	padding-left: 10px;
+}
+
+
+/* --------------------------------- */
+
+
+.hidden {
+	display: none;
+}
+
+
+
+

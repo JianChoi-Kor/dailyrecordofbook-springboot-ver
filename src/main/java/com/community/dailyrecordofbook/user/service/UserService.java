@@ -169,8 +169,9 @@ public class UserService {
         User user = userRepository.findByEmail(sessionUser.getEmail()).orElse(null);
 
         String rootPath = request.getSession().getServletContext().getRealPath("/");
+//        String localPath = "/Users/jianchoi/dailyrecordofbook";
 
-        String basePath = rootPath + "/res/image/user/" + user.getIdx();
+        String basePath = rootPath + "res/image/user/" + user.getIdx();
         String profileImg = fileUtil.transferTo(multipartFile, basePath);
 
         if(profileImg == null) {
@@ -183,8 +184,10 @@ public class UserService {
                 file.delete();
             }
         }
+
+        String filePath = "/res/image/user/" + user.getIdx() + "/" + profileImg;
         
-        user.update(user.getName(), profileImg);
+        user.update(user.getName(), filePath);
         userRepository.save(user);
         SessionUtil.setAttribute("user", new SessionUser(user));
         return 0;

@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+
+.ck.ck-editor__main>.ck-editor__editable {
+    max-width: 800px;
+    min-height: 500px;
+}
+
+.write_content {
+	width: 800px;
+	margin: 3em auto;	
+}
+
+.h1 {
+    text-align: center;
+	margin-bottom: 25px;
+	font-size: 30px;
+}
+
+.write_title {
+	width: 760px;
+	height:51px;
+	background:url('input_bg.jpg') no-repeat;
+	border:none;
+	font-size:22px;
+	color:#aaa;
+	padding: 8px 20px;
+}
+
+
+/* write_btn 시작 */
+.write_btn {
+    background: #ebcacf;
+    color: #fff;
+    border: none;
+    position: relative;
+    height: 60px;
+    font-size: 1em;
+    padding: 0.4em 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 120px;
+    border-radius: 0.5em;
+}
+
+.write_btn:hover {
+    background: #fff;
+    color:#ebcacf;
+}
+
+.write_btn:before, .write_btn:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #ebcacf;
+    transition: 400ms ease all;
+}
+
+.write_btn:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.write_btn:hover:before, .write_btn:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+
+/* write_btn 끝 */

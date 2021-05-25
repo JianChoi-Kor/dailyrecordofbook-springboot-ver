@@ -33,8 +33,7 @@
                 </div>
 
                 <div class="profileImg" th:unless="${session.user.picture} == null">
-                    <img th:if="${session.user.type} == drob" th:src="'/res/image/user/' + ${session.user.idx} + '/' + ${session.user.picture}">
-                    <img th:unless="${session.user.type} == drob" th:src="${session.user.picture}">
+                    <img th:src="${session.user.picture}">
                 </div>
 
                 <input type="hidden" id="role" th:value="${session.user.role}">

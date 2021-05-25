@@ -6,10 +6,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.firewall.DefaultHttpFirewall;
+import org.springframework.security.web.firewall.HttpFirewall;
 
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -25,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/**", "/css/**", "/images/**", "/js/**", "/fullcalendar-5.5.1/lib/**", "/h2/**", "/h2-console/**").permitAll()
+                .antMatchers("/**", "/css/**", "/images/**", "/js/**", "/fullcalendar-5.5.1/lib/**", "/h2/**", "/h2-console/**", "/resources/**", "/Users/jianchoi/dailyrecordofbook/**").permitAll()
                 .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                 .antMatchers("/user/login", "/user/sign").permitAll()
                 .anyRequest().authenticated()
@@ -47,5 +50,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-
 }

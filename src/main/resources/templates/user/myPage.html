@@ -15,8 +15,7 @@
         </div>
 
         <div class="imgFrame" th:unless="${session.user.picture} == null">
-            <img th:if="${session.user.type} == drob" th:src="'/res/image/user/' + ${session.user.idx} + '/' + ${session.user.picture}">
-            <img th:unless="${session.user.type} == drob" th:src="${session.user.picture}">
+            <img th:src="${session.user.picture}">
         </div>
 
         <div th:if="${userInfo.type} == drob">
@@ -50,7 +49,8 @@
             <div class="detail" th:if="${userInfo.gender} == WOMAN"><label>성별 : </label>
                 <div>여자</div>
             </div>
-            <div class="detail"><label>가입일 : </label><div th:text="${userInfo.createdDate}"></div></div>
+            <div class="detail"><label>가입일 : </label><div th:text="${#temporals.format(userInfo.createdDate, 'yyyy-MM-dd HH:mm')}"></div></div>
+
         </div>
 
         <div class="btnFrm" th:if="${userInfo.type} == drob">

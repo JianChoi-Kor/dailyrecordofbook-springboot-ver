@@ -9,7 +9,7 @@ window.onload = function() {
 
 function login_action() {
 
-    var login_formElem = document.querySelector('#login_frm');
+    var login_formElem = document.querySelector('#login_form');
 
     var emailElem = login_formElem.userEmail;
     var passwordElem = login_formElem.userPw;

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+<head>
+    <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
+    <script src="/js/board/modify.js" defer></script>
+    <script src="/js/ckeditor.js" defer></script>
+    <link rel="stylesheet" th:href="@{/css/board/write.css}">
+</head>
+
+<div layout:fragment="content">
+    <div class="write_content">
+        <h1 class="h1">글 수정</h1>
+
+        <form id="write_form" action="/board/modify" method="post">
+            <input type="hidden" name="category" th:value="${param.category}">
+            <input type="hidden" name="idx" th:value="${boardInfo.idx}">
+            <input type="hidden" name="writerIdx" th:value="${writerInfo.idx}">
+
+            <block th:if="${session.user} != null">
+                <input type="hidden" name="sessionUserIdx" th:value="${session.user.idx}">
+            </block>
+
+            <div>
+                <input type="text" class="write_title" name="title" placeholder="제목을 입력해주세요." required th:value="${boardInfo.title}">
+            </div>
+            <textarea name="content" id="editor" placeholder="내용을 입력해주세요." th:utext="${boardInfo.content}"></textarea>
+            <div>
+                <input type="submit" id="write" class="write_btn" value="수정">
+            </div>
+        </form>
+    </div>
+</div>
+
+</html>
+
+
+
+
+
+

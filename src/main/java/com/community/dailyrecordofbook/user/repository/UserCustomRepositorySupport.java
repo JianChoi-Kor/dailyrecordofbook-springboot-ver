@@ -37,4 +37,11 @@ public class UserCustomRepositorySupport extends QuerydslRepositorySupport {
                 .and(user.phone.eq(findPassword.getPhone())))
                 .fetchOne();
     }
+
+    public User findByIdx(Long userIdx) {
+        return queryFactory
+                .selectFrom(user)
+                .where(user.idx.eq(userIdx))
+                .fetchOne();
+    }
 }
