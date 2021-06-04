@@ -3,7 +3,6 @@ package com.community.dailyrecordofbook.board.controller;
 import com.community.dailyrecordofbook.board.dto.Write;
 import com.community.dailyrecordofbook.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.criterion.NaturalIdentifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +20,8 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/{boardIdx}")
-    public ModelAndView detailAndModify(@PathVariable Long boardIdx, Long category, String flag, ModelAndView modelAndView) {
-        return boardService.detailAndModify(boardIdx, flag, modelAndView);
+    public ModelAndView detailAndModify(@PathVariable Long boardIdx, @RequestParam(value = "category") Long categoryIdx, String flag, ModelAndView modelAndView) {
+        return boardService.detailAndModify(boardIdx, categoryIdx, flag, modelAndView);
     }
 
     @GetMapping("/write")
@@ -46,6 +45,11 @@ public class BoardController {
     @PostMapping("/imageUpload")
     public Map<String, Object> imageUpload(@RequestParam("upload") MultipartFile multipartFile, HttpServletRequest request) throws Exception {
         return boardService.writeImageUpload(multipartFile, request);
+    }
+
+    @GetMapping("/list")
+    public String getList(@RequestParam(value = "category") Long categoryIdx, @RequestParam(required = false) Integer page, Integer pageSize, Model model) {
+        return boardService.getList(categoryIdx, page, pageSize, model);
     }
 
 }

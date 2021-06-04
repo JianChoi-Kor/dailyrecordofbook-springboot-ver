@@ -1,5 +1,6 @@
 package com.community.dailyrecordofbook.board.service;
 
+import com.community.dailyrecordofbook.board.dto.ListBoard;
 import com.community.dailyrecordofbook.board.dto.Write;
 import com.community.dailyrecordofbook.board.entity.Board;
 import com.community.dailyrecordofbook.board.repository.BoardCustomRepositorySupport;
@@ -10,7 +11,11 @@ import com.community.dailyrecordofbook.common.util.SessionUtil;
 import com.community.dailyrecordofbook.user.entity.User;
 import com.community.dailyrecordofbook.user.repository.UserCustomRepositorySupport;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -63,11 +68,11 @@ public class BoardService {
 
         Board board = boardRepository.save(new Board(write));
 
-        return "redirect:/board/" + board.getIdx() + "?flag=detail";
+        return "redirect:/board/" + board.getIdx() + "?flag=detail&category=" + board.getCategoryIdx();
     }
 
     public String modify(Write write) {
-        Board board = boardCustomRepositorySupport.findByIdx(write.getIdx());
+        Board board = boardCustomRepositorySupport.findByIdxAndCategory(write.getIdx(), write.getCategoryIdx());
 
         String mainImage = getMainImage(write.getContent());
         write.setMainImage(mainImage);
@@ -76,8 +81,8 @@ public class BoardService {
         return "redirect:/board/" + updateBoard.getIdx() + "?flag=detail";
     }
 
-    public ModelAndView detailAndModify(Long boardIdx, String flag, ModelAndView modelAndView) {
-        Board board = boardCustomRepositorySupport.findByIdx(boardIdx);
+    public ModelAndView detailAndModify(Long boardIdx, Long categoryIdx ,String flag, ModelAndView modelAndView) {
+        Board board = boardCustomRepositorySupport.findByIdxAndCategory(boardIdx, categoryIdx);
         if(board == null) {
             // TODO 해당하는 게시글이 없는 경우 notFound
         } else if (board.getUseAt().equals("1")) {
@@ -121,6 +126,19 @@ public class BoardService {
     }
 
 
+    public String getList(Long categoryIdx, Integer page, Integer pageSize, Model model) {
+        if(page == null || page <= 0) {
+            page = 0;
+        }
+        if(pageSize == null || pageSize <= 0) {
+            pageSize = 6;
+        }
+        Pageable pageable = PageRequest.of(page, pageSize);
+        PageImpl<ListBoard> listBoards = boardCustomRepositorySupport.getList(categoryIdx, pageable);
+
+        model.addAttribute("pagination", listBoards);
+        return "board/list";
+    }
 
 
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="paginationFragment" class="pagination">
+    <ul>
+        <li th:class="${pagination.getNumber()}==0?'disabled':''"
+            th:onclick="searchList(0)">
+            <i class="fas fa-angle-double-left"></i>
+        </li>
+        <li th:class="${pagination.hasPrevious()}?'':'disabled'"
+            th:onclick="searchList([[${pagination.getNumber()-1}]])">
+            <i class="fas fa-angle-left"></i>
+        </li>
+
+        <li th:if="${pagination.getNumber()==pagination.getTotalPages()-1&&pagination.getTotalPages()-1>=5}"
+            th:each="num : ${#numbers.sequence(4,3)}"
+            th:text="${pagination.getTotalPages()-num}"
+            th:onclick="searchList([[${pagination.getTotalPages()-(num+1)}]])"></li>
+
+        <li th:if="${pagination.getNumber()==pagination.getTotalPages()-2&&pagination.getTotalPages()-1>=5}"
+            th:text="${pagination.getTotalPages()-4}"
+            th:onclick="searchList(${pagination.getTotalPages()-5})"></li>
+
+        <li th:each="num : ${#numbers.sequence(-2,2)}"
+            th:if="${pagination.getNumber()+num>=0&&pagination.getNumber()+num<=pagination.getTotalPages()-1}"
+            th:class="${num}==0?'on disabled':''"
+            th:text="${pagination.getNumber()+num+1}"
+            th:onclick="searchList([[${pagination.getNumber()+num}]])"></li>
+
+        <li th:if="${pagination.getNumber()==0&&pagination.getTotalPages()-1>=5}"
+            th:each="num : ${#numbers.sequence(4,5)}"
+            th:text="${num}"
+            th:onclick="searchList([[${num}]])"></li>
+        <li th:if="${pagination.getNumber()==1&&pagination.getTotalPages()-1>=5}"
+            th:text="5"
+            th:onclick="searchList(5)"></li>
+
+        <li th:class="${pagination.hasNext()}?'':'disabled'"
+            th:onclick="searchList([[${pagination.getNumber()}+1]])">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li th:class="${pagination.getNumber()}==${pagination.getTotalPages()-1}?'disabled':''"
+            th:onclick="searchList([[${pagination.getTotalPages()-1}]])">
+            <i class="fas fa-angle-double-right"></i>
+        </li>
+    </ul>
+</div>
+</html>

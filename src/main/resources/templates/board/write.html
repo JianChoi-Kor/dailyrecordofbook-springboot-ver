@@ -16,7 +16,7 @@
         <h1 class="h1">글쓰기</h1>
 
         <form id="write_form" action="/board/write" method="post">
-            <input type="hidden" name="category" th:value="${param.category}">
+            <input type="hidden" name="categoryIdx" th:value="${param.category}">
             <div>
                 <input type="text" class="write_title" name="title" placeholder="제목을 입력해주세요." required>
             </div>

@@ -5,7 +5,6 @@ import com.community.dailyrecordofbook.common.entity.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -20,7 +19,7 @@ public class Board extends BaseTimeEntity {
     private Long idx;
 
     @Column
-    private Integer category;
+    private Long categoryIdx;
 
     @Column
     private String title;
@@ -42,7 +41,7 @@ public class Board extends BaseTimeEntity {
 
 
     public Board (Write write) {
-        this.category = write.getCategory();
+        this.categoryIdx = write.getCategoryIdx();
         this.title = write.getTitle();
         this.content = write.getContent();
         this.hitCount = write.getHitCount();
