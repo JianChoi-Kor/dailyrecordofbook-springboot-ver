@@ -10,8 +10,18 @@
 
 <div layout:fragment="content">
     <div class="detail_container">
-        <h1 class="h1">책방일지와 함께하며</h1>
-        <input type="hidden" value="${param.category}">
+        <th:block th:if="${#strings.equals(boardInfo.categoryIdx, '1')}">
+            <h1 class="h1">책방일지와 함께하며</h1>
+        </th:block>
+
+        <th:block th:if="${#strings.equals(boardInfo.categoryIdx, '11')}">
+            <h1 class="h1">모집 중인 독서모임</h1>
+        </th:block>
+
+        <th:block th:if="${#strings.equals(boardInfo.categoryIdx, '12')}">
+            <h1 class="h1">모집 마감, 종료 된 독서모임</h1>
+        </th:block>
+
         <input type="hidden" id="boardIdx" th:value="${boardInfo.idx}">
 
         <div class="btn" th:if="${session.user} != null">
@@ -22,8 +32,8 @@
             </block>
 
             <block th:if="${#strings.equals(session.user.role, 'ADMIN')}">
-                <block th:if="${#strings.equals(param.category, '11')}">
-                    <input type="button" class="detail_btn" value="모집 마감">
+                <block th:if="${#strings.equals(boardInfo.categoryIdx, '11')}">
+                    <input type="button" class="detail_btn" onclick="close_action()" value="모집 마감">
                 </block>
             </block>
         </div>
@@ -44,6 +54,8 @@
                 <p th:utext="${boardInfo.content}"></p>
             </div>
         </div>
+
+        <input type="hidden" id="categoryIdx" th:value="${boardInfo.categoryIdx}">
 
     </div>
 

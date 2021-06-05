@@ -56,4 +56,14 @@ public class Board extends BaseTimeEntity {
         this.mainImage = write.getMainImage();
         return this;
     }
+
+    public Board deleteBoard(Board board) {
+        this.useAt = "1";
+        return this;
+    }
+
+    public Board closeBoard(Board board) {
+        this.categoryIdx = Long.parseLong("12");
+        return this;
+    }
 }

@@ -4,15 +4,33 @@
       layout:decorate="~{layouts/layout}">
 
 <head>
-    <link rel="stylesheet" th:href="@{/css/board/list.css}">
+    <link rel="stylesheet" th:href="@{/css/board/communityList.css}">
     <script src="/js/board/list.js" defer></script>
 </head>
 
 <div layout:fragment="content">
 
-    <h1 class="h1">책방일지와 함께</h1>
-    <div class="btn" th:if="${session.user} != null">
-        <input type="button" class="write_btn" value="글쓰기" th:onclick="write_action()">
+    <th:block th:if="${#strings.equals(param.category, '11')}">
+        <h1 class="h1">현재 모집중인 독서 모임</h1>
+        <th:block th:if="${session.user} != null">
+        <div class="btn" th:if="${#strings.equals(session.user.role, 'ADMIN')}">
+                <input type="button" class="write_btn" value="모임 일정 등록" th:onclick="write_action()">
+        </div>
+        </th:block>
+    </th:block>
+
+    <th:block th:if="${#strings.equals(param.category, '12')}">
+        <h1 class="h1">종료, 마감된 독서 모임</h1>
+    </th:block>
+
+    <div class="category">
+        <a href="/board/list?category=11">
+            <input type="button" class="category_btn" value="진행중인 모임">
+        </a>
+        &nbsp&nbsp&nbsp&nbsp
+        <a href="/board/list?category=12">
+            <input type="button" class="category_btn" value="모집 마감, 종료된 모임">
+        </a>
     </div>
 
     <form id="categoryForm" method="get" action="/board/list">

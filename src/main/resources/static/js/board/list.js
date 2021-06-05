@@ -17,3 +17,7 @@ function searchList(page) {
     }
     categoryForm.submit();
 }
+
+function openDetail(boardIdx) {
+    location.href='/board/' + boardIdx + '?flag=detail';
+}

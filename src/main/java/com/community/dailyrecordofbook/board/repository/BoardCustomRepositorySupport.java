@@ -24,10 +24,10 @@ public class BoardCustomRepositorySupport extends QuerydslRepositorySupport {
         this.queryFactory = queryFactory;
     }
 
-    public Board findByIdxAndCategory (Long boardIdx, Long categoryIdx) {
+    public Board findByIdx (Long boardIdx) {
         return queryFactory
                 .selectFrom(board)
-                .where(board.idx.eq(boardIdx).and(board.categoryIdx.eq(categoryIdx)))
+                .where(board.idx.eq(boardIdx))
                 .fetchOne();
     }
 

@@ -1,5 +1,6 @@
 package com.community.dailyrecordofbook.board.service;
 
+import com.community.dailyrecordofbook.board.dto.DeleteInfo;
 import com.community.dailyrecordofbook.board.dto.ListBoard;
 import com.community.dailyrecordofbook.board.dto.Write;
 import com.community.dailyrecordofbook.board.entity.Board;
@@ -72,7 +73,7 @@ public class BoardService {
     }
 
     public String modify(Write write) {
-        Board board = boardCustomRepositorySupport.findByIdxAndCategory(write.getIdx(), write.getCategoryIdx());
+        Board board = boardCustomRepositorySupport.findByIdx(write.getIdx());
 
         String mainImage = getMainImage(write.getContent());
         write.setMainImage(mainImage);
@@ -81,8 +82,34 @@ public class BoardService {
         return "redirect:/board/" + updateBoard.getIdx() + "?flag=detail";
     }
 
-    public ModelAndView detailAndModify(Long boardIdx, Long categoryIdx ,String flag, ModelAndView modelAndView) {
-        Board board = boardCustomRepositorySupport.findByIdxAndCategory(boardIdx, categoryIdx);
+    public int delete(DeleteInfo deleteInfo) {
+        Board board = boardCustomRepositorySupport.findByIdx(deleteInfo.getBoardIdx());
+        if(board.getWriterIdx() != deleteInfo.getSessionUserIdx()) {
+            return 1; // 글 작성자 고유 번호와 접속자 고유 번호가 일치 하지 않는 경우
+        }
+        try {
+            boardRepository.save(board.deleteBoard(board));
+        } catch (Exception e) {
+            return 2; // 수정 오류
+        }
+        return 0;
+    }
+
+    public int close(DeleteInfo closeInfo) {
+        Board board = boardCustomRepositorySupport.findByIdx(closeInfo.getBoardIdx());
+        if(board.getCategoryIdx() != 11) {
+            return 1; // 모임 모집 카테고리만 해당 기능 작동
+        }
+        try {
+            boardRepository.save(board.closeBoard(board));
+        } catch (Exception e) {
+            return 2; // 카테고리 변경 오류
+        }
+        return 0;
+    }
+
+    public ModelAndView detailAndModify(Long boardIdx ,String flag, ModelAndView modelAndView) {
+        Board board = boardCustomRepositorySupport.findByIdx(boardIdx);
         if(board == null) {
             // TODO 해당하는 게시글이 없는 경우 notFound
         } else if (board.getUseAt().equals("1")) {
@@ -126,18 +153,27 @@ public class BoardService {
     }
 
 
-    public String getList(Long categoryIdx, Integer page, Integer pageSize, Model model) {
+    public String getList(Long categoryIdx, Integer page, Model model) {
         if(page == null || page <= 0) {
             page = 0;
         }
-        if(pageSize == null || pageSize <= 0) {
-            pageSize = 6;
+        Integer pageSize = 6;
+        if(categoryIdx == 11) {
+            pageSize = 4;
         }
+
         Pageable pageable = PageRequest.of(page, pageSize);
         PageImpl<ListBoard> listBoards = boardCustomRepositorySupport.getList(categoryIdx, pageable);
 
         model.addAttribute("pagination", listBoards);
-        return "board/list";
+
+        if(categoryIdx == 1) {
+            return "board/list";
+        } else if(categoryIdx == 11 || categoryIdx == 12) {
+            return "board/communityList";
+        } else {
+            return "main";
+        }
     }
 
 

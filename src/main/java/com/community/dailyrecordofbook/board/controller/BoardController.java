@@ -1,8 +1,10 @@
 package com.community.dailyrecordofbook.board.controller;
 
+import com.community.dailyrecordofbook.board.dto.DeleteInfo;
 import com.community.dailyrecordofbook.board.dto.Write;
 import com.community.dailyrecordofbook.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.sql.Delete;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +22,8 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/{boardIdx}")
-    public ModelAndView detailAndModify(@PathVariable Long boardIdx, @RequestParam(value = "category") Long categoryIdx, String flag, ModelAndView modelAndView) {
-        return boardService.detailAndModify(boardIdx, categoryIdx, flag, modelAndView);
+    public ModelAndView detailAndModify(@PathVariable Long boardIdx, String flag, ModelAndView modelAndView) {
+        return boardService.detailAndModify(boardIdx, flag, modelAndView);
     }
 
     @GetMapping("/write")
@@ -39,6 +41,17 @@ public class BoardController {
         return boardService.modify(write);
     }
 
+    @ResponseBody
+    @PostMapping("/delete")
+    public int delete(@RequestBody DeleteInfo deleteInfo) {
+        return boardService.delete(deleteInfo);
+    }
+
+    @ResponseBody
+    @PostMapping("/close")
+    public int close(@RequestBody DeleteInfo closeInfo) {
+        return boardService.close(closeInfo);
+    }
 
     // CKEditor 이미지 업로드 부분
     @ResponseBody
@@ -48,8 +61,7 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public String getList(@RequestParam(value = "category") Long categoryIdx, @RequestParam(required = false) Integer page, Integer pageSize, Model model) {
-        return boardService.getList(categoryIdx, page, pageSize, model);
+    public String getList(@RequestParam(value = "category") Long categoryIdx, @RequestParam(required = false) Integer page, Model model) {
+        return boardService.getList(categoryIdx, page, model);
     }
-
 }
