@@ -7,10 +7,12 @@
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <script src="/js/main.js" defer></script>
     <script src="https://kit.fontawesome.com/f094e80764.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" defer></script>
     <!--    calendar js, css    -->
     <link rel="stylesheet" th:href="@{/fullcalendar-5.5.1/lib/main.css}"/>
     <script src="/fullcalendar-5.5.1/lib/main.js" defer></script>
     <script src="/js/calendar.js" defer></script>
+    <script src="/js/bookSlide.js" defer></script>
 </head>
 
 
@@ -84,20 +86,15 @@
             <h4>2021년 2월 기준</h4>
         </div>
 
-
-
-        <!--
         <div class="bookSlide">
             <div class="book-slide-container">
-            <c:forEach items="${requestScope.list}" var="item">
-                <div id="bookData${pageScope.item.bookPk}"
-                    data-booktitle="${pageScope.item.bookTitle}"
-                    data-communityinfo="${pageScope.item.communityInfo}"
-                    data-bookimg="${pageScope.item.bookImg}">
-                </div>
-                <img src="${pageScope.item.bookImg}" alt="" onclick="openModal(${pageScope.item.bookPk})" >
-
-            </c:forEach>
+                <th:block th:each="book : ${bookList}">
+                    <div th:id="|bookData${book.idx}|"
+                         th:data-booktitle="${book.bookTitle}"
+                         th:data-communityinfo="${book.communityInfo}"
+                         th:data-bookimg="${book.bookImg}"></div>
+                    <img th:src="${book.bookImg}" alt="모임 진행 도서" th:onclick="openModal([[${book.idx}]])">
+                </th:block>
             </div>
         </div>
 
@@ -107,16 +104,6 @@
             <input type="text" class="modText" id="modBookTitle" readonly>
             <input type="text" class="modText modInfo" id="modCommunityInfo" readonly>
         </div>
-
-        <div class="book-slide-btn">
-            <c:if test="${sessionScope.loginUser.authStatus == 99}">
-                <a href="/main/addBook">
-                    <input type="button" id="add_btn" class="add_btn" value="슬라이드 책 추가">
-                </a>
-            </c:if>
-        </div>
-         -->
-
 
 
         <!-- 문의 버튼 -->

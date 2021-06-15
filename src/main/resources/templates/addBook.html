@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/addBook.css}">
+    <script src="/js/addBook.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" defer></script>
+</head>
+
+<div layout:fragment="content">
+    <div class="write_content">
+        <h1 class="h1">북 슬라이드 도서 추가하기</h1>
+
+        <form id="write_form" action="/addBook" method="post" enctype="multipart/form-data">
+            <div>
+                <input type="text" class="write_title" name="bookTitle" placeholder="도서 제목을 입력해주세요." required>
+            </div>
+            <div>
+                <input type="text" class="write_title" name="communityInfo" placeholder="모임 명과 날짜를 입력해주세요. (5기 정기 독서모임 / 2021.03.18)" required>
+            </div>
+
+            <div id="imageDiv">
+                <div>
+                    <input type="file" id="bookSlideFile" name="bookSlideFile" th:onchange="previewImage(event, this)">
+                    <input type="button" class="bookButton" value="이미지 열기" onclick="fileBrowse('bookSlideFile')">
+                </div>
+            </div>
+            <div>
+                <input type="submit" class="write_btn" value="추가">
+            </div>
+        </form>
+    </div>
+</div>
+
+</html>
+
+
+
+
+
+

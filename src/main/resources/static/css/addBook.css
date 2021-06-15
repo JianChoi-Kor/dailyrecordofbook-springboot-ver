@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+
+.ck.ck-editor__main>.ck-editor__editable {
+    max-width: 640px;
+    min-height: 320px;
+}
+
+.write_content {
+	width: 640px;
+	margin: 3em auto;	
+}
+
+.h1 {
+    text-align: center;
+	margin-bottom: 25px;
+	font-size: 30px;
+}
+
+.write_title {
+	width: 600px;
+	height:40px;
+	background:url('input_bg.jpg') no-repeat;
+	border:none;
+	font-size:19px;
+	color:#aaa;
+	padding: 8px 20px;
+}
+
+
+/* write_btn 시작 */
+.write_btn {
+    background: #ebcacf;
+    color: #fff;
+    border: none;
+    position: relative;
+    height: 60px;
+    font-size: 1em;
+    padding: 0.4em 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 120px;
+    border-radius: 0.5em;
+}
+
+.write_btn:hover {
+    background: #fff;
+    color:#ebcacf;
+}
+
+.write_btn:before, .write_btn:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #ebcacf;
+    transition: 400ms ease all;
+}
+
+.write_btn:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.write_btn:hover:before, .write_btn:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+
+/* write_btn 끝 */
+
+.bookSlideImage {
+    width: 300px;
+}
+
+#loadImage {
+    width: 250px;
+    display: flex;
+    margin: auto;
+}
+
+/* input file의 기본 모습을 제거 */
+#bookSlideFile{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.bookButton {
+    width:85px;
+    background-color: #ebcacf;
+    border: none;
+    color:#fff;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius:10px;
+}
