@@ -5,7 +5,9 @@
 
 <head>
     <link rel="stylesheet" th:href="@{/css/board/detail.css}">
+    <link rel="stylesheet" th:href="@{/css/board/likeBtn.css}">
     <script src="/js/board/detail.js" defer></script>
+    <script src="/js/board/comment.js" defer></script>
 </head>
 
 <div layout:fragment="content">
@@ -56,6 +58,23 @@
         </div>
 
         <input type="hidden" id="categoryIdx" th:value="${boardInfo.categoryIdx}">
+
+        <!-- 댓글 리스트 -->
+        <div id="cmtList"></div>
+
+        <!-- 댓글 작성 -->
+        <block th:if="${#strings.equals(boardInfo.categoryIdx, '1')}">
+            <div class="cmtWrite" th:onclick="chkLogin()">
+                <form id="cmtForm">
+                    <div>
+                        <textarea name="cmtContent" id="cmtContent" class="write_content" placeholder="댓글 내용을 작성해주세요."></textarea>
+                    </div>
+                    <div>
+                        <input id="cmtWriteBtn" class="cmt_btn" type="button" value="댓글 등록" th:onclick="writeComment()">
+                    </div>
+                </form>
+            </div>
+        </block>
 
     </div>
 

@@ -37,6 +37,7 @@
                 </div>
 
                 <input type="hidden" id="role" th:value="${session.user.role}">
+                <input type="hidden" id="userIdx" th:value="${session.user.idx}">
 
                 <li class="userInfo"><a th:href="@{/user/myPage}" th:text="${session.user.name} + '님 회원정보'"></a></li>
                 <li class="userInfo"><a href="/logout">로그아웃</a></li>
