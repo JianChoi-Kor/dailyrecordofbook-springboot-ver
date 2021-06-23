@@ -19,4 +19,5 @@ public class ViewComment {
     private String writerName;
     private String writerProfile;
     private LocalDateTime regDate;
+    private Long likeTotal;
 }

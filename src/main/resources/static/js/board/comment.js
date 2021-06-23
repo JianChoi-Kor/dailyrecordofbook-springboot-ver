@@ -32,6 +32,7 @@ function writeComment() {
         if (result === 0) {
             cmtContentElem.value = '';
             getCommentList();
+            setTimeout(likeLoad(), 1700);
         } else if(result === 1){
             alert('댓글 쓰기에 실패했습니다.');
         } else {
@@ -49,6 +50,7 @@ function getCommentList() {
     .then(result => {
         clearView();
         createView(result);
+        setTimeout(likeLoad(), 500);
     })
 
     // 댓글창 초기화
@@ -86,7 +88,7 @@ function getCommentList() {
             loginUserIdx = document.getElementById('userIdx').value;
         }
 
-        html += '<div class="oneCmt" id="oneCmt'+item.idx+'">';
+        html += '<div class="oneCmt" id="oneCmt'+item.idx+'">'
         html +=     '<div>'
         html +=         '<img class="cmtImg" src="'+item.writerProfile+'">'
         html +=     '</div>'
@@ -95,11 +97,32 @@ function getCommentList() {
         html +=				"<span>"+item.writerName+"</span>"
         html +=				"&nbsp&nbsp"
         html +=				'<span>'+regDate+'&nbsp&nbsp&nbsp&nbsp&nbsp</span>'
+
+        if(item.useAt !== "1") {
         html +=				'<div class="likeForm">'
-        html +=					'<i class="fas fa-heart heart-icon" id="heart-icon'+item.idx+'" onclick="liked('+item.idx+' ,'+loginUserIdx+')"></i>'
-        html +=					'<span class="liked-span" id="liked-span'+item.idx+'">liked!</span>'
+        html +=					'<i class="fas fa-heart" id="heart-icon'+item.idx+'" onclick="liked('+item.idx+' ,'+loginUserIdx+')"></i>'
+//        html +=					'<span class="liked-span" id="liked-span'+item.idx+'">liked!</span>'
+
+        if(item.likeTotal !== 0) {
+        html +=                 '<span> 좋아요  </span>'
+        html +=                 '<span id=like'+item.idx+'>'+item.likeTotal+'</span>'
+        } else {
+        html +=                 '<span> 좋아요  </span>'
+        html +=                 '<span id=like'+item.idx+'></span>'
+        }
+
         html +=					'<span class="likeCount" id="count'+item.idx+'"></span>'
-        html +=				"</div>"
+        html +=				'</div>'
+        }
+
+        else {
+        html +=				'<div class="likeForm hidden">'
+        html +=					'<i class="fas fa-heart heart-icon" id="heart-icon'+item.idx+'" onclick="liked('+item.idx+' ,'+loginUserIdx+')"></i>'
+//        html +=					'<span class="liked-span" id="liked-span'+item.idx+'">liked!</span>'
+        html +=					'<span class="likeCount" id="count'+item.idx+'"></span>'
+        html +=				'</div>'
+        }
+
         html +=			"</div>"
         html +=			"<div>"
         html +=				'<p class="oneContent">'+item.cmtContent+'</p>'

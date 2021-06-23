@@ -1,8 +1,12 @@
 @charset "UTF-8";
 
-
+/*
 .likeForm {
   position: relative;
+}
+
+.heart-icon {
+    cursor:pointer;
 }
 
 .heart-icon {
@@ -39,7 +43,7 @@
 }
 
 .heart-icon.press {
-  color:#e23b3b;
+  color:#bbb;
 }
 
 .liked-span.press {
@@ -54,4 +58,4 @@
   50% {color:#e23b3b;}
   100% {color: transparent;}
 }
-
+*/

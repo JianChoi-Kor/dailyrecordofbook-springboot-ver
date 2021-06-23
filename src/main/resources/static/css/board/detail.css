@@ -17,7 +17,6 @@
 	border-bottom: 1px solid rgba(0, 0, 0, .2);
 	width: 760px;
 	height: 60px;
-	background:url('input_bg.jpg') no-repeat;
 	font-size:27px;
 	color:#000;
 	display: table-cell; 
@@ -55,7 +54,6 @@
 	border-top: 1px solid rgba(0, 0, 0, .2);
 	border-bottom: 1px solid rgba(0, 0, 0, .2);
 	width: 760px;
-	background:url('input_bg.jpg') no-repeat;
 	font-size:20px;
 	color:#000;
 }
@@ -240,5 +238,11 @@
 }
 
 
+.likeForm {
+  position: relative;
+}
 
+.fa-heart {
+    cursor:pointer;
+}
 

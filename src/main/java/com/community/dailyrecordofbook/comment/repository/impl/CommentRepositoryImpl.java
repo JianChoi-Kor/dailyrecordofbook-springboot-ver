@@ -31,7 +31,8 @@ public class CommentRepositoryImpl implements CommentRepositoryCustom {
                         comment.useAt,
                         user.realName,
                         user.picture,
-                        comment.createdDate))
+                        comment.createdDate,
+                        comment.likeTotal))
                 .from(comment)
                 .leftJoin(user).on(comment.writerIdx.eq(user.idx))
                 .where(comment.boardIdx.eq(boardIdx))

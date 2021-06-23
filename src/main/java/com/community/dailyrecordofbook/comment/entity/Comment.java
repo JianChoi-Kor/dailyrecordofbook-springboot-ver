@@ -34,6 +34,10 @@ public class Comment extends BaseTimeEntity {
     @Setter
     private String useAt;
 
+    @Column
+    @Setter
+    private Long likeTotal = 0L;
+
     public Comment(WriteComment writeComment) {
         this.boardIdx = writeComment.getBoardIdx();
         this.writerIdx = writeComment.getWriterIdx();
