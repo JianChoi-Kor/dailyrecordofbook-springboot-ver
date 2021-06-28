@@ -132,12 +132,12 @@ public class FileUtil {
             int thumb_h = (int) (origin_h * ratio);
 
             BufferedImage destImg = Scalr.resize(srcImg, thumb_w, thumb_h);
-            String thumbFileNm = "t_" + fileName;
+            String thumbFileNm = "thumb_" + fileName;
             File thumbFile = new File(basePath + "/" + thumbFileNm);
             ImageIO.write(destImg, extension, thumbFile);
         } else {
             BufferedImage destImg = Scalr.resize(srcImg, (int)origin_w, (int)origin_h);
-            String thumbFileNm = "t_" + fileName;
+            String thumbFileNm = "thumb_" + fileName;
             File thumbFile = new File(basePath + "/" + thumbFileNm);
             ImageIO.write(destImg, extension, thumbFile);
         }

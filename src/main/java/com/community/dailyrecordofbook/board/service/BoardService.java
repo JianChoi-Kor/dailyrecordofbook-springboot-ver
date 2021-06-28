@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,7 +56,7 @@ public class BoardService {
         Map<String, Object> json = new HashMap<String, Object>();
         json.put("uploaded", 1);
         json.put("fileName", writeImage);
-        json.put("url", loadPath + "/" + "t_" + writeImage);
+        json.put("url", loadPath + "/" + "thumb_" + writeImage);
         return json;
     }
 
@@ -84,7 +85,7 @@ public class BoardService {
         return "redirect:/board/" + updateBoard.getIdx() + "?flag=detail";
     }
 
-    public int delete(DeleteInfo deleteInfo) {
+    public int delete(DeleteInfo deleteInfo, HttpServletRequest request) {
         User user = userCustomRepositorySupport.findByIdx(deleteInfo.getSessionUserIdx());
         if(ObjectUtils.isEmpty(user)) {
             return 3; // 해당 유저가 없을 경우
@@ -99,6 +100,21 @@ public class BoardService {
             }
         }
         try {
+            String rootPath = request.getSession().getServletContext().getRealPath("/");
+            String filePath = rootPath + board.getMainImage();
+            String originPath = rootPath + board.getMainImage().replace("thumb_", "");
+
+            // 썸네일 삭제
+            File file = new File(filePath);
+            if(file.exists()) {
+                file.delete();
+            }
+            // 원본 파일 삭제
+            File originFile = new File(originPath);
+            if(originFile.exists()) {
+                originFile.delete();
+            }
+
             boardRepository.save(board.deleteBoard(board));
         } catch (Exception e) {
             return 2; // 수정 오류

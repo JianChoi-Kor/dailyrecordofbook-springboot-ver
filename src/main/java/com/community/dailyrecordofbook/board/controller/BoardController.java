@@ -43,8 +43,8 @@ public class BoardController {
 
     @ResponseBody
     @PostMapping("/delete")
-    public int delete(@RequestBody DeleteInfo deleteInfo) {
-        return boardService.delete(deleteInfo);
+    public int delete(@RequestBody DeleteInfo deleteInfo, HttpServletRequest request) {
+        return boardService.delete(deleteInfo, request);
     }
 
     @ResponseBody
