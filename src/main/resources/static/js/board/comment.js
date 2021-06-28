@@ -1,5 +1,6 @@
 
 
+
 // 댓글 쓰기
 function writeComment() {
 
@@ -74,6 +75,9 @@ function getCommentList() {
         if(item.useAt == "1") {
             item.cmtContent = '삭제된 댓글입니다.';
         }
+        if(item.writerProfile == null) {
+            item.writerProfile = '/images/profile.jpg';
+        }
 
         let regDate = item.regDate.replace('T', ' ');
 
@@ -134,6 +138,18 @@ function getCommentList() {
 		}
 
 		html +=		"</div>"
+
+
+		// 사용자 role
+        if(document.getElementById('role')) {
+            let role = document.getElementById('role').value;
+            if(role === "ADMIN" && item.useAt !== "1") {
+                html += "<div>"
+                html += "&nbsp&nbsp&nbsp"
+                html +=		'<input type="button" class="cmt_btn" id="del_btn'+item.idx+'" value="관리자 댓글 삭제" onclick="delAjax('+item.boardIdx+', '+item.idx+', '+intUserIdx+')">'
+                html += "</div>"
+                }
+            }
 		html +=	"</div>"
 
         return html;

@@ -17,6 +17,7 @@
         <div class="btn" th:if="${#strings.equals(session.user.role, 'ADMIN')}">
             <input type="button" class="write_btn" value="공지사항 등록" th:onclick="write_action()">
             <input type="button" class="write_btn" value="회원관리" th:onclick="admin_action()">
+            <input type="button" class="write_btn" value="북슬라이드 등록" th:onclick="slide_action()">
         </div>
     </th:block>
 

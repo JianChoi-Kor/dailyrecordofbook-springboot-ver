@@ -5,6 +5,10 @@ import com.community.dailyrecordofbook.comment.dto.ViewComment;
 import com.community.dailyrecordofbook.comment.dto.WriteComment;
 import com.community.dailyrecordofbook.comment.entity.Comment;
 import com.community.dailyrecordofbook.comment.repository.CommentRepository;
+import com.community.dailyrecordofbook.user.entity.Role;
+import com.community.dailyrecordofbook.user.entity.User;
+import com.community.dailyrecordofbook.user.repository.UserCustomRepositorySupport;
+import com.community.dailyrecordofbook.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
@@ -16,6 +20,7 @@ import java.util.List;
 public class CommentService {
 
     private final CommentRepository commentRepository;
+    private final UserCustomRepositorySupport userCustomRepositorySupport;
 
     public int writeComment(WriteComment writeComment, Errors errors) {
         if(errors.hasErrors()) {
@@ -39,9 +44,13 @@ public class CommentService {
         if(comment == null) {
             return 1;
         }
-        if(comment.getWriterIdx() != loginUserIdx) {
-            return 1;
+        User user = userCustomRepositorySupport.findByIdx(loginUserIdx);
+        if(user.getRole() != Role.ADMIN) {
+            if(comment.getWriterIdx() != loginUserIdx) {
+                return 1;
+            }
         }
+
         comment.setUseAt("1");
         commentRepository.save(comment);
         return 0;

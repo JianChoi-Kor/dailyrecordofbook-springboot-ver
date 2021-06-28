@@ -27,8 +27,8 @@
         <input type="hidden" id="boardIdx" th:value="${boardInfo.idx}">
 
         <div class="btn" th:if="${session.user} != null">
+            <input type="hidden" id="sessionUserIdx" th:value="${session.user.idx}">
             <block th:if="${#strings.equals(session.user.idx, boardInfo.writerIdx)}">
-                <input type="hidden" id="sessionUserIdx" th:value="${session.user.idx}">
                 <input type="button" class="detail_btn" onclick="modify_action()" value="수정">
                 <input type="button" class="detail_btn" onclick="delete_action()" value="삭제">
             </block>
@@ -45,7 +45,15 @@
             <div class="detail_title" th:text="${boardInfo.title}"></div>
             <div class="detail_writerInfo">
                 <input type="hidden" id="writeIdx" th:value="${boardInfo.writerIdx}">
-                <img id="writer_profile_img" th:src="${writerInfo.picture}">
+
+                <div class="writer_profile_img" th:if="${writerInfo.picture} == null">
+                    <img th:src="@{/images/profile.jpg}">
+                </div>
+
+                <div class="writer_profile_img" th:unless="${writerInfo.picture} == null">
+                    <img th:src="${writerInfo.picture}">
+                </div>
+
                 <div id="writer_nm" th:text="${writerInfo.realName}"></div>
             </div>
             <div th:text="${#temporals.format(boardInfo.createdDate, 'yyyy-MM-dd HH:mm')}"></div>
@@ -78,7 +86,9 @@
 
         <div class="btn" th:if="${session.user} != null">
             <block th:if="${#strings.equals(session.user.role, 'ADMIN')}">
-                <input type="button" class="detail_btn" onclick="delete_action()" value="관리자용 삭제">
+                <block th:if="${#strings.equals(boardInfo.categoryIdx, '1')}">
+                    <input type="button" class="detail_btn" onclick="delete_action()" value="관리자 글 삭제">
+                </block>
             </block>
         </div>
 

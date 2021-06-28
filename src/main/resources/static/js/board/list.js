@@ -25,3 +25,7 @@ function openDetail(boardIdx) {
 function admin_action() {
     location.href='/user/getList';
 }
+
+function slide_action() {
+    location.href='/addBook';
+}

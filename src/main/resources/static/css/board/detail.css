@@ -32,7 +32,7 @@
 	margin-top: 20px;
 }
 
-#writer_profile_img {
+.writer_profile_img > img {
 	width: 60px;
 	height: 60px;
 	border-radius: 60px;
@@ -184,7 +184,7 @@
     position: relative;
     height: 26px;
     font-size: 0.8em;
-    padding: 0.4em 1.2em;
+    padding: 0.2em 1.2em;
     cursor: pointer;
     transition: 800ms ease all;
     outline: none;
