@@ -3,9 +3,13 @@
 
 .h1 {
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 65px;
+    margin-bottom: 55px;
     font-size: 30px;
+}
+
+.fa-book {
+    font-size: 24px;
 }
 
 .category {
@@ -71,7 +75,6 @@
 
 .content {
 	background-color: #fff;
-	border: solid 1px #ddd;
 	float: left;
 	justify-content: center;
 	padding: 19px;
@@ -105,10 +108,11 @@
 	margin-top: 15px;
 }	
 
-.profileImg {
-	width: 60px;
-	height: 60px;
-	border-radius: 60px;
+.profileImg>img {
+    margin: 1px;
+	width: 42px;
+	height: 42px;
+	border-radius: 42px;
 }
 
 h5 {
@@ -160,7 +164,7 @@ h5 p {
     position: relative;
     height: 30px;
     font-size: 1em;
-    padding: 0.4em 1.2em;
+    padding: 0.2em 1.2em;
     cursor: pointer;
     transition: 800ms ease all;
     outline: none;

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/board/communityList.css}">
+    <script src="/js/board/list.js" defer></script>
+</head>
+
+<div layout:fragment="content">
+
+
+    <h1 class="h1"><i class="fas fa-book"></i>&nbsp&nbsp 공지사항 &nbsp&nbsp<i class="fas fa-book"></i></h1>
+
+    <th:block th:if="${session.user} != null">
+        <div class="btn" th:if="${#strings.equals(session.user.role, 'ADMIN')}">
+            <input type="button" class="write_btn" value="공지사항 등록" th:onclick="write_action()">
+        </div>
+    </th:block>
+
+    <form id="categoryForm" method="get" action="/board/list">
+        <div class="gallery">
+            <input type="hidden" name="category" id="categoryIdx" th:value="${param.category}">
+            <div class="content" th:each="board : ${pagination}" th:onclick="|openDetail('${board.boardIdx}')|">
+                <div style="overflow: hidden">
+                    <h2>
+                        <th:block th:if="${board.mainImage} != null">
+                            <img class="listImg" th:src="${board.mainImage}" alt="메인 이미지">
+                        </th:block>
+                        <th:block th:unless="${board.mainImage} != null">
+                            <img class="listImg" th:src="@{/images/mainImgNull.jpg}" alt="메인 이미지">
+                        </th:block>
+                    </h2>
+                </div>
+                <div class="listContent">
+                    <h4 class="listTitle" th:text="${board.title}"></h4>
+                    <h5>
+                        <div class="profileImg">
+                            <th:block th:if="${board.picture} == null">
+                                <img th:src="@{/images/profile.jpg}" alt="글쓴이 프로필">
+                            </th:block>
+                            <th:block th:unless="${board.picture} == null">
+                                <img th:src="${board.picture}" alt="글쓴이 프로필">
+                            </th:block>
+                        </div>
+                        <p class="listWriterNm" th:text="${board.realName}"></p>
+                    </h5>
+                    <p class="regDate" th:text="${#temporals.format(board.regDate, 'yyyy-MM-dd')}"></p>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="page" name="page" value="0"/>
+    </form>
+    <div th:replace="pagination/pagination :: paginationFragment"></div>
+</div>
+
+</html>
+

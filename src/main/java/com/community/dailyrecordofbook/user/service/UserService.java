@@ -1,5 +1,6 @@
 package com.community.dailyrecordofbook.user.service;
 
+import com.community.dailyrecordofbook.board.dto.ListBoard;
 import com.community.dailyrecordofbook.common.config.auth.dto.SessionUser;
 import com.community.dailyrecordofbook.common.service.MailSendService;
 import com.community.dailyrecordofbook.common.util.FileUtil;
@@ -10,20 +11,26 @@ import com.community.dailyrecordofbook.user.entity.User;
 import com.community.dailyrecordofbook.user.repository.UserCustomRepositorySupport;
 import com.community.dailyrecordofbook.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 @RequiredArgsConstructor
 @Service
@@ -131,7 +138,7 @@ public class UserService {
         PrintWriter out = response.getWriter();
 
         if(sessionUser == null) {
-            out.println("<script> alert('올바르지 않은 접근입니다.'); history.back();</script>");
+            out.println("<script> alert('올바르지 않은 접근입니다.');</script>");
             out.flush();
             modelAndView.setViewName("/main");
             return modelAndView;
@@ -151,7 +158,7 @@ public class UserService {
             modelAndView.setViewName("user/myPage");
             return modelAndView;
         } else {
-            out.println("<script> alert('올바르지 않은 접근입니다.'); history.back();</script>");
+            out.println("<script> alert('올바르지 않은 접근입니다.');</script>");
             out.flush();
             modelAndView.setViewName("/main");
         }
@@ -254,5 +261,31 @@ public class UserService {
         } catch (Exception e) {
             return 2; // 임시 비밀번호 발송 오류
         }
+    }
+
+    public ModelAndView getUserList(HttpServletResponse response, ModelAndView modelAndView, Integer page, String search) throws Exception {
+        SessionUser sessionUser = (SessionUser) SessionUtil.getAttribute("user");
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        if(sessionUser == null || sessionUser.getRole() != Role.ADMIN) {
+            out.println("<script> alert('올바르지 않은 접근입니다.');</script>");
+            out.flush();
+            modelAndView.setViewName("/main");
+            return modelAndView;
+        }
+
+        if(page == null || page <= 0) {
+            page = 0;
+        }
+        Integer pageSize = 15;
+
+        Pageable pageable = PageRequest.of(page, pageSize);
+        PageImpl<ListUser> userList = userCustomRepositorySupport.getList(pageable, search);
+
+        modelAndView.addObject("pagination", userList);
+        modelAndView.setViewName("user/list");
+
+        return modelAndView;
     }
 }

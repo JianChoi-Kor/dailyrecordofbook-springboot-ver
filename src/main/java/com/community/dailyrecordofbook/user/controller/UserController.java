@@ -128,5 +128,8 @@ public class UserController {
         return userService.findPassword(findPassword);
     }
 
-
+    @GetMapping("/getList")
+    public ModelAndView getUserList(HttpServletResponse response, ModelAndView modelAndView, Integer page, @RequestParam(required = false) String search) throws Exception {
+        return userService.getUserList(response, modelAndView, page, search);
+    }
 }

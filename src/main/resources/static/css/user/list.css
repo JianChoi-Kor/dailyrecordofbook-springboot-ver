@@ -1,0 +1,71 @@
+.h1 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+tr {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 4px;
+}
+
+tr {
+    background: #000;
+}
+
+.title > td {
+    background: #fff;
+}
+
+tr:nth-child(odd) {
+    background-color: #e5e5e3;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f8f7;
+}
+
+tr > td {
+    padding: 9px;
+    border: 1px solid black;
+}
+
+tr > td {
+    text-align: center;
+}
+
+.user-table {
+    width: 1250px;
+    display: flex;
+    margin: 40px auto;
+    justify-content: center;
+}
+
+.pagination>ul {
+    display: flex;
+}
+
+.pagination>ul>li {
+    margin: 4px;
+    cursor: pointer;
+}
+
+.pagination {
+    width: 1250px;
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+
+
+.search {
+    width: 1250px;
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    justify-content: center;
+}

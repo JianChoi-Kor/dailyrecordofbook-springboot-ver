@@ -12,7 +12,17 @@
 
 <div layout:fragment="content">
     <div class="write_content">
-        <h1 class="h1">글쓰기</h1>
+        <th:block th:if="${#strings.equals(param.category, '1')}">
+            <h1 class="h1"><i class="fas fa-book"></i>&nbsp&nbsp 책방둥이 이야기 글쓰기 &nbsp&nbsp<i class="fas fa-book"></i></h1>
+        </th:block>
+
+        <th:block th:if="${#strings.equals(param.category, '11')}">
+            <h1 class="h1"><i class="fas fa-book"></i>&nbsp&nbsp 모임 등록 &nbsp&nbsp<i class="fas fa-book"></i></h1>
+        </th:block>
+
+        <th:block th:if="${#strings.equals(param.category, '21')}">
+            <h1 class="h1"><i class="fas fa-book"></i>&nbsp&nbsp 공지사항 등록 &nbsp&nbsp<i class="fas fa-book"></i></h1>
+        </th:block>
 
         <form id="write_form" action="/board/write" method="post">
             <input type="hidden" name="categoryIdx" th:value="${param.category}">

@@ -15,33 +15,30 @@ function liked(cmtIdx, loginUserIdx) {
             return;
         }
     } else {
-        likeMotion(cmtIdx);
-        setTimeout(likedNext(cmtIdx, loginUserIdx), 1000);
+        likeMotion(cmtIdx, loginUserIdx);
     }
 }
 
 // 좋아요 모션
-function likeMotion(cmtIdx) {
-    const iconElem = document.querySelector(`#heart-icon${cmtIdx}`);
-//    const spanElem = document.querySelector(`#liked-span${cmtIdx}`);
+function likeMotion(cmtIdx, loginUserIdx) {
 
-                    iconElem.classList.remove('fas');
-                    iconElem.classList.add('far');
+    var iconElem = document.querySelector(`#heart-icon${cmtIdx}`);
 
-    const PRESSED_CLASS = "press";
-
-    iconElem.classList.toggle(PRESSED_CLASS);
-//    spanElem.classList.toggle(PRESSED_CLASS);
-}
-
-function likedNext(cmtIdx, loginUserIdx) {
-    var cmtId = document.querySelector(`#heart-icon${cmtIdx}`);
-    if(cmtId.classList.contains('press')) {
+    if(iconElem.classList.contains('far')) {
         likeAddAjax(cmtIdx, loginUserIdx);
     } else {
         likeDelAjax(cmtIdx, loginUserIdx);
     }
+
+    if(iconElem.classList.contains('fas')) {
+        iconElem.classList.remove('fas');
+        iconElem.classList.add('far');
+    } else {
+        iconElem.classList.remove('far');
+        iconElem.classList.add('fas');
+    }
 }
+
 
 // 좋아요 DB 저장
 function likeAddAjax(cmtIdx, loginUserIdx) {
@@ -102,12 +99,10 @@ function likeLoad() {
         result.forEach(function(item) {
             if(item.userIdx == userIdx) {
                 var cmtId = document.querySelector(`#heart-icon${item.cmtIdx}`);
-//                var spanId = document.querySelector(`#liked-span${item.cmtIdx}`);
 
-                if(cmtId != null && spanId != null) {
-                    const PRESSED_CLASS = "press";
-                    cmtId.classList.add(PRESSED_CLASS);
-//                    spanId.classList.add(PRESSED_CLASS);
+                if(cmtId != null) {
+                    cmtId.classList.remove('far');
+                    cmtId.classList.add('fas');
                 } else {
                     setTimeout(location.reload(), 500);
                 }

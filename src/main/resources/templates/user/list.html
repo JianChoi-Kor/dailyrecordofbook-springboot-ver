@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/user/list.css}">
+    <script src="/js/user/list.js" defer></script>
+</head>
+
+<div layout:fragment="content">
+
+    <a href="/user/getList">
+        <h1 class="h1">회원 관리</h1>
+    </a>
+
+    <form id="categoryForm" method="get" action="/user/getList">
+    <div class="user-table">
+        <table>
+            <tr class="title">
+                <td>가입된 이름</td>
+                <td>실명</td>
+                <td>이메일</td>
+                <td>가입 사이트</td>
+                <td>휴대폰</td>
+                <td>성별</td>
+                <td>생년월일</td>
+                <td>책방일지 검색 경로</td>
+                <td>한 달에 읽는 책</td>
+                <td>가장 인상 깊었던 책</td>
+            </tr>
+
+            <th:block th:if="${pagination.totalPages} > 0">
+                <tr th:each="user : ${pagination}">
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.realName}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.type}"></td>
+                    <td th:text="${user.phone}"></td>
+                    <td th:text="${user.gender}"></td>
+                    <td th:text="${user.birth}"></td>
+                    <td th:text="${user.searchInfo}"></td>
+                    <td th:text="${user.readingVolume}"></td>
+                    <td th:text="${user.best}"></td>
+                </tr>
+            </th:block>
+
+            <th:block th:unless="${pagination.totalPages} > 0">
+                <tr style="height: 40px">
+                    <td colspan="10">해당하는 회원이 존재하지 않습니다.</td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+
+
+        <div class="search">
+            <input type="text" name="search" placeholder="이름 또는 전화번호를 입력해주세요." size="30" maxlength="11">
+            <button> 검색 </button>
+        </div>
+
+        <input type="hidden" id="page" name="page" value="0"/>
+    </form>
+
+    <div th:replace="pagination/pagination :: paginationFragment"></div>
+</div>
+
+</html>
+
+
+
+
+
+

@@ -10,6 +10,7 @@
 	text-align: center;
 	margin-bottom: 50px;
 	font-size: 30px;
+	font-weight: 700;
 }
 
 .detail_title {
@@ -100,7 +101,7 @@
     position: relative;
     height: 30px;
     font-size: 1em;
-    padding: 0.4em 1.2em;
+    padding: 0.2em 1.2em;
     cursor: pointer;
     transition: 800ms ease all;
     outline: none;
@@ -246,3 +247,7 @@
     cursor:pointer;
 }
 
+.fa-heart:hover {
+    transform: scale(1.5);
+    transition: 0.5s;
+}

@@ -34,7 +34,7 @@ public class BoardCustomRepositorySupport extends QuerydslRepositorySupport {
     public PageImpl<ListBoard> getList(Long categoryIdx, Pageable pageable) {
         JPQLQuery<ListBoard> query = queryFactory
                 .select(Projections.constructor(ListBoard.class,
-                        board.idx, board.categoryIdx, board.title, board.mainImage, user.realName, user.picture))
+                        board.idx, board.categoryIdx, board.title, board.mainImage, user.realName, user.picture, board.createdDate))
                 .from(board)
                 .join(user).on(board.writerIdx.eq(user.idx))
                 .where(board.categoryIdx.eq(categoryIdx).and(board.useAt.eq("0")));

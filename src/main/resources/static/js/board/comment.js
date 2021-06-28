@@ -100,26 +100,21 @@ function getCommentList() {
 
         if(item.useAt !== "1") {
         html +=				'<div class="likeForm">'
-        html +=					'<i class="fas fa-heart" id="heart-icon'+item.idx+'" onclick="liked('+item.idx+' ,'+loginUserIdx+')"></i>'
-//        html +=					'<span class="liked-span" id="liked-span'+item.idx+'">liked!</span>'
+        html +=					'<i class="far fa-heart" id="heart-icon'+item.idx+'" onclick="liked('+item.idx+' ,'+loginUserIdx+')"></i>'
 
         if(item.likeTotal !== 0) {
-        html +=                 '<span> 좋아요  </span>'
+        html +=                 '<span>&nbsp 좋아요  </span>'
         html +=                 '<span id=like'+item.idx+'>'+item.likeTotal+'</span>'
         } else {
-        html +=                 '<span> 좋아요  </span>'
+        html +=                 '<span>&nbsp 좋아요  </span>'
         html +=                 '<span id=like'+item.idx+'></span>'
         }
-
-        html +=					'<span class="likeCount" id="count'+item.idx+'"></span>'
         html +=				'</div>'
         }
 
         else {
         html +=				'<div class="likeForm hidden">'
-        html +=					'<i class="fas fa-heart heart-icon" id="heart-icon'+item.idx+'" onclick="liked('+item.idx+' ,'+loginUserIdx+')"></i>'
-//        html +=					'<span class="liked-span" id="liked-span'+item.idx+'">liked!</span>'
-        html +=					'<span class="likeCount" id="count'+item.idx+'"></span>'
+        html +=					'<i class="far fa-heart" id="heart-icon'+item.idx+'" onclick="liked('+item.idx+' ,'+loginUserIdx+')"></i>'
         html +=				'</div>'
         }
 

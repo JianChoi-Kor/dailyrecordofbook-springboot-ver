@@ -9,6 +9,7 @@ import com.community.dailyrecordofbook.board.repository.BoardRepository;
 import com.community.dailyrecordofbook.common.config.auth.dto.SessionUser;
 import com.community.dailyrecordofbook.common.util.FileUtil;
 import com.community.dailyrecordofbook.common.util.SessionUtil;
+import com.community.dailyrecordofbook.user.entity.Role;
 import com.community.dailyrecordofbook.user.entity.User;
 import com.community.dailyrecordofbook.user.repository.UserCustomRepositorySupport;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -83,9 +85,18 @@ public class BoardService {
     }
 
     public int delete(DeleteInfo deleteInfo) {
+        User user = userCustomRepositorySupport.findByIdx(deleteInfo.getSessionUserIdx());
+        if(ObjectUtils.isEmpty(user)) {
+            return 3; // 해당 유저가 없을 경우
+        }
+
+        // 해당 글
         Board board = boardCustomRepositorySupport.findByIdx(deleteInfo.getBoardIdx());
-        if(board.getWriterIdx() != deleteInfo.getSessionUserIdx()) {
-            return 1; // 글 작성자 고유 번호와 접속자 고유 번호가 일치 하지 않는 경우
+        // 관리자가 아닌 경우
+        if(user.getRole() != Role.ADMIN) {
+            if(board.getWriterIdx() != deleteInfo.getSessionUserIdx()) {
+                return 1; // 글 작성자 고유 번호와 접속자 고유 번호가 일치 하지 않는 경우
+            }
         }
         try {
             boardRepository.save(board.deleteBoard(board));
@@ -158,7 +169,7 @@ public class BoardService {
             page = 0;
         }
         Integer pageSize = 6;
-        if(categoryIdx == 11) {
+        if(categoryIdx == 11 || categoryIdx == 21) {
             pageSize = 4;
         }
 
@@ -171,14 +182,10 @@ public class BoardService {
             return "board/list";
         } else if(categoryIdx == 11 || categoryIdx == 12) {
             return "board/communityList";
+        } else if(categoryIdx == 21) {
+            return "board/notification";
         } else {
             return "main";
         }
     }
-
-
-
-
-
-
 }

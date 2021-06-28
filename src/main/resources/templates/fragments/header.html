@@ -2,21 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <header th:fragment="headerFragment">
         <nav class="navbar">
-            <div class="navbar_logo_up">
+            <div class="logo">
                 <a href="/main">
-                    <img th:src="@{/images/main_logo.png}">
+                    <img th:src="@{/images/titleLogo.svg}" width="100">
                 </a>
-            </div>
-            <div class="navbar_logo_down">
-            <a href="/main">
-                <img th:src="@{/images/main_logo.png}">
-            </a>
             </div>
 
             <ul class="navbar_menu">
-                <li><a href="/main">책방일지는</a></li>
-                <li><a href="/board/list?category=11">책방일지 독서 모임</a></li>
-                <li><a href="/board/list?category=1">책방일지와 함께하며</a></li>
+                <li><a href="/board/list?category=21">공지사항</a></li>
+                <li><a href="/board/list?category=11">책방일지 모임</a></li>
+                <li><a href="/board/list?category=1">책방둥이 이야기</a></li>
+                <li><a href="https://smartstore.naver.com/dailyrecordofbook" target="_blank">책방일지 스토어</a></li>
             </ul>
 
             <!-- session에 유저 정보가 없을 경우 -->
@@ -32,7 +28,7 @@
                     <img th:src="@{/images/profile.jpg}">
                 </div>
 
-                <div class="profileImg" th:unless="${session.user.picture} == null">
+                <div class="sProfileImg" th:unless="${session.user.picture} == null">
                     <img th:src="${session.user.picture}">
                 </div>
 

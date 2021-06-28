@@ -10,7 +10,7 @@
 
 <div layout:fragment="content">
 
-    <h1 class="h1">책방일지와 함께</h1>
+    <h1 class="h1"><i class="fas fa-book"></i>&nbsp&nbsp 책방둥이 이야기 &nbsp&nbsp<i class="fas fa-book"></i></h1>
     <div class="btn" th:if="${session.user} != null">
         <input type="button" class="write_btn" value="글쓰기" th:onclick="write_action()">
     </div>
@@ -21,7 +21,12 @@
         <div class="content" th:each="board : ${pagination}" th:onclick="|openDetail('${board.boardIdx}')|">
             <div style="overflow: hidden">
                 <h2>
-                    <img class="listImg" th:src="${board.mainImage}" alt="메인 이미지">
+                    <th:block th:if="${board.mainImage} != null">
+                        <img class="listImg" th:src="${board.mainImage}" alt="메인 이미지">
+                    </th:block>
+                    <th:block th:unless="${board.mainImage} != null">
+                        <img class="listImg" th:src="@{/images/mainImgNull.jpg}" alt="메인 이미지">
+                    </th:block>
                 </h2>
             </div>
             <div class="listContent">
@@ -35,7 +40,7 @@
                             <img th:src="${board.picture}" alt="글쓴이 프로필">
                         </th:block>
                     </div>
-                    <p class="listWriteNm" th:text="${board.realName}"></p>
+                    <p class="listWriterNm" th:text="${board.realName}"></p>
                 </h5>
             </div>
         </div>

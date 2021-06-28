@@ -3,9 +3,13 @@
 
 .h1 {
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 65px;
+    margin-bottom: 55px;
     font-size: 30px;
+}
+
+.fa-book {
+    font-size: 24px;
 }
 
 .category {
@@ -20,7 +24,7 @@
     color: #fff;
     border: none;
     position: relative;
-    height: 60px;
+    height: 45px;
     font-size: 1.1em;
     padding: 0.4em 2em;
     cursor: pointer;
@@ -73,7 +77,6 @@
 
 .content {
 	background-color: #fff;
-	border: solid 1px #ddd;
 	float: left;
 	justify-content: center;
 	padding: 19px;
@@ -97,20 +100,21 @@
 }
 
 .listTitle {
-	font-size: 19px;
-	margin: 23px 0 12px 8px;
+	font-size: 26px;
+	margin: 26px 0 15px 12px;
 	word-break: break-all;
 }
 
 .listWriterNm {
-	font-size: 16px;
-	margin-top: 15px;
+    margin-top: 20px;
+	font-size: 18px;
 }
 
-.profileImg {
-	width: 60px;
-	height: 60px;
-	border-radius: 60px;
+.profileImg > img {
+    margin: 5px;
+	width: 55px;
+	height: 55px;
+	border-radius: 55px;
 }
 
 h5 {
@@ -145,12 +149,16 @@ h5 p {
     cursor: pointer;
 }
 
-
 .clicked>a {
 	color: #ebcacf;
 	font-weight: bold;
 }
 
+.regDate {
+    margin-left: 15px;
+    margin-top: 10px;
+    font-size: 16px;
+}
 
 /* write btn */
 
@@ -161,7 +169,7 @@ h5 p {
     position: relative;
     height: 30px;
     font-size: 1em;
-    padding: 0.4em 1.2em;
+    padding: 0.2em 1.2em;
     cursor: pointer;
     transition: 800ms ease all;
     outline: none;

@@ -41,6 +41,9 @@ function delete_action() {
                 case 2:
                     alert('글 삭제에 실패했습니다.');
                     break;
+                case 3:
+                    alert('잘못된 요청입니다.');
+                    break;
             }
         }
     }

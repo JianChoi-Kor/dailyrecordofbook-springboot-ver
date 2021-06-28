@@ -16,7 +16,7 @@
 .top-slide-container {
     margin: 0 auto;
     width: 1040px;
-    height: 350px;
+    height: 250px;
     position: relative;
     overflow: hidden;
 }
@@ -83,8 +83,8 @@
 
 /* icon 부분 start */
 .middle {
-    margin: 100px auto 30px;
-    max-width: 1040px;
+    margin: 70px auto 30px;
+    max-width: 750px;
     display: flex;
     justify-content: space-around;
     text-align: center;
@@ -92,15 +92,21 @@
 
 .icon {
     margin-bottom: 15px;
-    font-size: 55px;
+    font-size: 30px;
+}
+
+.h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 .h3 {
-    font-size: 38px;
+    font-size: 30px;
 }
 
 .h3 > span {
-    font-size: 27px;
+    font-size: 24px;
 }
 
 .h6 {
@@ -108,12 +114,22 @@
     font-size: 15px;
 }
 
+.middle-logo {
+    margin: 0 auto;
+}
+
+.middle-logo > img {
+    margin-left: 5px;
+}
+
 .middle-etc {
     max-width: 1040px;
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin: 60px auto;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 15px;
 }
 
 .middle-etc > h3 {
@@ -121,11 +137,12 @@
 }
 
 .middle-etc > h4 {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 
-.inquiry_btn {
+
+.instagram_btn {
 	background: inherit; 
 	border:none; 
 	box-shadow:none; 
@@ -135,33 +152,116 @@
 	cursor:pointer
 }
 
-.inquiry_btn {
+.instagram_btn {
 	position: fixed;
 	display: flex;
-	width: 115px;
-	height: 115px;
-	background-color: #ebcacf;
+	width: 48px;
+	height: 48px;
 	color: white;
-	font-size: 21px;
-	border-radius: 115px;
+	font-size: 15px;
 	justify-content: space-around;
-	top: 68%;
-	left: 83%;
+	top: 69%;
+	left: 86%;
 	cursor:pointer;
     transition:800ms ease all;
+    opacity: 0.85;
 }
 
-
-.inquiry_btn:hover{
-    background:#fff;
-    color:#ebcacf;
+.instagram_btn:hover{
+    transform: scale(1.15);
+    transition: 0.5s;
 }
 
-.inquiry_btn:focus{ 	
+.instagram_btn:focus{
     border: none;
     outline:none;
 }
 
+
+.blog_btn {
+	background: inherit;
+	border:none;
+	box-shadow:none;
+	border-radius:0;
+	padding:0;
+	overflow:visible;
+	cursor:pointer
+}
+
+.blog_btn {
+	position: fixed;
+	display: flex;
+	width: 48px;
+	height: 48px;
+	color: white;
+	font-size: 15px;
+	justify-content: space-around;
+	top: 62%;
+	left: 86%;
+	cursor:pointer;
+    transition:800ms ease all;
+    opacity: 0.85;
+}
+
+.blog_btn:hover{
+    transform: scale(1.15);
+    transition: 0.5s;
+}
+
+.blog_btn:focus{
+    border: none;
+    outline:none;
+}
+
+.kakao_btn {
+	background: inherit;
+	border:none;
+	box-shadow:none;
+	border-radius:0;
+	padding:0;
+	overflow:visible;
+	cursor:pointer
+}
+
+.kakao_btn {
+	position: fixed;
+	display: flex;
+	width: 48px;
+	height: 48px;
+	color: white;
+	font-size: 15px;
+	justify-content: space-around;
+	top: 55%;
+	left: 86%;
+	cursor:pointer;
+    transition:800ms ease all;
+    opacity: 0.85;
+}
+
+.kakao_btn:hover{
+    transform: scale(1.15);
+    transition: 0.5s;
+}
+
+.kakao_btn:focus{
+    border: none;
+    outline:none;
+}
+
+.center-logo>img {
+    width: 110px;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.center-logo>h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 19px;
+    margin-top: 50px;
+    font-weight: 700;
+}
 
 
 @media screen and (max-width: 780px) {
@@ -201,8 +301,8 @@
 	.inquiry_btn {
 		position: fixed;
 		display: flex;
-		width: 65px;
-		height: 65px;
+		width: 68px;
+		height: 68px;
 		background-color: #ebcacf;
 		color: white;
 		font-size: 16px;
@@ -267,6 +367,15 @@
 
 .bookSlide {
 	width: 100%;
+	margin-top: 60px;
+}
+
+.bookSlide>p {
+    font-size: 23px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 115px;
+    margin-bottom: 35px;
 }
 
 .book-slide-container {
@@ -385,16 +494,18 @@
 
 
 .calendar-title {
-	margin: 60px auto;
+	margin: 0px auto;
 	text-align: center;
+	margin-top: 115px;
+	margin-bottom: 40px;
 }
 
 .calendar-title>p {
-	font-size: 25px;
+	font-size: 23px;
 	font-weight: bold;
 }
 
 #calendar{
-   width:800px;
-   margin:90px auto;
+   width:670px;
+   margin:40px auto;
 }

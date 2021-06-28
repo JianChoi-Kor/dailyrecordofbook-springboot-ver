@@ -76,6 +76,12 @@
             </div>
         </block>
 
+        <div class="btn" th:if="${session.user} != null">
+            <block th:if="${#strings.equals(session.user.role, 'ADMIN')}">
+                <input type="button" class="detail_btn" onclick="delete_action()" value="관리자용 삭제">
+            </block>
+        </div>
+
     </div>
 
 </div>
