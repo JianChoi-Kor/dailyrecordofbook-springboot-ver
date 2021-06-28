@@ -21,3 +21,7 @@ function searchList(page) {
 function openDetail(boardIdx) {
     location.href='/board/' + boardIdx + '?flag=detail';
 }
+
+function admin_action() {
+    location.href='/user/getList';
+}

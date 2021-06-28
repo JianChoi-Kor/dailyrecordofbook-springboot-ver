@@ -10,7 +10,7 @@
 
 <div layout:fragment="content">
 
-    <h1 class="h1"><i class="fas fa-book"></i>&nbsp&nbsp 책방둥이 이야기 &nbsp&nbsp<i class="fas fa-book"></i></h1>
+    <h1 class="h1">책방둥이 이야기</h1>
     <div class="btn" th:if="${session.user} != null">
         <input type="button" class="write_btn" value="글쓰기" th:onclick="write_action()">
     </div>

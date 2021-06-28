@@ -11,11 +11,12 @@
 <div layout:fragment="content">
 
 
-    <h1 class="h1"><i class="fas fa-book"></i>&nbsp&nbsp 공지사항 &nbsp&nbsp<i class="fas fa-book"></i></h1>
+    <h1 class="h1">공지사항</h1>
 
     <th:block th:if="${session.user} != null">
         <div class="btn" th:if="${#strings.equals(session.user.role, 'ADMIN')}">
             <input type="button" class="write_btn" value="공지사항 등록" th:onclick="write_action()">
+            <input type="button" class="write_btn" value="회원관리" th:onclick="admin_action()">
         </div>
     </th:block>
 
