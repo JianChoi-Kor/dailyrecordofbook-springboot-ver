@@ -5,10 +5,7 @@ import com.community.dailyrecordofbook.main.service.MainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,8 +28,15 @@ public class MainController {
         return "addBook";
     }
 
-    @PostMapping("/addBook")
+    @PostMapping("/addBookSlide")
     public String addBook(AddBook addBook, MultipartFile bookSlideFile, HttpServletRequest request, HttpServletResponse response) throws Exception {
         return mainService.addBook(addBook, bookSlideFile, request, response);
+    }
+
+    @ResponseBody
+    @DeleteMapping("/delBook")
+    public int delBook(@RequestParam Long bookIdx, @RequestParam Long loginUserIdx) throws Exception {
+
+        return mainService.delBook(bookIdx, loginUserIdx);
     }
 }

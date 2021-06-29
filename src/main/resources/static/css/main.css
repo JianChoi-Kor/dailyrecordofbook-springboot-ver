@@ -161,7 +161,7 @@
 	font-size: 15px;
 	justify-content: space-around;
 	top: 69%;
-	left: 86%;
+	left: 88%;
 	cursor:pointer;
     transition:800ms ease all;
     opacity: 0.85;
@@ -197,7 +197,7 @@
 	font-size: 15px;
 	justify-content: space-around;
 	top: 62%;
-	left: 86%;
+	left: 88%;
 	cursor:pointer;
     transition:800ms ease all;
     opacity: 0.85;
@@ -232,7 +232,7 @@
 	font-size: 15px;
 	justify-content: space-around;
 	top: 55%;
-	left: 86%;
+	left: 88%;
 	cursor:pointer;
     transition:800ms ease all;
     opacity: 0.85;
@@ -262,6 +262,24 @@
     margin-top: 50px;
     font-weight: 700;
 }
+
+.store-img {
+    margin-top: 10px;
+}
+
+.store-img > img {
+    display: flex;
+    margin: 0px auto;
+    opacity: 0.9;
+}
+
+.del_btn {
+    width: 55px;
+    height: 30px;
+    position: relative;
+    bottom: 85px;
+}
+
 
 
 @media screen and (max-width: 780px) {
@@ -368,6 +386,11 @@
 .bookSlide {
 	width: 100%;
 	margin-top: 60px;
+}
+
+.slideBox {
+    width: 1040px;
+    margin: 0 auto;
 }
 
 .bookSlide>p {

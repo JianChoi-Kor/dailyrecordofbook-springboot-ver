@@ -32,9 +32,6 @@
                 <div class="slide">
                     <img th:src="@{/images/slide3.jpg}" alt="">
                 </div>
-                <div class="slide">
-                    <img th:src="@{/images/slide4.jpg}" alt="">
-                </div>
             </div>
             <div class="slide-controls">
                 <button id="prev-btn">
@@ -90,29 +87,41 @@
         </div>
 
 
-
+        <div class="slideBox">
         <div class="bookSlide">
             <p>책방일지 모임 도서</p>
             <div class="book-slide-container">
                 <th:block th:each="book : ${bookList}">
                     <div th:id="|bookData${book.idx}|"
+                         th:data-bookidx="${book.idx}"
                          th:data-booktitle="${book.bookTitle}"
                          th:data-communityinfo="${book.communityInfo}"
                          th:data-bookimg="${book.bookImg}"></div>
                     <img th:src="${book.bookImg}" alt="모임 진행 도서" th:onclick="openModal([[${book.idx}]])">
                 </th:block>
             </div>
+            <div class="store-img">
+                <img th:src="@{/images/store.jpg}" alt="">
+            </div>
+        </div>
         </div>
 
         <div id="bookModal" class="hide">
             <h1 id="modClose">X</h1>
+            <input type="hidden" id="modBookIdx">
             <input type="image" src="" id="modBookImg">
             <input type="text" class="modText" id="modBookTitle" readonly>
             <input type="text" class="modText modInfo" id="modCommunityInfo" readonly>
+
+            <th:block th:if="${session.user} != null">
+                <th:block th:if="${#strings.equals(session.user.role, 'ADMIN')}">
+                    <button class="del_btn" onclick="delBook()">delete</button>
+                </th:block>
+            </th:block>
         </div>
 
 
-        <!-- 카카 바로가기 버튼 -->
+        <!-- 카카오 바로가기 버튼 -->
         <div class="kakao">
             <a href="https://pf.kakao.com/_CitEK" target="_blank">
                 <img class="kakao_btn" th:src="@{/images/kakao.png}" alt="">

@@ -37,7 +37,7 @@ window.onload = function() {
 				if (last > imgCnt) { last = 1; }
 				if (first > imgCnt) { first = 1; }
 			}
-		}, 50);   //여기 값을 조정하면 속도를 조정할 수 있다.(위에 1px 이동하는 부분도 조정하면 
+		}, 50);   //여기 값을 조정하면 속도를 조정할 수 있다.(위에 1px 이동하는 부분도 조정하면
 
 		//깔끔하게 변경가능하다           
 
@@ -52,14 +52,14 @@ const bookModalElem = document.querySelector('#bookModal')
 const modBookImgElem = bookModalElem.querySelector('#modBookImg')
 const modBookTitleElem = bookModalElem.querySelector('#modBookTitle')
 const modCommunityInfoElem = bookModalElem.querySelector('#modCommunityInfo')
+const modBookIdxElem = bookModalElem.querySelector('#modBookIdx')
 
 function openModal(bookPk) {
-	
-	console.log(`bookData${bookPk}`)
 	var data = document.querySelector(`#bookData${bookPk}`)
 
-	var {booktitle, communityinfo, bookimg} = data.dataset
-	
+	var {bookidx, booktitle, communityinfo, bookimg} = data.dataset
+
+	modBookIdxElem.value = bookidx
 	modBookImgElem.src = bookimg
 	modBookTitleElem.value = booktitle
 	modCommunityInfoElem.value = communityinfo
@@ -78,6 +78,27 @@ modalCloseElem.addEventListener('click', function() {
 })
 
 
+function delBook() {
+    var bookIdx = document.getElementById('modBookIdx').value;
+    let loginUserIdx = '';
+    if(document.getElementById('userIdx')) {
+        loginUserIdx = document.getElementById('userIdx').value;
+    }
+
+    if(confirm('삭제하시겠습니까?')) {
+        fetch(`/delBook?bookIdx=${bookIdx}&loginUserIdx=${loginUserIdx}`, {
+            method: 'delete'
+        }).then(res => res.json())
+        .then(result => {
+            if(result === 0) {
+                alert('삭제되었습니다.');
+                location.href='/main';
+            } else {
+                alert('삭제에 실패했습니다.');
+            }
+        })
+    }
+}
 
 
 

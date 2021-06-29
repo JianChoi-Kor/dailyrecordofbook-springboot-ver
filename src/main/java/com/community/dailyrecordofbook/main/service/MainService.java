@@ -7,13 +7,18 @@ import com.community.dailyrecordofbook.main.dto.AddBook;
 import com.community.dailyrecordofbook.main.entity.BookSlide;
 import com.community.dailyrecordofbook.main.repository.BookSlideRepository;
 import com.community.dailyrecordofbook.user.entity.Role;
+import com.community.dailyrecordofbook.user.entity.User;
+import com.community.dailyrecordofbook.user.repository.UserCustomRepositorySupport;
+import com.community.dailyrecordofbook.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -22,6 +27,7 @@ import java.util.List;
 public class MainService {
 
     private final BookSlideRepository bookSlideRepository;
+    private final UserCustomRepositorySupport userCustomRepositorySupport;
     private final FileUtil fileUtil;
 
     @Transactional
@@ -60,10 +66,28 @@ public class MainService {
         bookSlide.setBookImg(filePath);
 
         bookSlideRepository.save(bookSlide);
+        response.sendRedirect("main");
         return "main";
     }
 
     public List<BookSlide> getBookList() {
         return bookSlideRepository.findAll();
+    }
+
+    public int delBook(Long bookIdx, Long loginUserIdx) throws Exception {
+        User user = userCustomRepositorySupport.findByIdx(loginUserIdx);
+        if(ObjectUtils.isEmpty(user)) {
+            return 1;
+        }
+        if(user.getRole() != Role.ADMIN) {
+            return 1;
+        }
+
+        BookSlide bookSlide = bookSlideRepository.findByIdx(bookIdx).orElse(null);
+        if(bookSlide == null) {
+            return 1;
+        }
+        bookSlideRepository.delete(bookSlide);
+        return 0;
     }
 }
