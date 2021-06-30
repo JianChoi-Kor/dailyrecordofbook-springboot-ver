@@ -2,7 +2,8 @@
 function modify_action() {
     if(confirm('수정하시겠습니까?')) {
         let boardIdx = document.getElementById('boardIdx');
-        location.href= '/board/' + boardIdx.value + '?flag=modify';
+        let categoryIdx = document.getElementById('categoryIdx');
+        location.href= '/board/' + boardIdx.value + '?category=' + categoryIdx.value + '&flag=modify';
     }
 }
 

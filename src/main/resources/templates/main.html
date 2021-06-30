@@ -43,6 +43,11 @@
             </div>
         </div>
 
+        <div class="top">
+            <img th:src="@{/images/top.jpeg}" alt="">
+        </div>
+
+        <!--
         <div class="center-logo">
             <h1>"청년 인문 공간"</h1>
             <img th:src="@{/images/mainLogo.png}">
@@ -54,6 +59,28 @@
             </div>
             <h4>&nbsp</h4>
             <h3>'책방일지'를 통해 책과의 거리는 더 가깝게 세상과 사람을 따뜻하게 이해하길 바라는 마음으로 다양한 독서경험을 위한 활동을 하고 있습니다.</h3>
+        </div>
+        -->
+
+        <div class="slideBox">
+        <div class="bookSlide">
+            <p>책방일지 모임 도서</p>
+            <div class="book-slide-container">
+                <th:block th:each="book : ${bookList}">
+                    <div th:id="|bookData${book.idx}|"
+                         th:data-bookidx="${book.idx}"
+                         th:data-booktitle="${book.bookTitle}"
+                         th:data-communityinfo="${book.communityInfo}"
+                         th:data-bookimg="${book.bookImg}"></div>
+                    <img th:src="${book.bookImg}" alt="모임 진행 도서" th:onclick="openModal([[${book.idx}]])">
+                </th:block>
+            </div>
+            <div class="store-img">
+                <a href="https://smartstore.naver.com/dailyrecordofbook" target="_blank">
+                    <img th:src="@{/images/store.jpg}" alt="">
+                </a>
+            </div>
+        </div>
         </div>
 
         <!-- 아이콘 부분 -->
@@ -84,26 +111,6 @@
         <div class="middle-etc">
             <h3>더욱 더 많은 사람들이 책과 가까워 지기를 바라며 책방일지는 오늘도 우리의 일지를 써내려갑니다.</h3>
             <h4> < 2021년 6월 기준 > </h4>
-        </div>
-
-
-        <div class="slideBox">
-        <div class="bookSlide">
-            <p>책방일지 모임 도서</p>
-            <div class="book-slide-container">
-                <th:block th:each="book : ${bookList}">
-                    <div th:id="|bookData${book.idx}|"
-                         th:data-bookidx="${book.idx}"
-                         th:data-booktitle="${book.bookTitle}"
-                         th:data-communityinfo="${book.communityInfo}"
-                         th:data-bookimg="${book.bookImg}"></div>
-                    <img th:src="${book.bookImg}" alt="모임 진행 도서" th:onclick="openModal([[${book.idx}]])">
-                </th:block>
-            </div>
-            <div class="store-img">
-                <img th:src="@{/images/store.jpg}" alt="">
-            </div>
-        </div>
         </div>
 
         <div id="bookModal" class="hide">

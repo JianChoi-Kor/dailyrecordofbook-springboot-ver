@@ -35,8 +35,8 @@ public class MainController {
 
     @ResponseBody
     @DeleteMapping("/delBook")
-    public int delBook(@RequestParam Long bookIdx, @RequestParam Long loginUserIdx) throws Exception {
+    public int delBook(@RequestParam Long bookIdx, @RequestParam Long loginUserIdx, HttpServletRequest request) throws Exception {
 
-        return mainService.delBook(bookIdx, loginUserIdx);
+        return mainService.delBook(bookIdx, loginUserIdx, request);
     }
 }

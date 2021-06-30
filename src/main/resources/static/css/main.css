@@ -140,7 +140,13 @@
     margin-top: 20px;
 }
 
-
+.top > img {
+    width: 960px;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 35px;
+}
 
 .instagram_btn {
 	background: inherit; 
@@ -267,7 +273,7 @@
     margin-top: 10px;
 }
 
-.store-img > img {
+.store-img > a > img {
     display: flex;
     margin: 0px auto;
     opacity: 0.9;

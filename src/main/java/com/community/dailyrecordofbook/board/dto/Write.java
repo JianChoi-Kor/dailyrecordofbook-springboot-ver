@@ -17,4 +17,5 @@ public class Write {
     private Long writerIdx;
     private String useAt;
     private String mainImage;
+    private String linkUrl;
 }

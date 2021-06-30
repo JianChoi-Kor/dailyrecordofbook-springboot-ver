@@ -27,6 +27,16 @@
                 <input type="text" class="write_title" name="title" placeholder="제목을 입력해주세요." required th:value="${boardInfo.title}">
             </div>
             <textarea name="content" id="editor" placeholder="내용을 입력해주세요." th:utext="${boardInfo.content}"></textarea>
+
+            <th:block th:if="${#strings.equals(param.category, '11')}">
+                <div th:if="${boardInfo.linkUrl} != null">
+                    <input type="text" class="write_title" name="linkUrl" placeholder="모임 링크를 추가해주세요." th:value="${boardInfo.linkUrl}">
+                </div>
+                <div th:unless="${boardInfo.linkUrl} != null">
+                    <input type="text" class="write_title" name="linkUrl" placeholder="모임 링크를 추가해주세요.">
+                </div>
+            </th:block>
+
             <div>
                 <input type="submit" id="write" class="write_btn" value="수정">
             </div>

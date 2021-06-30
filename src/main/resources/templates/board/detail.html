@@ -65,6 +65,14 @@
             </div>
         </div>
 
+        <th:block th:if="${boardInfo.linkUrl} != null">
+            <a th:href="${boardInfo.linkUrl}" target="_blank">
+                <input type="button" class="detail_btn apply_btn" value="모임 신청하기">
+            </a>
+        </th:block>
+        <div>
+        </div>
+
         <input type="hidden" id="categoryIdx" th:value="${boardInfo.categoryIdx}">
 
         <!-- 댓글 리스트 -->

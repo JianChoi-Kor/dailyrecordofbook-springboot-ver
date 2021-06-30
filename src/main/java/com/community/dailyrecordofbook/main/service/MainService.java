@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -74,7 +75,7 @@ public class MainService {
         return bookSlideRepository.findAll();
     }
 
-    public int delBook(Long bookIdx, Long loginUserIdx) throws Exception {
+    public int delBook(Long bookIdx, Long loginUserIdx, HttpServletRequest request) throws Exception {
         User user = userCustomRepositorySupport.findByIdx(loginUserIdx);
         if(ObjectUtils.isEmpty(user)) {
             return 1;
@@ -87,7 +88,26 @@ public class MainService {
         if(bookSlide == null) {
             return 1;
         }
-        bookSlideRepository.delete(bookSlide);
+
+        try {
+            String rootPath = request.getSession().getServletContext().getRealPath("/");
+            String filePath = rootPath + bookSlide.getBookImg();
+            String originPath = rootPath + bookSlide.getBookImg().replace("thumb_", "");
+
+            // 썸네일 삭제
+            File file = new File(filePath);
+            if(file.exists()) {
+                file.delete();
+            }
+            // 원본 파일 삭제
+            File originFile = new File(originPath);
+            if(originFile.exists()) {
+                originFile.delete();
+            }
+            bookSlideRepository.delete(bookSlide);
+        } catch (Exception e) {
+            return 1;
+        }
         return 0;
     }
 }

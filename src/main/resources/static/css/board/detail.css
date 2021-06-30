@@ -137,7 +137,10 @@
     transition: 800ms ease all;
 }
 
-
+.apply_btn {
+    margin-top: 15px;
+    margin-left: 20px;
+}
 
 
 

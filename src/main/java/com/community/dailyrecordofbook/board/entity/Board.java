@@ -39,6 +39,9 @@ public class Board extends BaseTimeEntity {
     @Column
     private String mainImage;
 
+    @Column
+    private String linkUrl;
+
 
     public Board (Write write) {
         this.categoryIdx = write.getCategoryIdx();
@@ -48,12 +51,14 @@ public class Board extends BaseTimeEntity {
         this.writerIdx = write.getWriterIdx();
         this.useAt = write.getUseAt();
         this.mainImage = write.getMainImage();
+        this.linkUrl = write.getLinkUrl();
     }
 
     public Board updateBoard(Write write) {
         this.title = write.getTitle();
         this.content = write.getContent();
         this.mainImage = write.getMainImage();
+        this.linkUrl = write.getLinkUrl();
         return this;
     }
 
