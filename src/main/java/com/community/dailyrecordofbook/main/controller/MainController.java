@@ -3,6 +3,7 @@ package com.community.dailyrecordofbook.main.controller;
 import com.community.dailyrecordofbook.main.dto.AddBook;
 import com.community.dailyrecordofbook.main.entity.MainBanner;
 import com.community.dailyrecordofbook.main.service.MainService;
+import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,5 +56,10 @@ public class MainController {
     @PostMapping("/addMadinBanner")
     public String addBanner(MainBanner mainBanner, MultipartFile bannerFile, HttpServletRequest request, HttpServletResponse response) throws Exception {
         return mainService.addMainBanner(mainBanner, bannerFile, request, response);
+    }
+
+    @GetMapping("/errorTest")
+    public void errorTest() throws NotFoundException {
+        throw new NotFoundException("errorTest");
     }
 }

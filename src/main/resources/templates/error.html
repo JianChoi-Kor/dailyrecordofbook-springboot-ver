@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/error.css}">
+</head>
+
+<div layout:fragment="content">
+    <div class="errorPage">
+        <div class="errorImage">
+            <img th:src="@{/images/error.png}" alt="">
+        </div>
+
+        <div class="errorMessage">
+            <p th:text="${errorMessage}">
+        </div>
+    </div>
+</div>
+
+</html>
+
+
+
+
+
+

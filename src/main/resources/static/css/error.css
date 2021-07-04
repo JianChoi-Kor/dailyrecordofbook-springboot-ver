@@ -1,0 +1,23 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.errorPage {
+    width: 100%;
+    height: 450px;
+}
+
+.errorImage > img {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 155px;
+    width: 120px;
+}
+
+.errorMessage > p {
+    margin-top: 38px;
+    text-align: center;
+}
