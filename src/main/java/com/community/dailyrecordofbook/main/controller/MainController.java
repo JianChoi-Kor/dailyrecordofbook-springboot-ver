@@ -23,6 +23,7 @@ public class MainController {
     public String main(Model model) {
         model.addAttribute("bookList", mainService.getBookList());
         model.addAttribute("bannerList", mainService.getBannerList());
+        model.addAttribute("communityList", mainService.getCommunityList());
         return "main";
     }
 
@@ -53,7 +54,7 @@ public class MainController {
         return mainService.delBanner(bannerIdx, loginUserIdx, request);
     }
 
-    @PostMapping("/addMadinBanner")
+    @PostMapping("/addMainBanner")
     public String addBanner(MainBanner mainBanner, MultipartFile bannerFile, HttpServletRequest request, HttpServletResponse response) throws Exception {
         return mainService.addMainBanner(mainBanner, bannerFile, request, response);
     }

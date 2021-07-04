@@ -1,5 +1,7 @@
 package com.community.dailyrecordofbook.main.service;
 
+import com.community.dailyrecordofbook.board.dto.ListBoard;
+import com.community.dailyrecordofbook.board.repository.BoardCustomRepositorySupport;
 import com.community.dailyrecordofbook.common.config.auth.dto.SessionUser;
 import com.community.dailyrecordofbook.common.util.FileUtil;
 import com.community.dailyrecordofbook.common.util.SessionUtil;
@@ -33,6 +35,7 @@ public class MainService {
     private final UserCustomRepositorySupport userCustomRepositorySupport;
     private final FileUtil fileUtil;
     private final MainBannerRepository mainBannerRepository;
+    private final BoardCustomRepositorySupport boardCustomRepositorySupport;
 
     @Transactional
     public String addBook(AddBook addBook, MultipartFile bookSlideFile, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -191,5 +194,9 @@ public class MainService {
             return 1;
         }
         return 0;
+    }
+
+    public List<ListBoard> getCommunityList() {
+        return boardCustomRepositorySupport.getCommunityList();
     }
 }

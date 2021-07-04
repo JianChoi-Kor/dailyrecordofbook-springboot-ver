@@ -107,3 +107,7 @@ function delBanner(bannerIdx) {
         })
     }
 }
+
+function toCommunity(boardIdx) {
+    location.href='/board/' + boardIdx + '?flag=detail';
+}

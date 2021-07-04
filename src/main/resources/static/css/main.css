@@ -479,6 +479,38 @@
 }
 
 
+.community {
+    margin-top: 100px;
+    width: 1040px;
+    margin: 0 auto;
+}
+
+.community > p {
+    font-size: 23px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 115px;
+    margin-bottom: 35px;
+}
+
+.communityList {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.communityList > div {
+    width: 185px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.communityImage {
+    width: 145px;
+    display: flex;
+    margin: 0 auto;
+}
+
 
 /* modal css */
 #bookModal {

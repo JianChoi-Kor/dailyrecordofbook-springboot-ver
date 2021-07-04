@@ -132,6 +132,16 @@
             </th:block>
         </div>
 
+        <!-- 모임 노출 부분 -->
+        <div class="community">
+            <p>책방일지 모임 현황</p>
+            <div class="communityList">
+                <div th:each="community : ${communityList}" th:onclick="toCommunity([[${community.boardIdx}]])">
+                    <img class="communityImage" th:src="${community.mainImage}">
+                    <p th:text="${community.title}"></p>
+                </div>
+            </div>
+        </div>
 
         <!-- 카카오 바로가기 버튼 -->
         <div class="kakao">

@@ -43,4 +43,16 @@ public class BoardCustomRepositorySupport extends QuerydslRepositorySupport {
         List<ListBoard> results = getQuerydsl().applyPagination(pageable, query).fetch();
         return new PageImpl<>(results, pageable, totalCount);
     }
+
+    public List<ListBoard> getCommunityList() {
+        return queryFactory
+                .select(Projections.constructor(ListBoard.class,
+                        board.idx, board.categoryIdx, board.title, board.mainImage, user.realName, user.picture, board.createdDate))
+                .from(board)
+                .join(user).on(board.writerIdx.eq(user.idx))
+                .where(board.categoryIdx.eq(11L).or(board.categoryIdx.eq(12L)).and(board.useAt.eq("0")))
+                .orderBy(board.createdDate.desc())
+                .limit(4L)
+                .fetch();
+    }
 }
