@@ -57,9 +57,4 @@ public class MainController {
     public String addBanner(MainBanner mainBanner, MultipartFile bannerFile, HttpServletRequest request, HttpServletResponse response) throws Exception {
         return mainService.addMainBanner(mainBanner, bannerFile, request, response);
     }
-
-    @GetMapping("/errorTest")
-    public void errorTest() throws NotFoundException {
-        throw new NotFoundException("errorTest");
-    }
 }
