@@ -22,17 +22,36 @@
         <!-- 상단 슬라이드 부분 -->
         <!-- media 바뀌는 기준으로 일반 슬라이드 변경 필요 -->
         <div class="top-slide-container">
-            <div class="slides">
-                <div class="slide">
-                    <img th:src="@{/images/slide1.jpg}" alt="">
+            <th:block th:if="${session.user} != null">
+                <th:block th:if="${#strings.equals(session.user.role, 'ADMIN')}">
+                    <div class="slides">
+                        <div class="slide" th:each="banner : ${bannerList}" >
+                            <a href="#" th:onclick="delBanner([[${banner.idx}]]); return false;">
+                                <img th:src="${banner.bannerImg}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </th:block>
+                <th:block th:unless="${#strings.equals(session.user.role, 'ADMIN')}">
+                    <div class="slides">
+                        <div class="slide" th:each="banner : ${bannerList}" >
+                            <a th:href="${banner.linkUrl}">
+                                <img th:src="${banner.bannerImg}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </th:block>
+            </th:block>
+            <th:block th:unless="${session.user} != null">
+                <div class="slides">
+                    <div class="slide" th:each="banner : ${bannerList}" >
+                        <a th:href="${banner.linkUrl}">
+                            <img th:src="${banner.bannerImg}" alt="">
+                        </a>
+                    </div>
                 </div>
-                <div class="slide">
-                    <img th:src="@{/images/slide2.jpg}" alt="">
-                </div>
-                <div class="slide">
-                    <img th:src="@{/images/slide3.jpg}" alt="">
-                </div>
-            </div>
+            </th:block>
+
             <div class="slide-controls">
                 <button id="prev-btn">
                     <i class="fas fa-chevron-left"></i>
@@ -43,24 +62,10 @@
             </div>
         </div>
 
+
         <div class="top">
             <img th:src="@{/images/top.jpeg}" alt="">
         </div>
-
-        <!--
-        <div class="center-logo">
-            <h1>"청년 인문 공간"</h1>
-            <img th:src="@{/images/mainLogo.png}">
-        </div>
-
-        <div class="middle-etc">
-            <div class="middle-logo">
-                <img th:src="@{/images/titleLogo.svg}" style="width: 100px">
-            </div>
-            <h4>&nbsp</h4>
-            <h3>'책방일지'를 통해 책과의 거리는 더 가깝게 세상과 사람을 따뜻하게 이해하길 바라는 마음으로 다양한 독서경험을 위한 활동을 하고 있습니다.</h3>
-        </div>
-        -->
 
         <div class="slideBox">
         <div class="bookSlide">

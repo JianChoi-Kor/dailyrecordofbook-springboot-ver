@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/addBook.css}">
+    <script src="/js/addBanner.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" defer></script>
+</head>
+
+<div layout:fragment="content">
+    <div class="banner_content">
+        <h1 class="h1">배너 추가하기</h1>
+
+        <form id="write_form" action="/addMadinBanner" method="post" enctype="multipart/form-data">
+
+            <div id="imageDiv">
+                <div>
+                    <input type="file" id="bannerFile" name="bannerFile" th:onchange="previewImage(event, this)">
+                    <input type="button" class="bookButton" value="이미지 열기" onclick="fileBrowse('bannerFile')">
+                </div>
+            </div>
+            <div>
+
+                <input type="text" class="write_title" name="linkUrl" placeholder="URL 링크를 넣어주세요." required>
+            </div>
+            <div>
+                <input type="submit" class="write_btn" value="추가">
+            </div>
+        </form>
+    </div>
+</div>
+
+</html>
+
+
+
+
+
+

@@ -36,6 +36,13 @@
     height: 100%;
 }
 
+.slide button {
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    color: black;
+}
+
 .slide-controls {
     position: absolute;
     top: 50%;

@@ -87,5 +87,23 @@ window.addEventListener('resize', resetSlideWidth)
 
 
 
+function delBanner(bannerIdx) {
+    let loginUserIdx = '';
+    if(document.getElementById('userIdx')) {
+        loginUserIdx = document.getElementById('userIdx').value;
+    }
 
-
+    if(confirm('삭제하시겠습니까?')) {
+        fetch(`/delBanner?bannerIdx=${bannerIdx}&loginUserIdx=${loginUserIdx}`, {
+            method: 'delete'
+        }).then(res => res.json())
+        .then(result => {
+            if(result === 0) {
+                alert('배너가 삭제되었습니다.');
+                location.href='/main';
+            } else {
+                alert('배너 삭제에 실패했습니다.');
+            }
+        })
+    }
+}

@@ -11,6 +11,11 @@
 	margin: 3em auto;	
 }
 
+.banner_content {
+    width: 1040px;
+	margin: 3em auto;
+}
+
 .h1 {
     text-align: center;
 	margin-bottom: 25px;
@@ -89,6 +94,15 @@
 
 /* input file의 기본 모습을 제거 */
 #bookSlideFile{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#bannerFile {
     width: 0.1px;
 	height: 0.1px;
 	opacity: 0;

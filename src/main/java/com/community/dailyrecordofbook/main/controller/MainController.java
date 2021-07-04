@@ -1,6 +1,7 @@
 package com.community.dailyrecordofbook.main.controller;
 
 import com.community.dailyrecordofbook.main.dto.AddBook;
+import com.community.dailyrecordofbook.main.entity.MainBanner;
 import com.community.dailyrecordofbook.main.service.MainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ public class MainController {
     @GetMapping(value = {"/", "/main"})
     public String main(Model model) {
         model.addAttribute("bookList", mainService.getBookList());
+        model.addAttribute("bannerList", mainService.getBannerList());
         return "main";
     }
 
@@ -36,7 +38,22 @@ public class MainController {
     @ResponseBody
     @DeleteMapping("/delBook")
     public int delBook(@RequestParam Long bookIdx, @RequestParam Long loginUserIdx, HttpServletRequest request) throws Exception {
-
         return mainService.delBook(bookIdx, loginUserIdx, request);
+    }
+
+    @GetMapping("/addBanner")
+    public String addBanner() {
+        return "addBanner";
+    }
+
+    @ResponseBody
+    @DeleteMapping("/delBanner")
+    public int delBanner(@RequestParam Long bannerIdx, @RequestParam Long loginUserIdx, HttpServletRequest request) throws Exception {
+        return mainService.delBanner(bannerIdx, loginUserIdx, request);
+    }
+
+    @PostMapping("/addMadinBanner")
+    public String addBanner(MainBanner mainBanner, MultipartFile bannerFile, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        return mainService.addMainBanner(mainBanner, bannerFile, request, response);
     }
 }

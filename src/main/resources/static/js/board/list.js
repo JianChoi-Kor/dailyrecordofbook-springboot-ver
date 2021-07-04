@@ -29,3 +29,7 @@ function admin_action() {
 function slide_action() {
     location.href='/addBook';
 }
+
+function banner_action() {
+    location.href='/addBanner';
+}
