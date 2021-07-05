@@ -3,9 +3,11 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    var initialLocaleCode = 'ko';
 	var calendarEl = document.getElementById('calendar');
 
 	var calendar = new FullCalendar.Calendar(calendarEl, {
+	    locale: initialLocaleCode,
 		googleCalendarApiKey: 'AIzaSyACLKDbnkR8cLpsoGr33lnmMT8Ftbgh_0A',
 		eventSources: [
 			{

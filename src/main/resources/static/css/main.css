@@ -292,109 +292,11 @@
     position: relative;
     bottom: 85px;
 }
-
-
-
-@media screen and (max-width: 780px) {
-    .icon {
-        margin-bottom: 10px;
-        font-size: 45px;
-    }
-
-    .h3 {
-        font-size: 28px;
-    }
-
-    .h3 > span {
-        font-size: 16px;
-    }
-
-    .h6 {
-        margin-top: 3px;
-        font-size: 13px;
-    }
-
-    .middle-etc {
-        margin: 0 auto;
-    }
-
-    .middle-etc > h3 {
-        font-size: 15px;
-        margin: 2px 0;
-    }
-    
-    .middle-etc > h4 {
-        font-size: 12px;
-        margin-top: 8px;
-    }
-    
-    
-	.inquiry_btn {
-		position: fixed;
-		display: flex;
-		width: 68px;
-		height: 68px;
-		background-color: #ebcacf;
-		color: white;
-		font-size: 16px;
-		border-radius: 65px;
-		justify-content: space-around;
-		top: 54%;
-		left: 83%;
-		cursor:pointer;
-    	transition:800ms ease all;
-}
     
     
 }
 /* icon 부분 end */
 
-
-
-
-/* book slide 부분 start */
-/*
-.book-slide-container {
-    width: 280px;
-    height:215px;
-    position: relative;
-}
-
-.book-slides {
-    display: flex;
-    height: 100%;
-}
-
-.book-slide {
-    min-width: 100%;
-    position: relative;
-}
-
-.book-slide img {
-    width: 100%;
-    height: 100%;
-}
-
-.book-slide-controls {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#book-next-btn, #book-prev-btn {
-    display: none;
-}
-
-#book-next-btn:focus, #book-prev-btn:focus {
-    outline: none;
-}
-*/
-/* book slide 부분 end */
 
 .bookSlide {
 	width: 100%;
@@ -424,60 +326,6 @@
 	height: 215px; 
 	position: absolute;
 }
-
-
-
-
-/* write btn */
-
-.book-slide-btn {
-	width: 600px;
-	margin: 10px auto;
-}
-
-#add_btn {
-    background: #ebcacf;
-    color: #fff;
-    border: none;
-    position: relative;
-    height: 30px;
-    font-size: 1em;
-    padding: 0.4em 1.2em;
-    cursor: pointer;
-    transition: 800ms ease all;
-    outline: none;
-    text-align: right;
-    border-radius: 0.5em;
-}
-
-#add_btn:hover {
-    background: #fff;
-    color:#ebcacf;
-}
-
-#add_btn:before, #add_btn:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 2px;
-    width: 0;
-    background: #ebcacf;
-    transition: 400ms ease all;
-}
-
-#add_btn:after {
-    right: inherit;
-    top: inherit;
-    left: 0;
-    bottom: 0;
-}
-
-#add_btn:hover:before, #add_btn:hover:after {
-    width: 100%;
-    transition: 800ms ease all;
-}
-
 
 .community {
     margin-top: 100px;
@@ -576,4 +424,191 @@
 #calendar{
    width:670px;
    margin:40px auto;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .icon {
+        margin-bottom: 6px;
+        font-size: 20px;
+    }
+
+    .h3 {
+        font-size: 13px;
+    }
+
+    .h3 > span {
+        font-size: 13px;
+    }
+
+    .h6 {
+        margin-top: 2px;
+        font-size: 10px;
+    }
+
+    .top > img {
+        width: 100%;
+        margin-top: 25px;
+    }
+
+    .middle {
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    .middle-etc {
+        margin: 0 auto;
+    }
+
+    .middle-etc > h3 {
+        font-size: 10.4px;
+        margin: 2px 0;
+    }
+
+    .middle-etc > h4 {
+        font-size: 9px;
+        margin-top: 5px;
+    }
+
+    .instagram_btn {
+        width: 33px;
+        height: 33px;
+        top: 68%;
+        left: 88%;
+	}
+
+	.blog_btn {
+	    width: 33px;
+	    height: 33px;
+        top: 62%;
+    	left: 88%;
+	}
+
+	.kakao_btn {
+	    width: 33px;
+    	height: 33px;
+        top: 56%;
+        left: 88%;
+	}
+
+    .calendar-title > p {
+        display: none;
+    }
+
+	#calendar{
+       display: none;
+    }
+
+    .bookSlide {
+    	width: 100%;
+    	margin-top: 30px;
+    }
+
+    .slideBox {
+        width: 100vw;
+        margin: 0 auto;
+    }
+
+    .bookSlide > p {
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    .book-slide-container {
+    	position:relative;
+    	height: 68px;
+    	overflow: hidden;
+    }
+
+    .book-slide-container img {
+    	height: 68px;
+    	position: absolute;
+    }
+
+    .store-img > a > img {
+        display: flex;
+        margin: 0px auto;
+        opacity: 0.9;
+        width: 84vw;
+    }
+
+    .community {
+        width: 100vw;
+        margin-top: 10px;
+    }
+
+    .community > p {
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 35px;
+        margin-bottom: 20px;
+    }
+
+    .communityList {
+        width: 100vw;
+    }
+
+    .communityImage {
+        width: 54px;
+    }
+
+    communityList > div {
+        padding: 1px;
+    }
+
+    .communityList > div > p {
+        font-size: 9px;
+    }
+
+    .calendar-title {
+        margin-top: 10px;
+        margin-bottom: 35px;
+    }
+
+    #bookModal {
+    	width: 100%;
+    	height: 100%;
+    	position: fixed;
+    	left: 0;
+    	top: 0;
+    	background-color: #00000088;
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+    	align-items: center;
+    	z-index: 1;
+    }
+
+    #modClose {
+    	font-size: 22px;
+    	color: white;
+    	margin-left: 275px;
+    	margin-bottom: 38px;
+    }
+
+    .modText {
+    	margin-top: 7px;
+    	border: transparent;
+        background: transparent;
+        color: white;
+        font-size: 18px;
+        margin: 15px auto;
+        text-align: center;
+        width: 100vw;
+    }
+
+    .modText:focus {
+    	outline-width: 0;
+    }
+
+    .modInfo {
+    	font-size: 14px;
+    	margin-bottom: 100px;
+    	text-align: center;
+    }
 }

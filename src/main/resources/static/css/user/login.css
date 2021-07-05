@@ -117,3 +117,62 @@ span {
     width: 365px;
     margin-top: 7px;
 }
+
+
+@media screen and (max-width: 768px) {
+
+    .h1 {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    .login_content {
+        background-color: rgb(255, 255, 255);
+        width: 80vw;
+        margin: 2em auto;
+        border-radius: 1.5em;
+        box-shadow: 0px 11px 36px 2px raba(0, 0, 0, 0.7);
+    }
+
+    .login {
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .login_btn {
+        background: #ebcacf;
+        color: #fff;
+        border: none;
+        position: relative;
+        height: 40px;
+        font-size: 0.85em;
+        padding: 0.4em 2em;
+        cursor: pointer;
+        transition: 800ms ease all;
+        outline: none;
+        display: block;
+        margin: 0 auto;
+        border-radius: 0.5em;
+    }
+
+    .login_middle > a > span {
+        font-size: 12px;
+    }
+
+    .login > input {
+        font-size: 13px;
+    }
+
+    .sns_login {
+        width: 80vw;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .sns_login_btn > img {
+        width: 75vw;
+        margin-top: 4px;
+    }
+
+}

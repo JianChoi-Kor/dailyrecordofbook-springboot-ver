@@ -18,9 +18,13 @@ footer div {
 }
 
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 768px) {
 	
 	footer div {
-	font-size: 12px;
+	    font-size: 10px;
+	}
+
+	.footerInsta {
+	    display: none;
 	}
 }
