@@ -46,7 +46,7 @@ public class MailSendService {
             sendMail.setSubject("책방일지 회원가입 이메일 인증");
             sendMail.setText(new StringBuffer().append("<h1>[책방일지 회원가입 이메일 인증]</h1>")
                     .append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
-                    .append("<a href='http://localhost:8080/user/joinConfirm?email=").append(email)
+                    .append("<a href='http://192.168.123.104:8080/user/joinConfirm?email=").append(email)
                     .append("&authKey=").append(authKey).append("' target='_blank'>이메일 인증 확인</a>").toString());
             sendMail.setFrom("mnlst2020c@gmail.com", "관리자");
             sendMail.setTo(email);

@@ -27,4 +27,8 @@ footer div {
 	.footerInsta {
 	    display: none;
 	}
+
+	footer > div > p {
+	    font-size: 10px;
+	}
 }

@@ -3,6 +3,7 @@ package com.community.dailyrecordofbook.user.controller;
 import com.community.dailyrecordofbook.user.dto.*;
 import com.community.dailyrecordofbook.user.entity.User;
 import com.community.dailyrecordofbook.user.service.UserService;
+import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

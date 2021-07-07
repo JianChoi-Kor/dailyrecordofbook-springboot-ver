@@ -11,6 +11,10 @@
 	margin: 3em auto;	
 }
 
+.write_mb {
+    display: none;
+}
+
 .h1 {
     text-align: center;
 	margin-bottom: 25px;
@@ -80,3 +84,32 @@
 }
 
 /* write_btn 끝 */
+
+
+@media screen and (max-width: 768px) {
+
+    .write_content {
+        display: none;
+    }
+
+    .write_mb {
+        width: 100vw;
+        height: 35vh;
+        display: block;
+    }
+
+    .write_mb > p {
+        font-size: 13px;
+        text-align: center;
+        margin-top: 30px;
+        font-border: 700;
+    }
+
+    .write_mb > img {
+        width: 50px;
+        display: flex;
+        margin: 0 auto;
+        margin-top: 75px;
+    }
+
+}

@@ -104,7 +104,6 @@ span {
 	margin-bottom: 25px;
 	color: red;
 	font-weight: 700;
-	
 }
 
 .sns_login {
@@ -175,4 +174,7 @@ span {
         margin-top: 4px;
     }
 
+    .errMsg {
+        font-size: 13px;
+    }
 }

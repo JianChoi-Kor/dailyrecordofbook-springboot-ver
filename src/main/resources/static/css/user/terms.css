@@ -203,16 +203,10 @@ label {
     }
 
     .terms_btn {
-        background:#ebcacf;
-        color:#fff;
-        border:none;
-        position:relative;
         height:40px;
         font-size:0.8em;
         padding: 0.4em 2em;
-        cursor:pointer;
-        transition:800ms ease all;
-        outline:none;
+        transition: none;
         margin: 0 auto;
     }
 

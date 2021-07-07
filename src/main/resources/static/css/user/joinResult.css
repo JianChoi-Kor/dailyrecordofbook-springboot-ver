@@ -105,5 +105,28 @@ span {
 	margin-bottom: 25px;
 	color: red;
 	font-weight: 700;
-	
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .login_content {
+        width: 90vw;
+        margin: 2.5em auto;
+        border-radius: 1.5em;
+        box-shadow: 0px 11px 36px 2px raba(0, 0, 0, 0.7);
+    }
+
+    .h1 {
+        font-size: 20px;
+    }
+
+    .h3 {
+        font-size: 15px;
+    }
+
+    .login_btn {
+        height: 30px;
+        font-size: 0.85em;
+    }
 }

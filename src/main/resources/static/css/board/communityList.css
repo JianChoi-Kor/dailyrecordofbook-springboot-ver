@@ -100,7 +100,7 @@
 }
 
 .listTitle {
-	font-size: 26px;
+	font-size: 24px;
 	margin: 26px 0 15px 12px;
 	word-break: break-all;
 }
@@ -111,7 +111,7 @@
 }
 
 .profileImg > img {
-    margin: 5px;
+    margin: 1px;
 	width: 55px;
 	height: 55px;
 	border-radius: 55px;
@@ -203,4 +203,96 @@ h5 p {
 .write_btn:hover:before, .write_btn:hover:after {
     width: 100%;
     transition: 800ms ease all;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .h1 {
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+
+    .write_btn {
+        display: none;
+    }
+
+    .gallery {
+        width: 90vw;
+    }
+
+    .content {
+    	padding: 5px;
+    	width: 41vw;
+    	height: 46vw;
+    	margin: 8px auto 5px;
+    }
+
+    .listContent {
+    	width: 142px;
+    }
+
+    .listImg {
+    	display: flex;
+    	margin: 0 auto;
+    	height: 30vw;
+    }
+
+    .profileImg {
+        margin-top: 2px;
+    }
+
+    .profileImg>img {
+    	width: 16px;
+    	height: 16px;
+    	border-radius: 16px;
+    }
+
+    .listTitle {
+    	font-size: 12.4px;
+    	margin: 3px 0 2px 5px;
+    	word-break: break-all;
+    }
+
+    .listWriterNm {
+    	font-size: 10px;
+    	margin-top: 6px;
+    }
+
+    .pagination > ul > li {
+        font-size: 11px;
+    }
+
+    .pagination {
+    	padding-top: 10px;
+    	padding-bottom: 25px;
+    }
+
+    h5 p {
+    	margin-left: 4px;
+    }
+
+    .regDate {
+        font-size: 10px;
+        margin: 2px 0 2px 5px;
+    }
+
+    .category_btn {
+        height: 24px;
+        font-size: 0.8em;
+        padding: 0.2em 1em;
+        transition: none;
+    }
+
+    .category {
+    	margin: 1.4em auto;
+    }
+
+    .write_btn {
+        height: 24px;
+        font-size: 0.85em;
+        transition: none;
+    }
 }
