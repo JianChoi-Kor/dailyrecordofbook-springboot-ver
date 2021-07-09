@@ -353,6 +353,10 @@
     cursor: pointer;
 }
 
+.communityList > div > p {
+    margin-top: 3px;
+}
+
 .communityImage {
     width: 145px;
     display: flex;
@@ -562,6 +566,7 @@
     }
 
     .communityList > div > p {
+        margin-top: 1px;
         font-size: 9px;
     }
 

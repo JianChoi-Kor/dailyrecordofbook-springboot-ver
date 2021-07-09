@@ -101,8 +101,14 @@ public class BoardService {
         }
         try {
             String rootPath = request.getSession().getServletContext().getRealPath("/");
-            String filePath = rootPath + board.getMainImage();
-            String originPath = rootPath + board.getMainImage().replace("thumb_", "");
+
+            String filePath = "";
+            String originPath = "";
+
+            if(board.getMainImage() != null) {
+                filePath = rootPath + board.getMainImage();
+                originPath = rootPath + board.getMainImage().replace("thumb_", "");
+            }
 
             // 썸네일 삭제
             File file = new File(filePath);
@@ -117,6 +123,7 @@ public class BoardService {
 
             boardRepository.save(board.deleteBoard(board));
         } catch (Exception e) {
+            e.printStackTrace();
             return 2; // 수정 오류
         }
         return 0;

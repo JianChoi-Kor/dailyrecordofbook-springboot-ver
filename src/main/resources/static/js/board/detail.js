@@ -27,6 +27,7 @@ function delete_action() {
         }).then(function(res) {
             return res.json()
         }).then(function(result) {
+            console.log('result : ' + result);
             proc(result)
         })
 
