@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @RequiredArgsConstructor
 @Controller
@@ -34,8 +35,8 @@ public class UserController {
     }
 
     @PostMapping("/join")
-    public String join(Join join) {
-        return userService.join(join);
+    public String join(Join join, HttpServletResponse response) throws Exception {
+        return userService.join(join, response);
     }
 
     @GetMapping("/joinConfirm")

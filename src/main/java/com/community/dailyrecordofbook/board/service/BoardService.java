@@ -142,17 +142,17 @@ public class BoardService {
         return 0;
     }
 
-    public ModelAndView detailAndModify(Long boardIdx ,String flag, ModelAndView modelAndView) {
+    public ModelAndView detailAndModify(Long boardIdx ,String flag, ModelAndView modelAndView) throws Exception {
         Board board = boardCustomRepositorySupport.findByIdx(boardIdx);
         if(board == null) {
-            // TODO 해당하는 게시글이 없는 경우 notFound
+            throw new Exception("잘못된 요청입니다.");
         } else if (board.getUseAt().equals("1")) {
-            // TODO 해당하는 글이 삭제된 경우 notFound
+            throw new Exception("잘못된 요청입니다.");
         }
 
         User user = userCustomRepositorySupport.findByIdx(board.getWriterIdx());
         if(user == null) {
-            // TODO 해당하는 유저 정보가 없는 경우
+            throw new Exception("잘못된 요청입니다.");
         }
         modelAndView.addObject("boardInfo", board);
         modelAndView.addObject("writerInfo", user);
@@ -166,7 +166,6 @@ public class BoardService {
             return modelAndView;
 
         } else {
-            // TODO 에러처리
             modelAndView.setViewName("main");
             return modelAndView;
         }

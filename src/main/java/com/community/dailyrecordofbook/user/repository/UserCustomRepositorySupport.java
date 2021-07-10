@@ -29,13 +29,13 @@ public class UserCustomRepositorySupport extends QuerydslRepositorySupport {
         this.queryFactory = queryFactory;
     }
 
-    public User findEmail(FindEmail findEmail) {
+    public List<User> findEmail(FindEmail findEmail) {
         return queryFactory
                 .selectFrom(user)
                 .where(user.realName.eq(findEmail.getRealName())
                 .and(user.birth.eq(findEmail.getBirth()))
                 .and(user.phone.eq(findEmail.getPhone())))
-                .fetchOne();
+                .fetch();
     }
 
     public User findPassword(FindPassword findPassword) {

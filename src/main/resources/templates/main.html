@@ -137,7 +137,12 @@
             <p>책방일지 모임 현황</p>
             <div class="communityList">
                 <div th:each="community : ${communityList}" th:onclick="toCommunity([[${community.boardIdx}]])">
-                    <img class="communityImage" th:src="${community.mainImage}">
+                    <th:block th:if="${community.mainImage} != null">
+                        <img class="communityImage" th:src="${community.mainImage}" alt="메인 이미지">
+                    </th:block>
+                    <th:block th:unless="${community.mainImage} != null">
+                        <img class="communityImage" th:src="@{/images/mainImgNull.jpg}" alt="메인 이미지">
+                    </th:block>
                     <p th:text="${community.title}"></p>
                 </div>
             </div>

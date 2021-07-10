@@ -21,6 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,6 +31,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 @RequiredArgsConstructor
@@ -44,10 +46,15 @@ public class UserService {
     private final UserCustomRepositorySupport userCustomRepositorySupport;
 
     @Transactional
-    public String join(Join join) {
+    public String join(Join join, HttpServletResponse response) throws Exception {
+        SessionUser sessionUser = (SessionUser) SessionUtil.getAttribute("user");
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
         if(userRepository.findByEmail(join.getEmail()).orElse(null) != null) {
-            // TODO 수정 필요
-            System.out.println("이미 가입된 회원입니다.");
+            out.println("<script> alert('이미 회훤가입된 이메일입니다.'); location.href='/user/login'; </script>");
+            out.flush();
+            return "user/login";
         }
 
         join.setPassword(passwordEncoder.encode(join.getPassword()));
@@ -95,7 +102,6 @@ public class UserService {
     }
 
     public int login(Login login) throws Exception {
-
         try {
             // 아이디와 패스워드를 Secutiry가 알아볼 수 있는 token 객체로 변환한다.
             UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(login.getEmail(), login.getPassword(), new ArrayList<>());
@@ -138,14 +144,14 @@ public class UserService {
         PrintWriter out = response.getWriter();
 
         if(sessionUser == null) {
-            out.println("<script> alert('올바르지 않은 접근입니다.');</script>");
+            out.println("<script> alert('올바르지 않은 접근입니다.'); location.href='/main'; </script>");
             out.flush();
             modelAndView.setViewName("/main");
             return modelAndView;
         }
 
         if(sessionUser.getRole() == Role.TEMP) {
-            out.println("<script> if(confirm('추가정보를 입력하지 않으셨습니다. 추가정보를 입력하시겠습니까?')) {location.href='/user/addInfo';} else {history.back();} </script>");
+            out.println("<script> if(confirm('추가정보를 입력하지 않으셨습니다. 추가정보를 입력하시겠습니까?')) {location.href='/user/addInfo';} else {location.href='/main';} </script>");
             out.flush();
             modelAndView.setViewName("/main");
             return modelAndView;
@@ -158,7 +164,7 @@ public class UserService {
             modelAndView.setViewName("user/myPage");
             return modelAndView;
         } else {
-            out.println("<script> alert('올바르지 않은 접근입니다.');</script>");
+            out.println("<script> alert('올바르지 않은 접근입니다.'); location.href='/main';</script>");
             out.flush();
             modelAndView.setViewName("/main");
         }
@@ -231,12 +237,30 @@ public class UserService {
     }
 
     public FindEmailResponse findEmail(FindEmail findEmail) {
-        User user = userCustomRepositorySupport.findEmail(findEmail);
+        List<User> userList = userCustomRepositorySupport.findEmail(findEmail);
+        if(userList.size() > 1) {
+            StringBuilder emailList = new StringBuilder();
+            for(int i = 0; i < userList.size(); i++) {
+                emailList.append(userList.get(i).getEmail());
+                emailList.append(", ");
+            }
+            emailList.substring(0, emailList.length()-2);
+        }
+
         FindEmailResponse response = new FindEmailResponse();
-        if(user == null) {
+        if(ObjectUtils.isEmpty(userList)) {
             response.setResult("notFound");
+        } else if(userList.size() > 0) {
+            StringBuilder emailList = new StringBuilder();
+            for(int i = 0; i < userList.size(); i++) {
+                emailList.append(userList.get(i).getEmail());
+                emailList.append(", ");
+            }
+            System.out.println(emailList.toString());
+            String result = emailList.substring(0, emailList.length()-2);
+            response.setResult(result);
         } else {
-            response.setResult(user.getEmail());
+            response.setResult("잘못된 요청입니다.");
         }
         return response;
     }
@@ -269,7 +293,7 @@ public class UserService {
         PrintWriter out = response.getWriter();
 
         if(sessionUser == null || sessionUser.getRole() != Role.ADMIN) {
-            out.println("<script> alert('올바르지 않은 접근입니다.');</script>");
+            out.println("<script> alert('올바르지 않은 접근입니다.'); location.href='/main'; </script>");
             out.flush();
             modelAndView.setViewName("/main");
             return modelAndView;

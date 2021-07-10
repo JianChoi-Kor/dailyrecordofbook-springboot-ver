@@ -22,7 +22,7 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/{boardIdx}")
-    public ModelAndView detailAndModify(@PathVariable Long boardIdx, String flag, ModelAndView modelAndView) {
+    public ModelAndView detailAndModify(@PathVariable Long boardIdx, String flag, ModelAndView modelAndView) throws Exception {
         return boardService.detailAndModify(boardIdx, flag, modelAndView);
     }
 
