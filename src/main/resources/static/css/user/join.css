@@ -28,6 +28,7 @@
     text-align: center;
 	margin-bottom: 20px;
 	font-size: 30px;
+	font-weight: 500;
 }
 
 
@@ -180,6 +181,7 @@ select:disabled {
 
     .h1 {
         font-size: 20px;
+        font-weight: 500;
     }
 
     .join_content {
@@ -207,5 +209,33 @@ select:disabled {
     .join_btn {
         height: 40px;
         font-size: 0.9em;
+    }
+
+    .join_email > p {
+        font-size: 12px;
+    }
+
+    .join_pw > p {
+        font-size: 12px;
+    }
+
+    .join_nm > p {
+        font-size: 12px;
+    }
+
+    .join_phone > p {
+        font-size: 12px;
+    }
+
+    .join_birth > p {
+        font-size: 12px;
+    }
+
+    .join_info > p {
+        font-size: 12px;
+    }
+
+    .join_email, .join_pw, .join_nm, .join_phone, .join_birth, .join_info {
+        padding: 8px 20px;
     }
 }

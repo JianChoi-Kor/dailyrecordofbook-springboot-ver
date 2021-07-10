@@ -254,3 +254,144 @@
     transform: scale(1.5);
     transition: 0.5s;
 }
+
+
+
+@media screen and (max-width: 768px) {
+
+    .h1 {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+
+    .oneCmt {
+        margin: 10px 0;
+    }
+
+    .detail_container {
+        width: 88vw;
+        margin: 2em auto;
+    }
+
+    .detail_btn {
+        height: 24px;
+        font-size: 0.8em;
+        transition: none;
+    }
+
+    .detail_title {
+    	height: 30px;
+    	font-size:16px;
+    }
+
+    .writer_profile_img > img {
+    	width: 30px;
+    	height: 30px;
+    	border-radius: 30px;
+    }
+
+    #writer_nm {
+    	padding: 6px;
+    	font-size: 13px;
+    }
+
+    .write_dt {
+        font-size: 11px;
+    }
+
+    .detail_top > div {
+        padding: 2px;
+    }
+
+    .detail_writerInfo {
+    	margin-top: 5px;
+    	width: 90vw;
+    }
+
+    .detail_content {
+    	width: 88vw;
+    	margin-top: 15px;
+    }
+
+    .detail_content > p {
+        font-size: 13px;
+    }
+
+    .image > img {
+        width: 88vw;
+    }
+
+    .cmtWrite {
+        padding: 0;
+    }
+
+    .write_content {
+    	width: 88vw;
+    	min-height: 50px;
+    	font-size: 13px;
+    	padding: 0;
+    }
+
+    .cmt_btn {
+        height: 20px;
+        font-size: 0.7em;
+        transition: none;
+        margin-top: 3px;
+        padding: 0.2em 1em;
+        transition: none;
+    }
+
+    .cmtImg {
+    	width: 29px;
+    	height: 29px;
+    	border-radius: 29px;
+    }
+
+    .oneCmt {
+    	display: flex;
+    	padding: 0;
+    }
+
+    .cmt_top_line > span {
+        font-size: 12px;
+    }
+
+    .likeForm {
+        font-family: auto;
+    }
+
+    .likeForm > span {
+        font-size: 12px;
+    }
+
+    .far {
+        font-size: 12px;
+    }
+
+    .oneContent {
+        font-size: 13px;
+        min-height: 32px;
+    }
+
+    #cmtList {
+        padding-bottom: 10px;
+    }
+
+    .oneBtns {
+        margin-bottom: 7px;
+    }
+
+    #cmtForm {
+        width: 88vw;
+    }
+
+    .cmtWrite {
+        width: 88vw;
+    }
+
+    #cmtForm > div {
+        width: 88vw;
+    }
+}

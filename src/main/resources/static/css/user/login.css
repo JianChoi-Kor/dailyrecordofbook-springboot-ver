@@ -29,6 +29,7 @@
     text-align: center;
     margin-bottom: 20px;
     font-size: 30px;
+    font-weight: 500;
 }
 
 input {
@@ -124,6 +125,7 @@ span {
         text-align: center;
         margin-bottom: 15px;
         font-size: 20px;
+        font-weight: 500;
     }
 
     .login_content {
@@ -140,19 +142,10 @@ span {
     }
 
     .login_btn {
-        background: #ebcacf;
-        color: #fff;
-        border: none;
-        position: relative;
         height: 40px;
         font-size: 0.85em;
         padding: 0.4em 2em;
-        cursor: pointer;
-        transition: 800ms ease all;
-        outline: none;
-        display: block;
-        margin: 0 auto;
-        border-radius: 0.5em;
+        transition: none;
     }
 
     .login_middle > a > span {

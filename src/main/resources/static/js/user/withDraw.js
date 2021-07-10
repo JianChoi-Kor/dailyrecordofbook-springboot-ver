@@ -43,7 +43,7 @@ function withDraw() {
                 return;
 
                 case 1:
-                alert('비밀번호가 틀립니다.');
+                alert('비밀번호가 일치하지 않습니다.');
                 return;
             }
         }

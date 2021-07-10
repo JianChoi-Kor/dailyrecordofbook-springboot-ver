@@ -136,6 +136,10 @@
         display: none;
     }
 
+    .banner_content {
+        display: none;
+    }
+
     .write_mb {
         width: 100vw;
         height: 35vh;

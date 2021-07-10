@@ -24,6 +24,10 @@
             <h1 class="h1">모집 마감, 종료 된 독서모임</h1>
         </th:block>
 
+        <th:block th:if="${#strings.equals(boardInfo.categoryIdx, '21')}">
+            <h1 class="h1">공지사항</h1>
+        </th:block>
+
         <input type="hidden" id="boardIdx" th:value="${boardInfo.idx}">
 
         <div class="btn" th:if="${session.user} != null">
@@ -56,7 +60,7 @@
 
                 <div id="writer_nm" th:text="${writerInfo.realName}"></div>
             </div>
-            <div th:text="${#temporals.format(boardInfo.createdDate, 'yyyy-MM-dd HH:mm')}"></div>
+            <div class="write_dt" th:text="${#temporals.format(boardInfo.createdDate, 'yyyy-MM-dd HH:mm')}"></div>
         </div>
 
         <div class="detail_top">
@@ -99,7 +103,6 @@
                 </block>
             </block>
         </div>
-
     </div>
 
 </div>

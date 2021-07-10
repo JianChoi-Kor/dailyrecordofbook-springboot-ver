@@ -130,26 +130,23 @@ function getCommentList() {
         // 자신이 쓴 댓글이라면 삭제, 수정버튼 추가
         let intUserIdx = parseInt(loginUserIdx);
 		if(intUserIdx === item.writerIdx && item.useAt !== "1") {
-		html +=			"<div>"
+		html +=			"<div class='oneBtns'>"
 		html +=				'<input type="button" class="cmt_btn" id="mod_btn'+item.idx+'" value="수정" onclick="makeModFrm('+item.idx+')">'
 		html +=				"&nbsp"
 		html +=				'<input type="button" class="cmt_btn" id="del_btn'+item.idx+'" value="삭제" onclick="delAjax('+item.boardIdx+', '+item.idx+', '+intUserIdx+')">'
-		html +=			"</div>"
 		}
-
-		html +=		"</div>"
-
 
 		// 사용자 role
         if(document.getElementById('role')) {
             let role = document.getElementById('role').value;
             if(role === "ADMIN" && item.useAt !== "1") {
-                html += "<div>"
-                html += "&nbsp&nbsp&nbsp"
-                html +=		'<input type="button" class="cmt_btn" id="del_btn'+item.idx+'" value="관리자 댓글 삭제" onclick="delAjax('+item.boardIdx+', '+item.idx+', '+intUserIdx+')">'
-                html += "</div>"
+                html += "&nbsp"
+                html += '<input type="button" class="cmt_btn" id="del_btn'+item.idx+'" value="관리자 댓글 삭제" onclick="delAjax('+item.boardIdx+', '+item.idx+', '+intUserIdx+')">'
                 }
             }
+
+		html +=			"</div>"
+		html +=		"</div>"
 		html +=	"</div>"
 
         return html;

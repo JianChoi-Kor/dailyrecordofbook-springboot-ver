@@ -33,6 +33,18 @@ function findPassword() {
         return;
     }
 
+    var chk_number=/^[0-9]*$/;
+    if(!chk_number.test(birthElem.value)) {
+        alert('생년월일은 숫자만 입력해주세요.');
+        birthElem.focus();
+        return;
+    }
+    if(!chk_number.test(phoneElem.value)) {
+        alert('휴대폰번호는 숫자만 입력해주세요.');
+        phoneElem.focus();
+        return;
+    }
+
     let param = {
         email : emailElem.value,
         realName : realNameElem.value,

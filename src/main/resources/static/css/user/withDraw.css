@@ -96,3 +96,41 @@ input {
 }
 
 
+@media screen and (max-width: 768px) {
+
+    .withDrawal_content {
+        margin: 2em auto;
+        width: 80vw;
+    }
+
+    .h1 {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    .h3 {
+        font-size: 13px;
+    }
+
+    .withDrawal > input {
+        width: 92%;
+        font-size: 12px;
+    }
+
+    .withDrawal > p {
+        font-size: 11px;
+    }
+
+    .withDrawal_btn {
+        height: 30px;
+        font-size: 0.85em;
+        transition: none;
+        padding: 0.4em 1.4em;
+    }
+
+    .errMsg {
+        font-size: 13px;
+    }
+}
+

@@ -61,11 +61,38 @@ tr > td {
 }
 
 
-
 .search {
     width: 1250px;
     display: flex;
     margin: 0 auto;
     margin-bottom: 30px;
     justify-content: center;
+}
+
+.write_mb {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+
+    .h1 {
+        display: none;
+    }
+
+    .user-table {
+        display: none;
+    }
+
+    .write_mb {
+        width: 100vw;
+        height: 32vh;
+        display: block;
+    }
+
+    .write_mb > p {
+        font-size: 13px;
+        text-align: center;
+        margin-top: 30px;
+        font-border: 700;
+    }
 }

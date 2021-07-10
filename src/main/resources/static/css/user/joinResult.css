@@ -128,5 +128,7 @@ span {
     .login_btn {
         height: 30px;
         font-size: 0.85em;
+        padding: 0.4em 1.2em;
+        transition: none;
     }
 }
