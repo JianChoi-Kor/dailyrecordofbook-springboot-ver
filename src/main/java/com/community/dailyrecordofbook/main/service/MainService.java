@@ -44,13 +44,19 @@ public class MainService {
         PrintWriter out = response.getWriter();
 
         if(sessionUser == null) {
-            out.println("<script> alert('올바르지 않은 접근입니다.'); history.back();</script>");
+            out.println("<script> alert('올바르지 않은 접근입니다.'); location.href='/main';</script>");
             out.flush();
             return "main";
         }
 
         if(sessionUser.getRole() != Role.ADMIN) {
-            out.println("<script> alert('올바르지 않은 접근입니다.'); history.back();</script>");
+            out.println("<script> alert('올바르지 않은 접근입니다.'); location.href='/main';</script>");
+            out.flush();
+            return "main";
+        }
+
+        if(bookSlideFile.isEmpty()) {
+            out.println("<script> alert('이미지 첨부는 필수입니다.'); history.back();</script>");
             out.flush();
             return "main";
         }
@@ -124,13 +130,19 @@ public class MainService {
         PrintWriter out = response.getWriter();
 
         if(sessionUser == null) {
-            out.println("<script> alert('올바르지 않은 접근입니다.'); history.back();</script>");
+            out.println("<script> alert('올바르지 않은 접근입니다.'); location.href='/main';</script>");
             out.flush();
             return "main";
         }
 
         if(sessionUser.getRole() != Role.ADMIN) {
-            out.println("<script> alert('올바르지 않은 접근입니다.'); history.back();</script>");
+            out.println("<script> alert('올바르지 않은 접근입니다.'); location.href='/main';</script>");
+            out.flush();
+            return "main";
+        }
+
+        if(bannerFile.isEmpty()) {
+            out.println("<script> alert('이미지 첨부는 필수입니다.'); history.back();</script>");
             out.flush();
             return "main";
         }
