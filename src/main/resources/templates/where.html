@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/layout}">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/where.css}">
+</head>
+
+<div layout:fragment="content">
+
+    <div class="where_content">
+        <h1 class="h1">찾아오시는 길</h1>
+
+        <div class="where">
+            <a href="https://map.naver.com/v5/search/%EC%B1%85%EB%B0%A9%EC%9D%BC%EC%A7%80/place/1289700920?placePath=%3Fentry%253Dpll&c=14315496.9055263,4281604.7749388,15,0,0,0,dh" target="_blank">
+                <img th:src="@{/images/where.png}" alt="지도">
+            </a>
+        </div>
+
+        <div class="content">
+            <h3 class="h3">지하철역</h3>
+            <p>2호선 경대병원역<span class="two">➋&nbsp</span> 3번 출구 <span class="walk">&nbsp도보 6분</span></p>
+            <p>2호선 대구은행역<span class="two">➋&nbsp</span> 2번 출구 <span class="walk">&nbsp도보 12분</span></p>
+            <p>3호선 대봉교역<span class="three">➌&nbsp</span> 4번 출구 <span class="walk">&nbsp도보 13분</span></p>
+            <p>3호선 건들바위역<span class="three">➌&nbsp</span> 4번 출구 <span class="walk">&nbsp도보 19분</span></p>
+            <br>
+            <br>
+            <h6 class="h6">* 주차공간이 협소하오니 가급적 대중교통을 이용해주세요.</h6>
+            <br>
+            <h6 class="h6">경대병원역 3번 출구에서 6분 거리에 위치한 방천시장 내 "오늘도 빈대떡" 옆 계단을 따라 2층으로 올라오시면 됩니다.</h6>
+        </div>
+    </div>
+
+</div>
+
+</html>

@@ -33,3 +33,7 @@ function slide_action() {
 function banner_action() {
     location.href='/addBanner';
 }
+
+function where_action() {
+    location.href='/where';
+}

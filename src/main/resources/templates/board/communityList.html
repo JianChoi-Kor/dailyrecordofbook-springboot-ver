@@ -11,7 +11,7 @@
 <div layout:fragment="content">
 
     <th:block th:if="${#strings.equals(param.category, '11')}">
-        <h1 class="h1">현재 진행 중, 모집 중인 독서 모임</h1>
+        <h1 class="h1">모집 예정, 모집 중인 독서모임</h1>
         <th:block th:if="${session.user} != null">
         <div class="btn" th:if="${#strings.equals(session.user.role, 'ADMIN')}">
                 <input type="button" class="write_btn" value="모임 일정 등록" th:onclick="write_action()">
@@ -20,12 +20,12 @@
     </th:block>
 
     <th:block th:if="${#strings.equals(param.category, '12')}">
-        <h1 class="h1">종료, 마감된 독서 모임</h1>
+        <h1 class="h1">모집 마감, 종료된 독서모임</h1>
     </th:block>
 
     <div class="category">
         <a href="/board/list?category=11">
-            <input type="button" class="category_btn" value="진행중인 모임">
+            <input type="button" class="category_btn" value="모집 중인 모임">
         </a>
         &nbsp&nbsp&nbsp&nbsp
         <a href="/board/list?category=12">

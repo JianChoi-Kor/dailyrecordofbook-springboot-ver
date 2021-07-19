@@ -12,5 +12,4 @@ public class DailyrecordofbookApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DailyrecordofbookApplication.class, args);
 	}
-
 }

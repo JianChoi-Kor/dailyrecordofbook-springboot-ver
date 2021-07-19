@@ -215,6 +215,7 @@ h5 p {
     .write_btn {
         height: 20px;
         font-size: 0.9em;
+        margin-right: 10px;
     }
 
     .gallery {

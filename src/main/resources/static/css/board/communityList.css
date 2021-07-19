@@ -221,6 +221,15 @@ h5 p {
         display: none;
     }
 
+    #exception_btn {
+        display: inline;
+        height: 20px;
+        font-size: 0.8em;
+        padding: 0.2em 1.2em;
+        transition: none;
+        margin-right: 10px;
+    }
+
     .gallery {
         width: 90vw;
     }

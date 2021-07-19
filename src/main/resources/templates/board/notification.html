@@ -22,6 +22,10 @@
         </div>
     </th:block>
 
+    <div class="btn">
+        <input type="button" id="exception_btn" class="write_btn" value="찾아오시는 길" th:onclick="where_action()">
+    </div>
+
     <form id="categoryForm" method="get" action="/board/list">
         <div class="gallery">
             <input type="hidden" name="category" id="categoryIdx" th:value="${param.category}">

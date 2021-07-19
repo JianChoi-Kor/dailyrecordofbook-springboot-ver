@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 #terms_content {
-    width: 460px;
+    width: 670px;
     margin: 0 auto;
     text-decoration: none;
     margin-top: 50px;
@@ -39,6 +39,10 @@
     line-height: 18px;
 }
 
+.last_h3 {
+    margin-bottom: 20px;
+}
+
 #btnCancel, #btnAgree {
     text-decoration: none;
 }
@@ -59,6 +63,7 @@
     transition:800ms ease all;
     outline:none;
     margin: 0 auto;
+    border-radius: 0.5em;
 }
 
 .terms_btn:hover{
@@ -109,6 +114,7 @@ label {
 .checks {
     position: relative;
     margin-top: 10px;
+    margin-bottom: 30px;
 } 
 
 .checks input[type="checkbox"] {
