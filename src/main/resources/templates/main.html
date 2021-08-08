@@ -15,8 +15,6 @@
     <script src="/js/bookSlide.js" defer></script>
 </head>
 
-
-
     <div layout:fragment="content" class="row">
 
         <!-- 상단 슬라이드 부분 -->
@@ -93,21 +91,36 @@
             <div class="middle-first">
                 <i class="icon far fa-laugh"></i>
                 <h3 class="h3">
-                    295<span>&nbsp명</span>
+                    <th:block th:if="${withList} != null">
+                        <p th:text="|${withList.member} 명|"></p>
+                    </th:block>
+                    <th:block th:unless="${withList} != null">
+                        -<span>&nbsp명</span>
+                    </th:block>
                 </h3>
                 <h6 class="h6">함께하신 분들</h6>
             </div>
             <div class="middle-second">
                 <i class="icon fas fa-book-open"></i>
                 <h3 class="h3">
-                    82<span>&nbsp권</span>
+                    <th:block th:if="${withList} != null">
+                        <p th:text="|${withList.book} 권|"></p>
+                    </th:block>
+                    <th:block th:unless="${withList} != null">
+                        -<span>&nbsp명</span>
+                    </th:block>
                 </h3>
                 <h6 class="h6">함께 읽은 책들</h6>
             </div>
             <div class="middle-third">
                 <i class="icon far fa-comments"></i>
                 <h3 class="h3">
-                    571<span>&nbsp개</span>
+                    <th:block th:if="${withList} != null">
+                        <p th:text="|${withList.topic} 개|"></p>
+                    </th:block>
+                    <th:block th:unless="${withList} != null">
+                        -<span>&nbsp명</span>
+                    </th:block>
                 </h3>
                 <h6 class="h6">함께 나눈 발제들</h6>
             </div>

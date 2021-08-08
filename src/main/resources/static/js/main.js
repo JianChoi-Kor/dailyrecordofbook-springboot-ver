@@ -1,3 +1,6 @@
+
+
+
 // home slide 부분 js start
 const slideContainer = document.querySelector('.top-slide-container')
 const slide = document.querySelector('.slides')
@@ -111,3 +114,7 @@ function delBanner(bannerIdx) {
 function toCommunity(boardIdx) {
     location.href='/board/' + boardIdx + '?flag=detail';
 }
+
+setTimeout(function() {
+    document.getElementsByClassName('fc-daygrid')[0].classList.add('unableClick');
+}, 3000);

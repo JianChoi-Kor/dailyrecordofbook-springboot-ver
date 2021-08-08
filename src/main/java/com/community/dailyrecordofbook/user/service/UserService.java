@@ -108,10 +108,12 @@ public class UserService {
             // AuthenticationManager에 token을 넘기면 UserDetailsService가 받아 처리하도록 한다.
             Authentication authentication = authenticationManager.authenticate(token);
         } catch (Exception e) {
-            e.printStackTrace();
             return 1; // 로그인 실패
         }
         User user = userRepository.findByEmail(login.getEmail()).orElse(null);
+        if(!user.getType().equals("drob")) {
+            return 3; // 소셜 로그인 회원인 경우
+        }
 
         if(user.getRole() == Role.MAIL) {
             return 2; // 이메일 인증 전
@@ -146,14 +148,14 @@ public class UserService {
         if(sessionUser == null) {
             out.println("<script> alert('올바르지 않은 접근입니다.'); location.href='/main'; </script>");
             out.flush();
-            modelAndView.setViewName("/main");
+            modelAndView.setViewName("main");
             return modelAndView;
         }
 
         if(sessionUser.getRole() == Role.TEMP) {
             out.println("<script> if(confirm('추가정보를 입력하지 않으셨습니다. 추가정보를 입력하시겠습니까?')) {location.href='/user/addInfo';} else {location.href='/main';} </script>");
             out.flush();
-            modelAndView.setViewName("/main");
+            modelAndView.setViewName("main");
             return modelAndView;
         }
 
@@ -166,7 +168,7 @@ public class UserService {
         } else {
             out.println("<script> alert('올바르지 않은 접근입니다.'); location.href='/main';</script>");
             out.flush();
-            modelAndView.setViewName("/main");
+            modelAndView.setViewName("main");
         }
         return modelAndView;
     }

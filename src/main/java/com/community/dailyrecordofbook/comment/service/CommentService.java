@@ -27,6 +27,11 @@ public class CommentService {
             return 2;
         }
 
+        if(writeComment.getCmtContent().contains("<script>") || writeComment.getCmtContent().contains("</script>") ||
+                writeComment.getCmtContent().contains("<Script>") || writeComment.getCmtContent().contains("</Script>")) {
+            return 2;
+        }
+
         try {
             commentRepository.save(new Comment(writeComment));
             return 0;
@@ -60,6 +65,12 @@ public class CommentService {
         if(errors.hasErrors()) {
             return 1; // Valid Error
         }
+
+        if(modifyComment.getCmtContent().contains("<script>") || modifyComment.getCmtContent().contains("</script>") ||
+                modifyComment.getCmtContent().contains("<Script>") || modifyComment.getCmtContent().contains("</Script>")) {
+            return 1;
+        }
+
         Comment comment = commentRepository.findByIdxAndBoardIdx(modifyComment.getIdx(), modifyComment.getBoardIdx()).orElse(null);
         if(comment.getWriterIdx() != modifyComment.getLoginUserIdx()) {
             return 1; // 작성자와 삭제 요청한 유저가 다른 경우

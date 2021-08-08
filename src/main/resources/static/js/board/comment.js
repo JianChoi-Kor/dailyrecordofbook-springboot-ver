@@ -12,6 +12,17 @@ function writeComment() {
         return;
     }
 
+    if(cmtContentElem.value.indexOf("<") != -1 || cmtContentElem.value.indexOf(">") != -1) {
+        alert('댓글에 "<", ">" 는 사용할 수 없습니다.');
+
+        return;
+    }
+
+    if(cmtContentElem.value.indexOf("<script>") != -1 || cmtContentElem.value.indexOf("</script>") != -1 || cmtContentElem.value.indexOf("<Script>") != -1 || cmtContentElem.value.indexOf("</Script>") != -1) {
+        alert('잘못된 요청입니다.');
+        return;
+    }
+
     const boardIdxElem = document.querySelector('#boardIdx');
     const commentWriterIdxElem = document.querySelector('#sessionUserIdx');
 
@@ -228,6 +239,16 @@ function modAjax(boardIdx, cmtIdx, loginUserIdx) {
 
     if(newCmtContentElem.value.trim() === '') {
         alert('댓글 내용을 작성해주세요.');
+        return;
+    }
+
+    if(newCmtContentElem.value.indexOf("<") != -1 || newCmtContentElem.value.indexOf(">") != -1) {
+        alert('댓글에 "<", ">" 는 사용할 수 없습니다.');
+        return;
+    }
+
+    if(newCmtContentElem.value.indexOf("<script>") != -1 || newCmtContentElem.value.indexOf("</script>") != -1 || newCmtContentElem.value.indexOf("<Script>") != -1 || newCmtContentElem.value.indexOf("</Script>") != -1) {
+        alert('잘못된 요청입니다.');
         return;
     }
 

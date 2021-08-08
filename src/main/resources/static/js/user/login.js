@@ -57,6 +57,9 @@ function login_action() {
             case 2:
                 errMsgElem.innerHTML = '이메일 인증이 진행되지 않은 회원입니다.';
                 break;
+            case 3:
+                errMsgElem.innerHTML = '소셜 회원으로 가입된 계정입니다. 소셜 로그인을 이용해주세요.';
+                break;
         }
     }
 

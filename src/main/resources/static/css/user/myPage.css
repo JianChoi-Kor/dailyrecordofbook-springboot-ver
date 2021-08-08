@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.profileFrom {
+	background-color: white;
+	margin: 3em auto;
+	text-align: center;
+	width: 460px;
+	border-radius: 1.5em;
+	box-shadow: 0px 11px 36px 2px raba(0, 0, 0, 0.7);
+}
+
+.imgFrame>img {
+	width: 220px;
+	height: 220px;
+	border-radius: 220px;
+}
+
+.innerFrm {
+	width: 100%;
+	color: rgb(38, 50, 56);
+	font-weight: 700;
+	font-size: 14px;
+	letter-spacing: 1px;
+	background: rgba(136, 126, 126, 0.04);
+	padding: 10px 20px;
+	border: none;
+	border-radius: 20px;
+	outline: none;
+	box-sizing: border-box;
+	border: 2px solid rgba(0, 0, 0, 0.02);
+	margin: 35px 0;
+}
+
+.h3 {
+	margin-top: 6px;
+	margin-bottom: 12px;
+}
+
+.detail {
+	margin: 10px 0;
+	margin-left: 40px;
+	text-align: left;
+	display: flex;
+}
+
+
+label {
+	display:inline-block;
+	width: 90px;
+	text-align: center;
+}
+
+/* join_btn 시작 */
+.Btn {
+    background:#ebcacf;
+    color:#fff;
+    border:none;
+    position:relative;
+    height:50px;
+    font-size:1em;
+    padding: 0.4em 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}    
+.Btn:hover{
+    background:#fff;
+    color:#ebcacf;
+}
+.Btn:before, .Btn:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #ebcacf;
+    transition:400ms ease all;
+}
+.Btn:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+.Btn:hover:before, .Btn:hover:after{
+    width:100%;
+    transition:800ms ease all;
+}
+/* join_btn 끝 */
+
+
+.btnFrm {
+	display: flex;
+	margin: 50px 0;
+}
+
+.p {
+	font-size: 13px;
+	margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+
+    .profileFrom {
+    	margin: 2em auto;
+    	width: 80vw;
+    }
+
+    .imgFrame>img {
+    	width: 135px;
+    	height: 135px;
+    	border-radius: 135px;
+    }
+
+    .innerFrm {
+    	padding: 10px 10px;
+    }
+
+    .Btn {
+        height:35px;
+        font-size:0.85em;
+        padding: 0.4em 1.2em;
+        display: block;
+        margin: 0 auto;
+        transition: none;
+    }
+
+    .btnFrm {
+    	display: flex;
+    	margin: 29px 0;
+    }
+
+    label {
+    	font-size: 12px;
+    }
+
+    .detail > div {
+        font-size: 12px;
+    }
+
+    .p {
+        font-size: 12px;
+    }
+}

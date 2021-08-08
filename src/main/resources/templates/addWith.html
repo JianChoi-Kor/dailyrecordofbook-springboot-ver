@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/addBook.css}">
+    <script src="/js/addWith.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" defer></script>
+</head>
+
+<div layout:fragment="content">
+    <div class="write_content">
+        <h1 class="h1">북 슬라이드 도서 추가하기</h1>
+
+        <form id="with_form" action="/addWith" method="post">
+            <div>
+                <input type="number" class="write_title" name="member" placeholder="함께하신 분들" required>
+            </div>
+            <div>
+                <input type="number" class="write_title" name="book" placeholder="함께 읽은 책들" required>
+            </div>
+            <div>
+                <input type="number" class="write_title" name="topic" placeholder="함께 나눈 발제들" required>
+            </div>
+
+            <div>
+                <input type="button" class="write_btn" value="추가" onclick="addWith()">
+            </div>
+        </form>
+    </div>
+
+    <div class="write_mb">
+        <img th:src="@{/images/write.png}" alt="">
+        <p style="margin-top: 50px">"모바일 환경에서는 글쓰기 기능을 제공하지 않습니다."</p>
+        <p>책방일지 PC버전을 이용해주세요.</p>
+    </div>
+</div>
+
+</html>
+
+
+
+
+
+

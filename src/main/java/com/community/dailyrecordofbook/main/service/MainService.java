@@ -8,12 +8,15 @@ import com.community.dailyrecordofbook.common.util.SessionUtil;
 import com.community.dailyrecordofbook.main.dto.AddBook;
 import com.community.dailyrecordofbook.main.entity.BookSlide;
 import com.community.dailyrecordofbook.main.entity.MainBanner;
+import com.community.dailyrecordofbook.main.entity.WithHistory;
 import com.community.dailyrecordofbook.main.repository.BookSlideRepository;
 import com.community.dailyrecordofbook.main.repository.MainBannerRepository;
 import com.community.dailyrecordofbook.user.entity.Role;
 import com.community.dailyrecordofbook.user.entity.User;
 import com.community.dailyrecordofbook.user.repository.UserCustomRepositorySupport;
 import com.community.dailyrecordofbook.user.repository.UserRepository;
+import com.community.dailyrecordofbook.user.repository.WithHistoryRepository;
+import com.community.dailyrecordofbook.user.repository.WithHistoryRepositorySupport;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +39,8 @@ public class MainService {
     private final FileUtil fileUtil;
     private final MainBannerRepository mainBannerRepository;
     private final BoardCustomRepositorySupport boardCustomRepositorySupport;
+    private final WithHistoryRepository withHistoryRepository;
+    private final WithHistoryRepositorySupport withHistoryRepositorySupport;
 
     @Transactional
     public String addBook(AddBook addBook, MultipartFile bookSlideFile, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -210,5 +215,18 @@ public class MainService {
 
     public List<ListBoard> getCommunityList() {
         return boardCustomRepositorySupport.getCommunityList();
+    }
+
+    public int addWith(WithHistory withHistory) {
+        try {
+            withHistoryRepository.save(withHistory);
+        } catch (Exception e) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public WithHistory getWithList() {
+        return withHistoryRepositorySupport.getWithHistory();
     }
 }

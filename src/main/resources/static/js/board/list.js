@@ -37,3 +37,7 @@ function banner_action() {
 function where_action() {
     location.href='/where';
 }
+
+function with_action() {
+    location.href='/with';
+}

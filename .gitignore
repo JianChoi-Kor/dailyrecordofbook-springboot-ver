@@ -31,6 +31,11 @@ build/
 
 ### properties ###
 application-oauth.properties
+application-local.properties
+application-prod.properties
 
 ### VS Code ###
 .vscode/
+
+### JS ###
+

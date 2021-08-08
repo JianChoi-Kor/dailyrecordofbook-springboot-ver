@@ -155,6 +155,10 @@
     margin-bottom: 35px;
 }
 
+.unableClick {
+    pointer-events: none;
+}
+
 .instagram_btn {
 	background: inherit; 
 	border:none; 

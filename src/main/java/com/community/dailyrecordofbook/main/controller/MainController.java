@@ -2,8 +2,8 @@ package com.community.dailyrecordofbook.main.controller;
 
 import com.community.dailyrecordofbook.main.dto.AddBook;
 import com.community.dailyrecordofbook.main.entity.MainBanner;
+import com.community.dailyrecordofbook.main.entity.WithHistory;
 import com.community.dailyrecordofbook.main.service.MainService;
-import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +22,7 @@ public class MainController {
     @GetMapping(value = {"/", "/main"})
     public String main(Model model) {
         model.addAttribute("bookList", mainService.getBookList());
+        model.addAttribute("withList", mainService.getWithList());
         model.addAttribute("bannerList", mainService.getBannerList());
         model.addAttribute("communityList", mainService.getCommunityList());
         return "main";
@@ -62,5 +63,16 @@ public class MainController {
     @GetMapping("/where")
     public String where() {
         return "where";
+    }
+
+    @GetMapping("/with")
+    public String with() {
+        return "addWith";
+    }
+
+    @ResponseBody
+    @PostMapping("/addWith")
+    public int addWith(@RequestBody WithHistory withHistory) throws Exception {
+        return mainService.addWith(withHistory);
     }
 }

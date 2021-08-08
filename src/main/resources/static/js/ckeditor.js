@@ -4,7 +4,7 @@
 
 ClassicEditor.create(document.querySelector('#editor'), {
 	ckfinder : {
-		uploadUrl : 'http://localhost:8080/board/imageUpload'
+		uploadUrl : '/board/imageUpload'
 	}
 }).then(editor => {
 	window.editor = editor
